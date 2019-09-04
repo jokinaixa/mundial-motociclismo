@@ -10,12 +10,12 @@ export class EquiposService {
 
   equipos: any = [];
   
-  API_URI = 'http://localhost/api';
+  API_URI = 'http://localhost:8080/api';
 
   constructor(private http: HttpClient) { }
 
   getEquipos() {
-    return this.http.get(`${this.API_URI}/obtenerEquipos.php`);
+    return this.http.get<Equipo[]>(`${this.API_URI}/obtenerEquipos.php`);
   }
 
   getEquipo(id: string) {

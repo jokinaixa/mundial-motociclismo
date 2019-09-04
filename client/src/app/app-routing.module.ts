@@ -19,7 +19,7 @@ const routes: Routes = [
 
   { path: 'pilotos', component: PilotosListComponent },
   { path: 'pilotos/add', component: PilotoFormComponent },
-  { path: 'pilotos/edit/:id', component: PilotoFormComponent }
+  { path: 'pilotos/edit/:id', component: PilotoFormComponent },
 
   { path: 'equipos', component: EquiposListComponent },
   { path: 'equipos/add', component: EquipoFormComponent },

@@ -37,7 +37,7 @@ moto VARCHAR(255),
 imagen VARCHAR(255),
 PRIMARY KEY (id_equipo),
 INDEX (id_piloto),
-FOREIGN KEY (id_piloto) REFERENCES pilotos(id_piloto) ON DELETE CASCADE;
+FOREIGN KEY (id_piloto) REFERENCES pilotos(id_piloto) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 INSERT INTO equipos VALUES (1, 1, "Repsol Honda Team", "Honda", "sin_imagen.jpg");

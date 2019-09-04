@@ -1,6 +1,7 @@
-import { Component, OnInit, HostBinding } from '@angular/core';
+import { Injectable, Component, OnInit, HostBinding } from '@angular/core';
 
 import { EquiposService } from '../equipos.service';
+import { Equipo } from '../../../models/Equipo';
 
 @Component({
   selector: 'app-equipos-list',
@@ -15,12 +16,13 @@ export class EquiposListComponent implements OnInit {
 
   constructor(private equipoService: EquiposService) { }
 
-
   ngOnInit() {
     this.getEquipos();
   }
 
+
   getEquipos() {
+/*
     this.equipoService.getEquipos()
       .subscribe(
         res => {
@@ -28,6 +30,13 @@ export class EquiposListComponent implements OnInit {
         },
         err => console.error(err)
       );
+*/
+    this.equipoService.getEquipos()
+      .subscribe((res : Equipo[]) => {
+        this.equipos = res;
+        console.log(this.equipos);
+      }
+    );
   }
 
   deleteEquipo(id: string) {
@@ -40,4 +49,5 @@ export class EquiposListComponent implements OnInit {
         err => console.error(err)
       )
   }
+
 }

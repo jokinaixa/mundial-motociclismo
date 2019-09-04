@@ -7,9 +7,9 @@
   mysqli_set_charset($connect, "utf8");
 
   $query = "SELECT * FROM pilotos";
-  $result = $connect->query($query);
+  $result = $connect->query($query) or trigger_error($connect->error);
 
-  while($row = $result->fetch_array())
+  while($row = $result->fetch_array(MYSQLI_ASSOC))
   {
     $vec[] = $row;
   }

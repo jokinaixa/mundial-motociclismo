@@ -11,7 +11,8 @@ export class GamesService {
   games: any = [];
   
   //API_URI = 'http://localhost:3000/api';
-  API_URI = 'http://localhost/api';
+  API_URI = 'http://localhost:8080/api';
+  //API_URI = 'http://localhost/api';
 
   constructor(private http: HttpClient) { }
 
