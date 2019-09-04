@@ -1,0 +1,18 @@
+<app-equipos-nav></app-equipos-nav>
+
+<div class="col-md-4 tarjeta-margen" *ngFor="let equipo of equipos">
+  <div class="card text-center">
+    <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
+      {{ equipo.nombre }}
+      <button class="btn btn-danger" (click)="deleteEquipo(equipo.id)">
+        <i class="far fa-trash-alt"></i>
+      </button>
+    </div>
+    <img class="card-img-top" [src]="equipo.image">
+    <div class="card-body">
+      <!-- <p>{{ equipo.description }}</p> -->
+      <p class="bloqueo-alt">{{ equipo.moto }}</p>
+      <a [routerLink]="['/equipos/edit', equipo.id]" class="btn btn-info btn-block"> Editar equipo </a>
+    </div>
+  </div>
+</div>

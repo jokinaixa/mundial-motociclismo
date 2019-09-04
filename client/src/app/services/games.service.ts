@@ -8,12 +8,17 @@ import { Observable } from 'rxjs';
 })
 export class GamesService {
 
-  API_URI = 'http://localhost:3000/api';
+  games: any = [];
+  
+  //API_URI = 'http://localhost:3000/api';
+  API_URI = 'http://localhost/api';
 
   constructor(private http: HttpClient) { }
 
   getGames() {
-    return this.http.get(`${this.API_URI}/games`);
+    console.log("services");
+    //return this.http.get(`${this.API_URI}/games`);
+    return this.http.get(`${this.API_URI}/obtenerGames.php`);
   }
 
   getGame(id: string) {

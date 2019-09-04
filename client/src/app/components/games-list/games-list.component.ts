@@ -41,5 +41,4 @@ export class GamesListComponent implements OnInit {
         err => console.error(err)
       )
   }
-
 }

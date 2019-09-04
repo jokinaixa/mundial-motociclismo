@@ -64,5 +64,5 @@ export class GameFormComponent implements OnInit {
         err => console.error(err)
       )
   }
-
+  
 }
