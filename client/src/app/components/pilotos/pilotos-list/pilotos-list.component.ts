@@ -1,43 +1,50 @@
-import { Component, OnInit, HostBinding } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 import { PilotosService } from '../pilotos.service';
 
 @Component({
   selector: 'app-pilotos-list',
-  templateUrl: './pilotos-list.component.html',
-  styleUrls: ['./pilotos-list.component.css'],
+  template: `
+    <h4>Listado de Pilotos</h4>
+    <p>{{ nombre }} {{ calificativo }}</p>
+    <ul *ngFor="let piloto of pilotos">
+      <li>{{ piloto.nombre }}</li>
+    </ul>
+  `,
+  styles: [],
 })
 export class PilotosListComponent implements OnInit {
 
-  @HostBinding('class') classes = 'row';
-
   pilotos: any = [];
 
-  constructor(private pilotoService: PilotosService) { }
+  @Input() nombre: string;
+  @Input() calificativo: string;
+  @Input() valor: string;
 
+
+  constructor(private pilotoService: PilotosService) {}
 
   ngOnInit() {
-    this.getPilotos();
+    console.log(this.nombre);
+    console.log(this.calificativo);
+    console.log(this.valor);
+    
+    if (this.valor != null) {
+      this.getPilotosByTeam(this.valor);
+    } else {
+      this.getPilotos();
+    }
   }
+
 
   getPilotos() {
     this.pilotoService.getPilotos()
-      .subscribe(
-        res => {
-          this.pilotos = res;
-        },
-        err => console.error(err)
-      );
+      .subscribe(data => this.pilotos = data);
   }
 
-  deletePiloto(id: string) {
-    this.pilotoService.deletePiloto(id)
-      .subscribe(
-        res => {
-          console.log(res);
-          this.getPilotos();
-        },
-        err => console.error(err)
-      )
+  getPilotosByTeam(equipo: string) {
+    this.pilotoService.getPilotosByTeam(equipo)
+      .subscribe(data => this.pilotos = data);
   }
+
 }

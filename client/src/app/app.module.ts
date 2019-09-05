@@ -42,9 +42,7 @@ import { EquiposNavComponent } from './components/equipos/equipos-nav/equipos-na
     HttpClientModule,
     FormsModule
   ],
-  providers: [
-    GamesService
-  ],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

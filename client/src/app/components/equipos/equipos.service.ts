@@ -10,28 +10,16 @@ export class EquiposService {
 
   equipos: any = [];
   
-  API_URI = 'http://localhost:8080/api';
+  API_URI = 'http://localhost/api';
 
   constructor(private http: HttpClient) { }
 
-  getEquipos() {
+  getEquipos(): Observable<Equipo[]> {
     return this.http.get<Equipo[]>(`${this.API_URI}/obtenerEquipos.php`);
   }
 
-  getEquipo(id: string) {
-    return this.http.get(`${this.API_URI}/equipos/${id}`);
-  }
-
-  deleteEquipo(id: string) {
-    return this.http.delete(`${this.API_URI}/equipos/${id}`);
-  }
-
-  saveEquipo(equipo: Equipo) {
-    return this.http.post(`${this.API_URI}/equipos`, equipo);
-  }
-
-  updateEquipo(id: string|number, updatedEquipo: Equipo): Observable<Equipo> {
-    return this.http.put(`${this.API_URI}/equipos/${id}`, updatedEquipo);
+  getEquipo(id: number): Observable<Equipo> {
+    return this.http.get<Equipo>(`${this.API_URI}/mostrarEquipo.php?id=${id}`);
   }
 
 }

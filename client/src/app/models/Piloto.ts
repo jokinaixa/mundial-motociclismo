@@ -1,7 +1,8 @@
-import { Title } from '@angular/platform-browser';
+import { Equipo } from './Equipo';
 
 export interface Piloto {
     id?: number,
+    equipo?: Equipo; 
     nombre?: string,
     imagen?: string,
     edad?: number,

@@ -10,28 +10,20 @@ export class PilotosService {
 
   pilotos: any = [];
   
-  API_URI = 'http://localhost:8080/api';
+  API_URI = 'http://localhost/api';
 
   constructor(private http: HttpClient) { }
 
-  getPilotos() {
-    return this.http.get(`${this.API_URI}/obtenerPilotos.php`);
+  getPilotos(): Observable<Piloto[]> {
+    return this.http.get<Piloto[]>(`${this.API_URI}/obtenerPilotos.php`);
   }
 
-  getPiloto(id: string) {
-    return this.http.get(`${this.API_URI}/pilotos/${id}`);
+  getPilotosByTeam(equipo: string): Observable<Piloto> {
+    return this.http.get<Piloto>(`${this.API_URI}/obtenerPilotosByTeam.php?equipo=${equipo}`);
   }
 
-  deletePiloto(id: string) {
-    return this.http.delete(`${this.API_URI}/pilotos/${id}`);
-  }
-
-  savePiloto(piloto: Piloto) {
-    return this.http.post(`${this.API_URI}/pilotos`, piloto);
-  }
-
-  updatePiloto(id: string|number, updatedPiloto: Piloto): Observable<Piloto> {
-    return this.http.put(`${this.API_URI}/pilotos/${id}`, updatedPiloto);
+  getPiloto(id: number): Observable<Piloto> {
+    return this.http.get<Piloto>(`${this.API_URI}/mostrarPiloto.php?id=${id}`);
   }
 
 }

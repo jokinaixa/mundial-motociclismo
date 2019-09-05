@@ -1,15 +1,17 @@
 CREATE TABLE pilotos
 (
 id_piloto INT NOT NULL AUTO_INCREMENT,
+id_equipo INT NOT NULL,
 nombre VARCHAR(255),
 imagen VARCHAR(255),
 edad INT(3),
-PRIMARY KEY (id_piloto)
+PRIMARY KEY (id_piloto),
+FOREIGN KEY (id_equipo) REFERENCES equipos(id_equipo) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
-INSERT INTO pilotos VALUES (1, "Marc Marquez", "sin_imagen.jpg", 23);
-INSERT INTO pilotos VALUES (2, "Jorge Lorenzo", "sin_imagen.jpg", 25);
-INSERT INTO pilotos VALUES (3, "Valentino Rossi", "sin_imagen.jpg", 41);
+INSERT INTO pilotos VALUES (1, 1, "Marc Marquez", "sin_imagen.jpg", 23);
+INSERT INTO pilotos VALUES (2, 1, "Jorge Lorenzo", "sin_imagen.jpg", 25);
+INSERT INTO pilotos VALUES (3, 2, "Valentino Rossi", "sin_imagen.jpg", 40);
 
 
 CREATE TABLE circuitos
@@ -29,20 +31,16 @@ INSERT INTO circuitos VALUES (3, "Gran premio de España", "España", "Jerez", 5
 
 
 CREATE TABLE equipos
-(
-id_equipo INT NOT NULL AUTO_INCREMENT,
-id_piloto INT NOT NULL,
-nombre VARCHAR(255),
-moto VARCHAR(255),
-imagen VARCHAR(255),
-PRIMARY KEY (id_equipo),
-INDEX (id_piloto),
-FOREIGN KEY (id_piloto) REFERENCES pilotos(id_piloto) ON DELETE CASCADE
+( 
+id_equipo INT NOT NULL AUTO_INCREMENT, 
+nombre VARCHAR(255), 
+moto VARCHAR(255), 
+imagen VARCHAR(255), 
+PRIMARY KEY (id_equipo) 
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
-INSERT INTO equipos VALUES (1, 1, "Repsol Honda Team", "Honda", "sin_imagen.jpg");
-INSERT INTO equipos VALUES (2, 2, "Repsol Honda Team", "Honda", "sin_imagen.jpg");
-INSERT INTO equipos VALUES (3, 3, "Monster Energy Yamaha MotoGP", "Yamaha", "sin_imagen.jpg");
+INSERT INTO equipos VALUES (1, "Repsol Honda Team", "Honda", "sin_imagen.jpg");
+INSERT INTO equipos VALUES (3, "Monster Energy Yamaha MotoGP", "Yamaha", "sin_imagen.jpg");
 
 
 CREATE TABLE clasificacion

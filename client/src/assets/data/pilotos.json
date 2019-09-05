@@ -1,0 +1,4 @@
+[
+    { "id_piloto": 1, "nombre": "Marc Marquez", "imagen": "sin_imagen.jpg", "edad": 23 },
+    { "id_piloto": 2, "nombre": "Jorge Lorenzo", "imagen": "sin_imagen.jpg", "edad": 25 }
+]

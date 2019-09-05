@@ -3,17 +3,15 @@
   header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
   
   require("conexion.php");
-  $connect = retornarConexion();
-  mysqli_set_charset($connect, "utf8");
+  $con = retornarConexion();
 
-  $query = "SELECT * FROM games";
-  $result = $connect->query($query) or trigger_error($connect->error);
-
-  while($row = $result->fetch_array(MYSQLI_ASSOC))
+  $registros = mysqli_query($con, "select * from pilotos where id_piloto = $_GET[id]");
+    
+  if ($reg = mysqli_fetch_array($registros))  
   {
-    $vec[] = $row;
+    $vec[] = $reg;
   }
-
+  
   $cad = json_encode($vec);
   echo $cad;
 
