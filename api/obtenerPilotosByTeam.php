@@ -6,15 +6,14 @@
   $connect = retornarConexion();
   mysqli_set_charset($connect, "utf8");
 
-  $query = "SELECT * FROM pilotos WHERE id_piloto = $_GET[id]";
-  $registros = $connect->query($query) or trigger_error($connect->error);
-  
+  $query = "SELECT * FROM pilotos WHERE id_equipo = $_GET[equipo]";
+  $result = $connect->query($query) or trigger_error($connect->error);
 
-  if ($reg = mysqli_fetch_array($registros))  
+  while($row = $result->fetch_array())
   {
-    $vec = $reg;
+    $vec[] = $row;
   }
-  
+
   $cad = json_encode($vec);
   echo $cad;
 

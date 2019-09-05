@@ -9,12 +9,13 @@
   $query = "SELECT * FROM games";
   $result = $connect->query($query) or trigger_error($connect->error);
 
-  while($row = $result->fetch_array(MYSQLI_ASSOC))
+
+  while($row = $result->fetch_array())
   {
-    $vec[] = $row;
+    $salida[] = $row;
   }
 
-  $cad = json_encode($vec);
+  $cad = json_encode($salida);
   echo $cad;
 
   header('Content-Type: application/json');

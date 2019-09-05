@@ -9,7 +9,7 @@
   $query = "SELECT * FROM pilotos";
   $result = $connect->query($query) or trigger_error($connect->error);
 
-  while($row = $result->fetch_array(MYSQLI_ASSOC))
+  while($row = $result->fetch_array())
   {
     $vec[] = $row;
   }

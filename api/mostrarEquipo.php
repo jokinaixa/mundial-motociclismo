@@ -6,7 +6,7 @@
   $connect = retornarConexion();
   mysqli_set_charset($connect, "utf8");
 
-  $query = "SELECT * FROM pilotos WHERE id_piloto = $_GET[id]";
+  $query = "SELECT * FROM equipos WHERE id_equipo = $_GET[id]";
   $registros = $connect->query($query) or trigger_error($connect->error);
   
 
