@@ -1,4 +1,22 @@
 [
-    { "id_piloto": 1, "nombre": "Marc Marquez", "imagen": "sin_imagen.jpg", "edad": 23 },
-    { "id_piloto": 2, "nombre": "Jorge Lorenzo", "imagen": "sin_imagen.jpg", "edad": 25 }
+    {
+      "id_piloto": 23,
+      "nombre": "Maverik Viñales",
+      "edad": 32,
+      "equipo": 
+      {
+        "id_equipo": 56,
+        "nombre": "Monster Energy Yamaha MotoGP"          
+      }
+    },
+    {
+      "id_piloto": 24,
+      "nombre": "Valentino Rossi",
+      "edad": 34,
+      "equipo": 
+      {
+        "id_equipo": 56,
+        "nombre": "Monster Energy Yamaha MotoGP"          
+      }
+    }
 ]

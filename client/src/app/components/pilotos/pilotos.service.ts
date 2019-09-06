@@ -3,9 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Piloto } from '../../models/Piloto';
 import { Observable } from 'rxjs';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class PilotosService {
 
   pilotos: any = [];
@@ -15,10 +13,11 @@ export class PilotosService {
   constructor(private http: HttpClient) { }
 
   getPilotos(): Observable<Piloto[]> {
-    return this.http.get<Piloto[]>(`${this.API_URI}/obtenerPilotos.php`);
+    //return this.http.get<Piloto[]>(`${this.API_URI}/obtenerPilotos.php`);
+    return this.http.get<Piloto[]>(`assets/data/pilotos.json`);
   }
 
-  getPilotosByTeam(equipo: string): Observable<Piloto> {
+  getPilotosByTeam(equipo: number): Observable<Piloto> {
     return this.http.get<Piloto>(`${this.API_URI}/obtenerPilotosByTeam.php?equipo=${equipo}`);
   }
 

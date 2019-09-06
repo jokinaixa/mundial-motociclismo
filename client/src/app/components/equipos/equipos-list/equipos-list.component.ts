@@ -4,14 +4,10 @@ import { EquiposService } from '../equipos.service';
 
 @Component({
   selector: 'app-equipos-list',
-  template: `
-    <h2>Listado de Equipos</h2>
-    <ul *ngFor="let equipo of equipos">
-      <li>{{ equipo.id }} {{ equipo.nombre }}</li>
-    </ul>
-  `,
-  styles: [],
+  templateUrl: './equipos-list.component.html',
+  styleUrls: ['./equipos-list.component.css'],
 })
+
 export class EquiposListComponent implements OnInit {
 
   equipos: any = [];

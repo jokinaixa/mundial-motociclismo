@@ -1,50 +1,28 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 import { PilotosService } from '../pilotos.service';
+import { Piloto } from '../../../models/Piloto';
+import { Equipo } from '../../../models/Equipo';
 
 @Component({
   selector: 'app-pilotos-list',
-  template: `
-    <h4>Listado de Pilotos</h4>
-    <p>{{ nombre }} {{ calificativo }}</p>
-    <ul *ngFor="let piloto of pilotos">
-      <li>{{ piloto.nombre }}</li>
-    </ul>
-  `,
-  styles: [],
+  templateUrl: './pilotos-list.component.html',
+  styleUrls: ['./pilotos-list.component.css'],
 })
+
 export class PilotosListComponent implements OnInit {
 
   pilotos: any = [];
 
-  @Input() nombre: string;
-  @Input() calificativo: string;
-  @Input() valor: string;
-
-
-  constructor(private pilotoService: PilotosService) {}
+  constructor(private pilotosService: PilotosService) { }
 
   ngOnInit() {
-    console.log(this.nombre);
-    console.log(this.calificativo);
-    console.log(this.valor);
-    
-    if (this.valor != null) {
-      this.getPilotosByTeam(this.valor);
-    } else {
-      this.getPilotos();
-    }
+
+    this.pilotosService.getPilotos()
+      .subscribe(data => {
+        console.log(data);
+        this.pilotos = data;
+    })
+
   }
-
-
-  getPilotos() {
-    this.pilotoService.getPilotos()
-      .subscribe(data => this.pilotos = data);
-  }
-
-  getPilotosByTeam(equipo: string) {
-    this.pilotoService.getPilotosByTeam(equipo)
-      .subscribe(data => this.pilotos = data);
-  }
-
 }

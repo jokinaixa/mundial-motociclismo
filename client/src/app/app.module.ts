@@ -21,6 +21,7 @@ import { PilotosNavComponent } from './components/pilotos/pilotos-nav/pilotos-na
 import { EquipoFormComponent } from './components/equipos/equipo-form/equipo-form.component';
 import { EquiposListComponent } from './components/equipos/equipos-list/equipos-list.component';
 import { EquiposNavComponent } from './components/equipos/equipos-nav/equipos-nav.component';
+import { PilotoFichaComponent } from './components/pilotos/piloto-ficha/piloto-ficha.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { EquiposNavComponent } from './components/equipos/equipos-nav/equipos-na
     PilotosListComponent,
     PilotosNavComponent,
     EquiposNavComponent,
-    EquipoFormComponent
+    EquipoFormComponent,
+    PilotoFichaComponent
   ],
   imports: [
     BrowserModule,
@@ -42,7 +44,11 @@ import { EquiposNavComponent } from './components/equipos/equipos-nav/equipos-na
     HttpClientModule,
     FormsModule
   ],
-  providers: [],
+  providers: [
+    GamesService,
+    EquiposService,
+    PilotosService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

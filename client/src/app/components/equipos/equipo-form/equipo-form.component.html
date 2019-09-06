@@ -1,2 +1,6 @@
 <h2>{{ equipo.nombre }} <small>({{ equipo.moto }})</small> {{ prueba1.apellido }}</h2>
-<app-pilotos-list [nombre] = "prueba1.nombre" [valor] = "equipo.moto" [calificativo] = "prueba2"></app-pilotos-list>
+<ul *ngFor="let piloto of pilotos">
+    <li>{{ piloto.nombre }}</li>
+</ul>
+
+<!-- <app-pilotos-list [equipo] = "equipo"></app-pilotos-list> -->

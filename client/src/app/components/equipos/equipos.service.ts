@@ -3,9 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Equipo } from '../../models/Equipo';
 import { Observable } from 'rxjs';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class EquiposService {
 
   equipos: any = [];
