@@ -1,8 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 import { PilotosService } from '../pilotos.service';
-import { Piloto } from '../../../models/Piloto';
-import { Equipo } from '../../../models/Equipo';
+import { EquiposService } from '../../equipos/equipos.service';
 
 @Component({
   selector: 'app-pilotos-list',
@@ -16,13 +15,11 @@ export class PilotosListComponent implements OnInit {
 
   constructor(private pilotosService: PilotosService) { }
 
+
   ngOnInit() {
-
     this.pilotosService.getPilotos()
-      .subscribe(data => {
-        console.log(data);
-        this.pilotos = data;
-    })
-
+    .subscribe(
+      data => this.pilotos = data
+    );
   }
 }

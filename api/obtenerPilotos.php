@@ -9,33 +9,21 @@
   $query = "SELECT * FROM pilotos";
   $result1 = $connect->query($query) or trigger_error($connect->error);
 
-  while($piloto = $result1->fetch_array())
+  while($piloto = $result1->fetch_assoc())
   {
-    $pilotos[] = $piloto;
-
-	  $query = "SELECT * FROM equipos WHERE id_equipo = $piloto[id_equipo]";
+    $query = "SELECT * FROM equipos WHERE id_equipo = $piloto[id_equipo]";
 	  $result2 = $connect->query($query) or trigger_error($connect->error);
 	  
-	  if ($equipo = mysqli_fetch_array($result2))  
+	  if ($equipo = $result2->fetch_assoc())
 	  {
-	    $pilotos[]["equipo"] = $equipo;
+	    $piloto["equipo"] = $equipo;
 	  }
+
+    $pilotos[] = $piloto;
   }
 
-  $cad = json_encode($pilotos);
-
-  $pilotos2 = array(
-    "id_piloto" => 34,
-    "nombre" => "Aleix Espargaro",
-    "edad" => 32,
-    "equipo" => array(
-         "id_equipo" => 56,
-         "nombre" => "Aprilia"
-		)
-  );
-
-	$cad = json_encode($pilotos2);
-	echo $cad;
+  $salida = json_encode($pilotos);
+	echo $salida;
 
   header('Content-Type: application/json');
 ?>

@@ -7,16 +7,21 @@
   mysqli_set_charset($connect, "utf8");
 
   $query = "SELECT * FROM equipos WHERE id_equipo = $_GET[id]";
-  $registros = $connect->query($query) or trigger_error($connect->error);
+  $result1 = $connect->query($query) or trigger_error($connect->error);
   
-
-  if ($reg = mysqli_fetch_array($registros))  
+  if ($equipo = $result1->fetch_assoc())  
   {
-    $vec = $reg;
+    $query = "SELECT * FROM pilotos WHERE id_equipo = $equipo[id_equipo]";
+    $result2 = $connect->query($query) or trigger_error($connect->error);
+    
+    while($pilotos = $result2->fetch_assoc())
+    {
+      $equipo["pilotos"][] = $pilotos;
+    }
   }
   
-  $cad = json_encode($vec);
-  echo $cad;
+  $salida = json_encode($equipo);
+  echo $salida;
 
   header('Content-Type: application/json');
 ?>

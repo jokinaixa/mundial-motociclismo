@@ -1,6 +1,7 @@
 import { Component, OnInit, HostBinding } from '@angular/core';
 
 import { EquiposService } from '../equipos.service';
+import { PilotosService } from '../../pilotos/pilotos.service';
 
 @Component({
   selector: 'app-equipos-list',
@@ -12,12 +13,13 @@ export class EquiposListComponent implements OnInit {
 
   equipos: any = [];
 
-  constructor(private equipoService: EquiposService) { }
+  constructor(private equiposService: EquiposService) { }
   
 
   ngOnInit() {
-    this.equipoService.getEquipos()
-      .subscribe(data => this.equipos = data);
+    this.equiposService.getEquipos()
+    .subscribe(
+      data => this.equipos = data
+    );
   }
-
 }

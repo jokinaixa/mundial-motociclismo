@@ -1,8 +1,12 @@
-<div class="card" style="width: 18rem;">
-    <img src="{{ piloto.imagen }}" class="card-img-top" alt="{{ piloto.nombre }}">
-    <div class="card-body">
-      <h5 class="card-title">{{ piloto.nombre }}</h5>
-      <p class="card-text">Edad: {{ piloto.edad }}</p>
-      <a href="#" class="btn btn-primary">Ver detalle</a>
+<div class="thumbnail">
+    <a [routerLink]="['/piloto/edit/', piloto.id_piloto]">
+      <img [src]="piloto.imagen" alt="piloto.nombre">
+    </a>
+    <div class="caption">
+      <h3>{{ piloto.nombre }} <small>({{ piloto.edad }})</small></h3>
+      <dl>
+        <dt>Equipo</dt>
+        <dd><a [routerLink]="['/equipos/edit/', piloto.equipo.id_equipo]">{{ piloto.equipo.nombre }}</a></dd>
+      </dl>
     </div>
   </div>

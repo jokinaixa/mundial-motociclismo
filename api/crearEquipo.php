@@ -8,7 +8,7 @@
 
   $equipo = $_GET[equipo];
  
-  $query = "insert into equipos (nombre, moto, imagen) values ('$equipo->nombre', $equipo->moto, $equipo->imagen)";
+  $query = "INSERT INTO equipos (nombre, moto, imagen) VALUES ('$equipo->nombre', '$equipo->moto', '$equipo->imagen')";
   $result = $connect->query($query) or trigger_error($connect->error);
   
   header('Content-Type: application/json');

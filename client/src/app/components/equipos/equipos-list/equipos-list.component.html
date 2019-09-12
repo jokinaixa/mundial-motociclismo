@@ -1,21 +1,16 @@
-
-<div class="col-md-4 tarjeta-margen" *ngFor="let equipo of equipos">
-  <ul>
-    <li *ngFor="let piloto of equipo.pilotos">
-      {{ piloto.nombre }} {{ piloto.edad }}
-    </li>
-  </ul>
-  <div class="card text-center">
-    <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
-      {{ equipo.nombre }}
-      <button class="btn btn-danger" (click)="deleteEquipo(equipo.id)">
-        <i class="far fa-trash-alt"></i>
-      </button>
-    </div>
-    <img class="card-img-top" [src]="equipo.image">
-    <div class="card-body">
-      <p class="bloqueo-alt">{{ equipo.moto }}</p>
-      <a [routerLink]="['/equipos/edit', equipo.id]" class="btn btn-info btn-block"> Editar equipo </a>
+<div class="row">
+  <div class="col-lg-4" *ngFor="let equipo of equipos">
+    <div class="thumbnail">
+      <img [src]="equipo.imagen" alt="equipo.nombre">
+      <div class="caption">
+        <h3>{{ equipo.nombre }} <small>({{ equipo.moto }})</small></h3>
+        <h5>Pilotos:</h5>
+        <ul>
+          <li *ngFor="let piloto of equipo.pilotos">
+            {{ piloto.nombre }} <small>({{ piloto.edad }})</small>
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
 </div>

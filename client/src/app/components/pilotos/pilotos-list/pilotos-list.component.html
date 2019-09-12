@@ -1,13 +1,5 @@
-
-<div class="col-md-4 tarjeta-margen" *ngFor="let piloto of pilotos">
-  <div class="card text-center">
-    <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
-      {{ piloto.nombre }}
-    </div>
-    <img class="card-img-top" [src]="piloto.image">
-    <div class="card-body">
-      <p>Equipo: {{ piloto.equipo.nombre }}</p>
-      <p>Edad: {{ piloto.edad }}</p>
+<div class="row">
+    <div class="col-lg-4" *ngFor="let piloto of pilotos">
+      <app-piloto-ficha [piloto] = "piloto"></app-piloto-ficha>
     </div>
   </div>
-</div>

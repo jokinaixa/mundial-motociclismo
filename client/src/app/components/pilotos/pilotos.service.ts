@@ -13,8 +13,7 @@ export class PilotosService {
   constructor(private http: HttpClient) { }
 
   getPilotos(): Observable<Piloto[]> {
-    //return this.http.get<Piloto[]>(`${this.API_URI}/obtenerPilotos.php`);
-    return this.http.get<Piloto[]>(`assets/data/pilotos.json`);
+    return this.http.get<Piloto[]>(`${this.API_URI}/obtenerPilotos.php`);
   }
 
   getPilotosByTeam(equipo: number): Observable<Piloto> {

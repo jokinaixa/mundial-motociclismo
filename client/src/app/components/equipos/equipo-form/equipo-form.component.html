@@ -1,6 +1,31 @@
-<h2>{{ equipo.nombre }} <small>({{ equipo.moto }})</small> {{ prueba1.apellido }}</h2>
-<ul *ngFor="let piloto of pilotos">
-    <li>{{ piloto.nombre }}</li>
-</ul>
+<div class="row">
+    <div class="col-lg-4">
+        <img [src]="equipo.imagen == '' ? 'src/assets/images/sin_imagen.jpg' : equipo.imagen" class="img-thumbnail" alt="Imagen">
 
-<!-- <app-pilotos-list [equipo] = "equipo"></app-pilotos-list> -->
+        <br/>
+
+        <h4>Pilotos</h4>
+        <ul><li *ngFor="let piloto of equipo.pilotos">{{ piloto.nombre }}</li></ul>
+    </div>
+
+    <div class="col-lg-4">
+        <form action="">
+            <div class="form-group">
+                <label>Nombre</label>
+                <input type="text" name="nombre" [(ngModel)]="equipo.nombre" placeholder="Nombre" class="form-control" autofocus>
+            </div>
+            <div class="form-group">
+                <label>Moto</label>
+                <input type="text" name="moto" [(ngModel)]="equipo.moto" placeholder="Moto" class="form-control">
+            </div>
+            <div class="form-group">
+                <label>Imagen</label>
+                <input type="url" name="image" [(ngModel)]="equipo.imagen" placeholder="Imagen" class="form-control">
+            </div>
+
+            <br/>
+
+            <button class="btn btn-success btn-block" (click)="edit ? cambiarEquipo() : crearEquipo()">Guardar</button>
+        </form>
+    </div>
+</div>
