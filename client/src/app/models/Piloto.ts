@@ -2,7 +2,7 @@ import { Equipo } from './Equipo';
 
 export interface Piloto {
     id?: number,
-    equipo?: Equipo; 
+    equipo?: string[]; 
     nombre?: string,
     imagen?: string,
     edad?: number,

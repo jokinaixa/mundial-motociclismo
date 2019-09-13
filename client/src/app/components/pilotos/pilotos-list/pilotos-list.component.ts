@@ -17,7 +17,7 @@ export class PilotosListComponent implements OnInit {
 
 
   ngOnInit() {
-    this.pilotosService.getPilotos()
+    this.pilotosService.obtenerPilotos()
     .subscribe(
       data => this.pilotos = data
     );

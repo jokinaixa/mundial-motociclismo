@@ -6,7 +6,7 @@
       <h3>{{ piloto.nombre }} <small>({{ piloto.edad }})</small></h3>
       <dl>
         <dt>Equipo</dt>
-        <dd><a [routerLink]="['/equipos/edit/', piloto.equipo.id_equipo]">{{ piloto.equipo.nombre }}</a></dd>
+        <dd><a [routerLink]="['/equipos/edit/', piloto.equipo.id]">{{ piloto.equipo.nombre }}</a></dd>
       </dl>
     </div>
   </div>

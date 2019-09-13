@@ -17,11 +17,13 @@ import { NavigationComponent } from './components/navigation/navigation.componen
 import { PilotoFormComponent } from './components/pilotos/piloto-form/piloto-form.component';
 import { PilotosListComponent } from './components/pilotos/pilotos-list/pilotos-list.component';
 import { PilotosNavComponent } from './components/pilotos/pilotos-nav/pilotos-nav.component';
+import { PilotoFichaComponent } from './components/pilotos/piloto-ficha/piloto-ficha.component';
 
 import { EquipoFormComponent } from './components/equipos/equipo-form/equipo-form.component';
 import { EquiposListComponent } from './components/equipos/equipos-list/equipos-list.component';
 import { EquiposNavComponent } from './components/equipos/equipos-nav/equipos-nav.component';
-import { PilotoFichaComponent } from './components/pilotos/piloto-ficha/piloto-ficha.component';
+
+import { InicioComponent } from './components/inicio/inicio.component';
 
 @NgModule({
   declarations: [
@@ -30,13 +32,14 @@ import { PilotoFichaComponent } from './components/pilotos/piloto-ficha/piloto-f
     GamesListComponent,
     GameFormComponent,
     PilotosListComponent,
-    EquiposListComponent,
     PilotoFormComponent,
     PilotosListComponent,
     PilotosNavComponent,
     EquiposNavComponent,
+    EquiposListComponent,
     EquipoFormComponent,
-    PilotoFichaComponent
+    PilotoFichaComponent,
+    InicioComponent
   ],
   imports: [
     BrowserModule,

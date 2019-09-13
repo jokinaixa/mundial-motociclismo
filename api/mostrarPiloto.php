@@ -6,17 +6,19 @@
   $connect = retornarConexion();
   mysqli_set_charset($connect, "utf8");
 
-  $query = "SELECT * FROM pilotos WHERE id_piloto = $_GET[id]";
-  $registros = $connect->query($query) or trigger_error($connect->error);
+  $query = "SELECT * FROM pilotos WHERE id = $_GET[id]";
+  $result1 = $connect->query($query) or trigger_error($connect->error);
   
-
-  if ($reg = mysqli_fetch_array($registros))  
+  if ($piloto = $result1->fetch_assoc())  
   {
-    $vec = $reg;
+    $query = "SELECT * FROM equipos WHERE id = $piloto[equipo]";
+    $result2 = $connect->query($query) or trigger_error($connect->error);
+    
+    $piloto["equipo"] = $result2->fetch_assoc();
   }
   
-  $cad = json_encode($vec);
-  echo $cad;
+  $salida = json_encode($piloto);
+  echo $salida;
 
   header('Content-Type: application/json');
 ?>

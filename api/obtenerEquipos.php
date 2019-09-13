@@ -11,12 +11,12 @@
 
   while($equipo = $result1->fetch_assoc())
   {
-    $query = "SELECT * FROM pilotos WHERE id_equipo = $equipo[id_equipo]";
+    $query = "SELECT * FROM pilotos WHERE equipo = $equipo[id]";
     $result2 = $connect->query($query) or trigger_error($connect->error);
     
-    while($pilotos = $result2->fetch_assoc())
+    while($piloto = $result2->fetch_assoc())
     {
-      $equipo["pilotos"][] = $pilotos;
+      $equipo["pilotos"][] = $piloto;
     }
 
     $equipos[] = $equipo;

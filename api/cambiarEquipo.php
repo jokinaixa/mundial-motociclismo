@@ -11,9 +11,11 @@
   if(isset($postdata) && !empty($postdata))
   {
     $equipo = json_decode($postdata);
-   
-    $query = "INSERT INTO equipos (nombre, moto, imagen) VALUES ('$equipo->nombre', '$equipo->moto', '$equipo->imagen')";
-    $connect->query($query) or trigger_error($connect->error);
+ 
+    $query = "UPDATE equipos SET nombre = '$equipo->nombre', moto = '$equipo->moto', imagen = '$equipo->imagen' WHERE id = $_GET[id]";
+    $result = $connect->query($query) or trigger_error($connect->error);
+
+    echo $result;
   }
   
   header('Content-Type: application/json');

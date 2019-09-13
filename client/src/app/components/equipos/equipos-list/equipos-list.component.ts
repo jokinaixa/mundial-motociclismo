@@ -17,7 +17,7 @@ export class EquiposListComponent implements OnInit {
   
 
   ngOnInit() {
-    this.equiposService.getEquipos()
+    this.equiposService.obtenerEquipos()
     .subscribe(
       data => this.equipos = data
     );

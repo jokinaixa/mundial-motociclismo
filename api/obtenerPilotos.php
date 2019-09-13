@@ -11,7 +11,7 @@
 
   while($piloto = $result1->fetch_assoc())
   {
-    $query = "SELECT * FROM equipos WHERE id_equipo = $piloto[id_equipo]";
+    $query = "SELECT * FROM equipos WHERE id = $piloto[equipo]";
 	  $result2 = $connect->query($query) or trigger_error($connect->error);
 	  
 	  if ($equipo = $result2->fetch_assoc())

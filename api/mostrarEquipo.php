@@ -6,17 +6,17 @@
   $connect = retornarConexion();
   mysqli_set_charset($connect, "utf8");
 
-  $query = "SELECT * FROM equipos WHERE id_equipo = $_GET[id]";
+  $query = "SELECT * FROM equipos WHERE id = $_GET[id]";
   $result1 = $connect->query($query) or trigger_error($connect->error);
   
   if ($equipo = $result1->fetch_assoc())  
   {
-    $query = "SELECT * FROM pilotos WHERE id_equipo = $equipo[id_equipo]";
+    $query = "SELECT * FROM pilotos WHERE equipo = $equipo[id]";
     $result2 = $connect->query($query) or trigger_error($connect->error);
     
-    while($pilotos = $result2->fetch_assoc())
+    while($piloto = $result2->fetch_assoc())
     {
-      $equipo["pilotos"][] = $pilotos;
+      $equipo["pilotos"][] = $piloto;
     }
   }
   

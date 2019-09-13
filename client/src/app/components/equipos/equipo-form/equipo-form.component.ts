@@ -31,17 +31,23 @@ export class EquipoFormComponent implements OnInit {
 
     if (params.id)
     {
-      this.equiposService.getEquipo(params.id)
-        .subscribe(data => {
-          this.equipo = data;
-        });
-      }
+      this.equiposService.mostrarEquipo(params.id)
+      .subscribe(
+        res => {
+          console.log(res);
+          this.equipo = res;
+          this.edit = true;
+        },
+        err => console.log(err)
+      )
+    }
   }
 
-  crearEquipo() {
-    console.log("crear");
-
+  crearEquipo()
+  {
     delete this.equipo.id;
+
+    this.equipo.imagen = (this.equipo.imagen == '') ? 'assets/images/sin_imagen.jpg' : this.equipo.imagen;
 
     this.equiposService.crearEquipo(this.equipo)
       .subscribe(
@@ -50,14 +56,11 @@ export class EquipoFormComponent implements OnInit {
           this.router.navigate(['/equipos']);
         },
         err => console.error(err)
-      )
+      );
+  }
 
-    }
-
-  cambiarEquipo() {
-    //delete this.equipo.created_at;
-    console.log("cambiar");
-
+  cambiarEquipo()
+  {
     this.equiposService.cambiarEquipo(this.equipo.id, this.equipo)
       .subscribe(
         res => { 
@@ -65,8 +68,18 @@ export class EquipoFormComponent implements OnInit {
           this.router.navigate(['/equipos']);
         },
         err => console.error(err)
+      );
+  }
+
+  borrarEquipo(id: string)
+  {
+    this.equiposService.borrarEquipo(id, this.equipo)
+      .subscribe(
+        res => {
+          console.log(res);
+          this.router.navigate(['/equipos']);
+        },
+        err => console.error(err)
       )
-
-  }  
-
+  }
 }

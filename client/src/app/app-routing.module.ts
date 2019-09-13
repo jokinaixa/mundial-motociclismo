@@ -10,8 +10,12 @@ import { PilotoFormComponent } from './components/pilotos/piloto-form/piloto-for
 import { EquiposListComponent } from './components/equipos/equipos-list/equipos-list.component';
 import { EquipoFormComponent } from './components/equipos/equipo-form/equipo-form.component';
 
+import { InicioComponent } from './components/inicio/inicio.component';
+
 const routes: Routes = [
-  { path: '', redirectTo: '/games', pathMatch: 'full' },
+  { path: '', redirectTo: '/inicio', pathMatch: 'full' },
+
+  { path: 'inicio', component: InicioComponent },
 
   { path: 'games', component: GamesListComponent },
   { path: 'games/add', component: GameFormComponent },

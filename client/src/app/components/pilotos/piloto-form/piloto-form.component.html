@@ -1,29 +1,46 @@
-<div class="col-md-4 offset-md-2">
-  <div class="card">
-    <div class="card-body">
-      <form action="">
-        <div class="form-group">
-          <input type="text" name="title" [(ngModel)]="piloto.title" placeholder="Title" class="form-control" autofocus>
-        </div>
-        <div class="form-group">
-          <textarea name="description" [(ngModel)]="piloto.description" rows="2" placeholder="Description" class="form-control"></textarea>
-        </div>
-        <div class="form-group">
-          <input type="url" name="image URL" [(ngModel)]="piloto.image" placeholder="Image" class="form-control">
-        </div>
-        <button class="btn btn-success btn-block" (click)="edit ? updatePiloto() : saveNewPiloto()">
-          Save
-        </button>
-      </form>
-    </div>
-  </div>
-</div>
+<ol class="breadcrumb">
+    <li><a [routerLink]="['/inicio']">Inicio</a></li>
+    <li><a [routerLink]="['/pilotos']">Pilotos</a></li>
+    <li class="active">
+        <span *ngIf="edit">Editar</span>
+        <span *ngIf="!edit">Nuevo</span>
+    </li>
+</ol>
 
-<div class="col-md-4">
-  <div class="card card-body text-center">
-  <img [src]="piloto.image == '' ? '/assets/noimage.png' : piloto.image" alt="No Image" class="card-img-top">
-    <h3>{{ piloto.title == '' ? 'Piloto Title' : piloto.title }}</h3>
-    <p>{{ piloto.description == '' ? 'Write your Descrition' : piloto.description }}</p>
-    <p>{{ piloto.created_at | date: 'yyyy-MM-dd' }}</p>
-  </div>
+<div class="row">
+    <div class="col-lg-4 col-lg-offset-2">
+        <img [src]="piloto.imagen == '' ? 'assets/images/sin_imagen.jpg' : piloto.imagen" class="img-thumbnail" alt="Imagen">
+        
+        <hr/>
+
+        <dl>
+          <dt>Equipo</dt>
+          <dd>{{ piloto.equipo.nombre }}</dd>
+        </dl>
+    </div>
+
+    <div class="col-lg-4">
+        <form action="">
+            <div class="form-group">
+                <label>Nombre</label>
+                <input type="text" name="nombre" [(ngModel)]="piloto.nombre" placeholder="Nombre" class="form-control" autofocus>
+            </div>
+            <div class="form-group">
+                <label>Edad</label>
+                <input type="number" name="edad" [(ngModel)]="piloto.edad" placeholder="Edad" class="form-control">
+            </div>
+            <div class="form-group">
+                <label>Imagen</label>
+                <input type="url" name="imagen" [(ngModel)]="piloto.imagen" placeholder="Imagen" class="form-control">
+            </div>
+            <input type="hidden" name="equipo" [(ngModel)]="piloto.equipo.id">
+
+            <br/>
+
+            <button class="btn btn-success" (click)="edit ? cambiarPiloto() : crearPilot()">Guardar</button>
+            <span *ngIf="edit" class="pull-right">
+                <button class="btn btn-danger" (click)="borrarPiloto(piloto.id)">Borrar</button>
+            </span>
+        </form>
+    </div>
 </div>

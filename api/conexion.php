@@ -7,6 +7,7 @@
         $bbdd = "angular";
         
         $con = mysqli_connect($host, $usuario, $clave, $bbdd);
+        
         return $con;
     }
 ?>
