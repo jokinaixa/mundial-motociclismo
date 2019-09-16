@@ -13,8 +13,8 @@
     $piloto = json_decode($postdata);
     
     $id_equipo = $piloto->equipo->id;
- 
-    $query = "UPDATE pilotos SET nombre = '$piloto->nombre', equipo = $id_equipo, edad = $piloto->edad, imagen = '$piloto->imagen' WHERE id = $_GET[id]";
+   
+    $query = "INSERT INTO pilotos (nombre, equipo, edad, imagen) VALUES ('$piloto->nombre', $id_equipo, $piloto->edad, '$piloto->imagen')";
     $connect->query($query) or trigger_error($connect->error);
   }
   

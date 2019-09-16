@@ -1,0 +1,25 @@
+<ol class="breadcrumb">
+    <li><a [routerLink]="['/inicio']">Inicio</a></li>
+    <li class="active">Clasificaciones</li>
+</ol>
+
+<p class="text-right">
+  <a [routerLink]="['/clasificaciones/add']" class="btn btn-success">Nueva Clasificación</a>
+</p>
+
+<table class="table">
+  <tbody>
+    <tr>
+      <th>Tipo</th>
+      <th>Piloto</th>
+      <th>Categoría</th>
+      <th>Posición</th>
+    </tr>
+    <tr *ngFor="let clasificacion of clasificaciones">
+      <td>{{ clasificacion.tipo }}</td>
+      <td>{{ clasificacion.piloto.nombre }}</td>
+      <td>{{ clasificacion.categoria }}</td>
+      <td>{{ clasificacion.posicion }}</td>
+    </tr>
+  </tbody>
+</table>

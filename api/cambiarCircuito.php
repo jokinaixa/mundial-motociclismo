@@ -10,11 +10,9 @@
 
   if(isset($postdata) && !empty($postdata))
   {
-    $piloto = json_decode($postdata);
-    
-    $id_equipo = $piloto->equipo->id;
+    $circuito = json_decode($postdata);
  
-    $query = "UPDATE pilotos SET nombre = '$piloto->nombre', equipo = $id_equipo, edad = $piloto->edad, imagen = '$piloto->imagen' WHERE id = $_GET[id]";
+    $query = "UPDATE circuitos SET nombre = '$circuito->nombre', pais = '$circuito->pais', longitud = $circuito->longitud, imagen = '$circuito->imagen' WHERE id = $_GET[id]";
     $connect->query($query) or trigger_error($connect->error);
   }
   

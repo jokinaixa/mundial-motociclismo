@@ -1,0 +1,28 @@
+<ol class="breadcrumb">
+  <li><a [routerLink]="['/inicio']">Inicio</a></li>
+  <li class="active">Circuitos</li>
+</ol>
+
+<p class="text-right">
+  <a [routerLink]="['/circuitos/add']" class="btn btn-success">Nuevo Circuito</a>
+</p>
+
+<div class="row">
+  <div class="col-lg-4" *ngFor="let circuito of circuitos">
+    <div class="thumbnail">
+      <a [routerLink]="['/circuitos/edit/', circuito.id]">
+        <img [src]="circuito.imagen" alt="circuito.nombre">
+      </a>
+      <div class="caption">
+        <h4>
+          <a [routerLink]="['/circuitos/edit/', circuito.id]">{{ circuito.nombre }} </a>
+          <small>({{ circuito.pais }})</small>
+        </h4>
+        <dl>
+          <dt>Longitud</dt>
+          <dd>{{ circuito.longitud }} metros</dd>
+        </dl>
+      </div>
+    </div>
+  </div>
+</div>

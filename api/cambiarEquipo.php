@@ -13,9 +13,7 @@
     $equipo = json_decode($postdata);
  
     $query = "UPDATE equipos SET nombre = '$equipo->nombre', moto = '$equipo->moto', imagen = '$equipo->imagen' WHERE id = $_GET[id]";
-    $result = $connect->query($query) or trigger_error($connect->error);
-
-    echo $result;
+    $connect->query($query) or trigger_error($connect->error);
   }
   
   header('Content-Type: application/json');

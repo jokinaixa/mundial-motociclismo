@@ -11,7 +11,7 @@
   <div class="col-lg-4" *ngFor="let piloto of pilotos">
     <div class="thumbnail">
       <a [routerLink]="['/pilotos/edit/', piloto.id]">
-        <img [src]="piloto.imagen" alt="piloto.nombre">
+        <img [src]="piloto.imagen" class="img-responsive" alt="piloto.nombre">
       </a>
       <div class="caption">
         <h4>

@@ -10,11 +10,12 @@
 
   if(isset($postdata) && !empty($postdata))
   {
-    $piloto = json_decode($postdata);
-    
-    $id_equipo = $piloto->equipo->id;
- 
-    $query = "UPDATE pilotos SET nombre = '$piloto->nombre', equipo = $id_equipo, edad = $piloto->edad, imagen = '$piloto->imagen' WHERE id = $_GET[id]";
+    $clasificacion = json_decode($postdata);
+
+    $id_circuito = $clasificacion->circuito->id;
+    $id_piloto = $clasificacion->piloto->id;
+   
+    $query = "INSERT INTO clasificaciones (circuito, anio, tipo, categoria, posicion, piloto) VALUES ($id_circuito, $clasificacion->anio, '$clasificacion->tipo', '$clasificacion->categoria', $clasificacion->posicion, $id_circuito)";
     $connect->query($query) or trigger_error($connect->error);
   }
   

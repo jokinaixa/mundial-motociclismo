@@ -9,11 +9,10 @@ import { AppComponent } from './app.component';
 import { GamesService } from './services/games.service';
 import { EquiposService } from './components/equipos/equipos.service';
 import { PilotosService } from './components/pilotos/pilotos.service';
+import { CircuitosService } from './components/circuitos/circuitos.service';
+import { ClasificacionesService } from './components/clasificaciones/clasificaciones.service';
 
-import { GameFormComponent } from './components/game-form/game-form.component';
-import { GamesListComponent } from './components/games-list/games-list.component';
-import { NavigationComponent } from './components/navigation/navigation.component';
-
+// Components
 import { PilotoFormComponent } from './components/pilotos/piloto-form/piloto-form.component';
 import { PilotosListComponent } from './components/pilotos/pilotos-list/pilotos-list.component';
 import { PilotosNavComponent } from './components/pilotos/pilotos-nav/pilotos-nav.component';
@@ -24,22 +23,32 @@ import { EquiposListComponent } from './components/equipos/equipos-list/equipos-
 import { EquiposNavComponent } from './components/equipos/equipos-nav/equipos-nav.component';
 
 import { InicioComponent } from './components/inicio/inicio.component';
+import { CircuitoFormComponent } from './components/circuitos/circuito-form/circuito-form.component';
+import { CircuitosListComponent } from './components/circuitos/circuitos-list/circuitos-list.component';
+import { CircuitosNavComponent } from './components/circuitos/circuitos-nav/circuitos-nav.component';
+
+import { ClasificacionFormComponent } from './components/clasificaciones/clasificacion-form/clasificacion-form.component';
+import { ClasificacionesListComponent } from './components/clasificaciones/clasificaciones-list/clasificaciones-list.component';
+import { ClasificacionesNavComponent } from './components/clasificaciones/clasificaciones-nav/clasificaciones-nav.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavigationComponent,
-    GamesListComponent,
-    GameFormComponent,
     PilotosListComponent,
     PilotoFormComponent,
     PilotosListComponent,
     PilotosNavComponent,
+    PilotoFichaComponent,
     EquiposNavComponent,
     EquiposListComponent,
     EquipoFormComponent,
-    PilotoFichaComponent,
-    InicioComponent
+    InicioComponent,
+    CircuitoFormComponent,
+    CircuitosListComponent,
+    CircuitosNavComponent,
+    ClasificacionFormComponent,
+    ClasificacionesListComponent,
+    ClasificacionesNavComponent
   ],
   imports: [
     BrowserModule,
@@ -50,7 +59,9 @@ import { InicioComponent } from './components/inicio/inicio.component';
   providers: [
     GamesService,
     EquiposService,
-    PilotosService
+    PilotosService,
+    CircuitosService,
+    ClasificacionesService
   ],
   bootstrap: [AppComponent]
 })

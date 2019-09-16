@@ -1,7 +1,6 @@
 import { Component, OnInit, HostBinding } from '@angular/core';
 
 import { EquiposService } from '../equipos.service';
-import { PilotosService } from '../../pilotos/pilotos.service';
 
 @Component({
   selector: 'app-equipos-list',

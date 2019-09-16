@@ -1,0 +1,64 @@
+<ol class="breadcrumb">
+  <li><a [routerLink]="['/inicio']">Inicio</a></li>
+  <li><a [routerLink]="['/clasificaciones']">Clasificaciones</a></li>
+  <li class="active">
+      <span *ngIf="edit">Editar</span>
+      <span *ngIf="!edit">Nuevo</span>
+  </li>
+</ol>
+
+<div class="row">
+  <div class="col-lg-4">
+      <form action="">
+        <div class="form-group">
+          <label>Año</label>
+          <select class="form-control" [(ngModel)]="clasificacion.anio" [ngModelOptions]="{standalone: true}">
+            <option value="0">Seleccione año</option>
+            <option *ngFor="let anio of anios" [value]="anio">{{ anio }}</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Circuito</label>
+          <select class="form-control" [(ngModel)]="clasificacion.circuito.id" [ngModelOptions]="{standalone: true}">
+            <option value="0">Seleccione un circuito</option>
+            <option *ngFor="let circuito of circuitos" [value]="circuito.id">{{ circuito.nombre }}</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Categoría</label>
+          <select class="form-control" [(ngModel)]="clasificacion.categoria" [ngModelOptions]="{standalone: true}">
+            <option value="0">Seleccione una categoría</option>
+            <option *ngFor="let categoria of categorias" [value]="categoria">{{ categoria }}</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Tipo</label>
+          <select class="form-control" [(ngModel)]="clasificacion.tipo" [ngModelOptions]="{standalone: true}">
+            <option value="0">Seleccione un tipo</option>
+            <option *ngFor="let tipo of tipos" [value]="tipo">{{ tipo }}</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Posición</label>
+          <select class="form-control" [(ngModel)]="clasificacion.posicion" [ngModelOptions]="{standalone: true}">
+            <option value="0">Seleccione posición</option>
+            <option *ngFor="let posicion of posiciones" [value]="posicion">{{ posicion }}</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Piloto</label>
+          <select class="form-control" [(ngModel)]="clasificacion.piloto.id" [ngModelOptions]="{standalone: true}">
+            <option value="0">Seleccione un piloto</option>
+            <option *ngFor="let piloto of pilotos" [value]="piloto.id">{{ piloto.nombre }}</option>
+          </select>
+        </div>
+
+        <br/>
+
+        <button class="btn btn-success" (click)="edit ? cambiarClasificacion() : crearClasificacion()">Guardar</button>
+        <span *ngIf="edit" class="pull-right">
+          <button class="btn btn-danger" (click)="borrarClasificacion(clasificacion.id)">Borrar</button>
+        </span>
+      </form>
+  </div>
+</div>

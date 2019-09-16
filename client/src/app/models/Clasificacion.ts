@@ -1,12 +1,12 @@
-import { Title } from '@angular/platform-browser';
 import { Piloto } from "./Piloto";
+import { Circuito } from "./Circuito";
 
-export interface Circuito {
+export interface Clasificacion {
     id?: number,
-    ano?: number,
-    circuito?: string,
+    anio?: number,
+    circuito?: Circuito,
     piloto?: Piloto,
-    tipo?: 'Pole' | 'Carrera';
-    categoria?: 'Moto3' | 'Moto2' | 'MotoGP';
-    posición?: number,
+    tipo?: number;
+    categoria?: number;
+    posicion?: string,
 };
