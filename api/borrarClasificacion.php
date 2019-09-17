@@ -8,6 +8,6 @@
   $connect = retornarConexion();
   mysqli_set_charset($connect, "utf8");
 
-  $query = "DELETE FROM pilotos where id = $_GET[id]";
+  $query = "DELETE FROM clasificaciones where id = $_GET[id]";
   $connect->query($query) or trigger_error($connect->error);
 ?>

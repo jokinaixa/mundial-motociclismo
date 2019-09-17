@@ -13,6 +13,8 @@ import { CircuitosService } from './components/circuitos/circuitos.service';
 import { ClasificacionesService } from './components/clasificaciones/clasificaciones.service';
 
 // Components
+import { InicioComponent } from './components/inicio/inicio.component';
+
 import { PilotoFormComponent } from './components/pilotos/piloto-form/piloto-form.component';
 import { PilotosListComponent } from './components/pilotos/pilotos-list/pilotos-list.component';
 import { PilotosNavComponent } from './components/pilotos/pilotos-nav/pilotos-nav.component';
@@ -22,10 +24,10 @@ import { EquipoFormComponent } from './components/equipos/equipo-form/equipo-for
 import { EquiposListComponent } from './components/equipos/equipos-list/equipos-list.component';
 import { EquiposNavComponent } from './components/equipos/equipos-nav/equipos-nav.component';
 
-import { InicioComponent } from './components/inicio/inicio.component';
 import { CircuitoFormComponent } from './components/circuitos/circuito-form/circuito-form.component';
 import { CircuitosListComponent } from './components/circuitos/circuitos-list/circuitos-list.component';
 import { CircuitosNavComponent } from './components/circuitos/circuitos-nav/circuitos-nav.component';
+import { CircuitoFichaComponent } from './components/circuitos/circuito-ficha/circuito-ficha.component';
 
 import { ClasificacionFormComponent } from './components/clasificaciones/clasificacion-form/clasificacion-form.component';
 import { ClasificacionesListComponent } from './components/clasificaciones/clasificaciones-list/clasificaciones-list.component';
@@ -48,7 +50,8 @@ import { ClasificacionesNavComponent } from './components/clasificaciones/clasif
     CircuitosNavComponent,
     ClasificacionFormComponent,
     ClasificacionesListComponent,
-    ClasificacionesNavComponent
+    ClasificacionesNavComponent,
+    CircuitoFichaComponent
   ],
   imports: [
     BrowserModule,

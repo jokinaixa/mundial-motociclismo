@@ -1,24 +1,48 @@
-<?php 
+<?php
   header('Access-Control-Allow-Origin: *'); 
   header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
-  
+  header('Content-Type: application/json');
+
+
   require("conexion.php");
   $connect = retornarConexion();
   mysqli_set_charset($connect, "utf8");
 
-  $query = "SELECT * FROM clasificaciones WHERE anio = $_GET[anio] AND circuito = $_GET[circuito] GROUP BY tipo ORDER BY posicion";
+  $clasificaciones = [];
+
+  $query = "SELECT * FROM clasificaciones";
   $result1 = $connect->query($query) or trigger_error($connect->error);
   
   while($clasificacion = $result1->fetch_assoc())
   {
     $query = "SELECT * FROM pilotos WHERE id = $clasificacion[piloto]";
     $result2 = $connect->query($query) or trigger_error($connect->error);
-    
-    $clasificacion[]["piloto"] = $result2->fetch_assoc();
+
+    if ($piloto = $result2->fetch_assoc())  
+    {
+      $clasificacion["piloto"] = $piloto;
+
+      $query = "SELECT * FROM equipos WHERE id = $piloto[equipo]";
+      $result21 = $connect->query($query) or trigger_error($connect->error);
+
+      if ($equipo = $result21->fetch_assoc())  
+      {
+        $clasificacion["piloto"]["equipo"] = $equipo;
+      }
+    }
+
+
+    $query = "SELECT * FROM circuitos WHERE id = $clasificacion[circuito]";
+    $result3 = $connect->query($query) or trigger_error($connect->error);
+
+    if ($circuito = $result3->fetch_assoc())  
+    {
+      $clasificacion["circuito"] = $circuito;
+    }    
+
+    $clasificaciones[] = $clasificacion;
   }
   
-  $salida = json_encode($clasificacion);
+  $salida = json_encode($clasificaciones);
   echo $salida;
-
-  header('Content-Type: application/json');
 ?>

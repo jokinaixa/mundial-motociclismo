@@ -1,10 +1,14 @@
 <?php 
   header('Access-Control-Allow-Origin: *'); 
   header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
+  header('Content-Type: application/json');
+
   
   require("conexion.php");
   $connect = retornarConexion();
   mysqli_set_charset($connect, "utf8");
+
+  $pilotos = [];
 
   $query = "SELECT * FROM pilotos";
   $result1 = $connect->query($query) or trigger_error($connect->error);
@@ -24,6 +28,4 @@
 
   $salida = json_encode($pilotos);
 	echo $salida;
-
-  header('Content-Type: application/json');
 ?>

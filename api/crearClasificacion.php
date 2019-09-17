@@ -1,6 +1,8 @@
 <?php 
   header('Access-Control-Allow-Origin: *'); 
   header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
+  header('Content-Type: application/json');
+
   
   require("conexion.php");
   $connect = retornarConexion();
@@ -11,13 +13,8 @@
   if(isset($postdata) && !empty($postdata))
   {
     $clasificacion = json_decode($postdata);
-
-    $id_circuito = $clasificacion->circuito->id;
-    $id_piloto = $clasificacion->piloto->id;
    
-    $query = "INSERT INTO clasificaciones (circuito, anio, tipo, categoria, posicion, piloto) VALUES ($id_circuito, $clasificacion->anio, '$clasificacion->tipo', '$clasificacion->categoria', $clasificacion->posicion, $id_circuito)";
+    $query = "INSERT INTO clasificaciones (circuito, categoria, posicion, piloto) VALUES ($clasificacion->circuito, '$clasificacion->categoria', $clasificacion->posicion, $clasificacion->piloto)";
     $connect->query($query) or trigger_error($connect->error);
   }
-  
-  header('Content-Type: application/json');
 ?>

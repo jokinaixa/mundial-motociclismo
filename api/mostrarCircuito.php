@@ -1,7 +1,9 @@
 <?php 
   header('Access-Control-Allow-Origin: *'); 
   header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
-  
+  header('Content-Type: application/json');
+
+
   require("conexion.php");
   $connect = retornarConexion();
   mysqli_set_charset($connect, "utf8");
@@ -13,7 +15,5 @@
   {  
     $salida = json_encode($circuito);
     echo $salida;
-  }
-
-  header('Content-Type: application/json');
+  }  
 ?>

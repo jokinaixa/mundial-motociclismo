@@ -5,5 +5,5 @@ export interface Piloto {
     equipo?: Equipo; 
     nombre?: string,
     imagen?: string,
-    edad?: number,
+    edad?: number
 };

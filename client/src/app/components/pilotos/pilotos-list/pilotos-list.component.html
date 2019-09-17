@@ -9,20 +9,6 @@
 
 <div class="row">
   <div class="col-lg-4" *ngFor="let piloto of pilotos">
-    <div class="thumbnail">
-      <a [routerLink]="['/pilotos/edit/', piloto.id]">
-        <img [src]="piloto.imagen" class="img-responsive" alt="piloto.nombre">
-      </a>
-      <div class="caption">
-        <h4>
-          <a [routerLink]="['/pilotos/edit/', piloto.id]">{{ piloto.nombre }} </a>
-          <small>({{ piloto.edad }})</small>
-        </h4>
-        <dl>
-          <dt>Equipo</dt>
-          <dd><a [routerLink]="['/equipos/edit/', piloto.id]">{{ piloto.equipo.nombre }} </a><small>({{ piloto.equipo.moto }})</small></dd>
-        </dl>
-      </div>
-    </div>
+    <app-piloto-ficha [piloto]="piloto"></app-piloto-ficha>
   </div>
 </div>

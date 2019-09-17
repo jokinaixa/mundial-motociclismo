@@ -1,6 +1,8 @@
 <?php 
   header('Access-Control-Allow-Origin: *'); 
   header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
+  header('Content-Type: application/json');
+
   
   require("conexion.php");
   $connect = retornarConexion();
@@ -15,6 +17,4 @@
     $query = "UPDATE circuitos SET nombre = '$circuito->nombre', pais = '$circuito->pais', longitud = $circuito->longitud, imagen = '$circuito->imagen' WHERE id = $_GET[id]";
     $connect->query($query) or trigger_error($connect->error);
   }
-  
-  header('Content-Type: application/json');
 ?>

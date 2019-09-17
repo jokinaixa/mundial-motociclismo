@@ -17,8 +17,11 @@ export class EquipoFormComponent implements OnInit {
     id: null,
     nombre: '',
     moto: '',
-    imagen: ''
+    imagen: '',
+    categoria: 'MotoGP'
   };
+
+  categorias: string[] = ['MotoGP', 'Moto2', 'Moto3'];
 
   edit: boolean = false;  
 

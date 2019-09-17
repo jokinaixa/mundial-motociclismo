@@ -1,6 +1,8 @@
 <?php 
   header('Access-Control-Allow-Origin: *'); 
   header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
+  header('Content-Type: application/json');
+
   
   require("conexion.php");
   $connect = retornarConexion();
@@ -17,6 +19,4 @@
     $query = "INSERT INTO pilotos (nombre, equipo, edad, imagen) VALUES ('$piloto->nombre', $id_equipo, $piloto->edad, '$piloto->imagen')";
     $connect->query($query) or trigger_error($connect->error);
   }
-  
-  header('Content-Type: application/json');
 ?>

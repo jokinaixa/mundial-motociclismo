@@ -12,8 +12,8 @@ export class ClasificacionesService {
 
   constructor(private http: HttpClient) { }
 
-  obtenerClasificaciones(anio: number, circuito: number): Observable<Clasificacion[]> {
-    return this.http.get<Clasificacion[]>(`${this.API_URI}/obtenerClasificaciones.php?anio=${anio}&circuito=${circuito}`);
+  obtenerClasificaciones(): Observable<Clasificacion[]> {
+    return this.http.get<Clasificacion[]>(`${this.API_URI}/obtenerClasificaciones.php`);
   }
 
   mostrarClasificacion(id: number): Observable<Clasificacion> {

@@ -5,5 +5,6 @@ export interface Equipo {
     nombre?: string,
     moto?: string,
     imagen?: string,
-    pilotos?: Piloto[]
+    pilotos?: Piloto[],
+    categoria: string
 };

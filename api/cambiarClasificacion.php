@@ -12,9 +12,9 @@
 
   if(isset($postdata) && !empty($postdata))
   {
-    $circuito = json_decode($postdata);
-   
-    $query = "INSERT INTO circuitos (nombre, pais, longitud, imagen) VALUES ('$circuito->nombre', '$circuito->pais', $circuito->longitud, '$circuito->imagen')";
+    $clasificacion = json_decode($postdata);
+ 
+    $query = "UPDATE clasificaciones SET circuito = $clasificacion->circuito, categoria = '$clasificacion->categoria', posicion = '$clasificacion->posicion', piloto = $clasificacion->piloto WHERE id = $_GET[id]";
     $connect->query($query) or trigger_error($connect->error);
   }
 ?>

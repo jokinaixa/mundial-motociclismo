@@ -22,7 +22,7 @@
           <h5>Pilotos:</h5>
           <ul>
             <li *ngFor="let piloto of equipo.pilotos">
-                <a [routerLink]="['/pilotos/edit/', piloto.id]">{{ piloto.nombre }} </a><small>({{ piloto.edad }})</small>
+              <a [routerLink]="['/pilotos/edit/', piloto.id]">{{ piloto.nombre }} </a><small>({{ piloto.edad }})</small>
             </li>
           </ul>
         </div>

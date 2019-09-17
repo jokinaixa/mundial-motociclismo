@@ -1,6 +1,8 @@
 <?php 
   header('Access-Control-Allow-Origin: *'); 
   header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
+  header('Content-Type: application/json');
+
   
   require("conexion.php");
   $connect = retornarConexion();
@@ -12,9 +14,7 @@
   {
     $equipo = json_decode($postdata);
    
-    $query = "INSERT INTO equipos (nombre, moto, imagen) VALUES ('$equipo->nombre', '$equipo->moto', '$equipo->imagen')";
+    $query = "INSERT INTO equipos (nombre, moto, imagen, categoria) VALUES ('$equipo->nombre', '$equipo->moto', '$equipo->imagen', '$equipo->categoria')";
     $connect->query($query) or trigger_error($connect->error);
   }
-  
-  header('Content-Type: application/json');
 ?>

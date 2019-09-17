@@ -1,6 +1,8 @@
 <?php 
   header('Access-Control-Allow-Origin: *'); 
   header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
+  header('Content-Type: application/json');
+
   
   require("conexion.php");
   $connect = retornarConexion();
@@ -12,9 +14,7 @@
   {
     $equipo = json_decode($postdata);
  
-    $query = "UPDATE equipos SET nombre = '$equipo->nombre', moto = '$equipo->moto', imagen = '$equipo->imagen' WHERE id = $_GET[id]";
+    $query = "UPDATE equipos SET nombre = '$equipo->nombre', moto = '$equipo->moto', imagen = '$equipo->imagen', categoria = '$equipo->categoria' WHERE id = $_GET[id]";
     $connect->query($query) or trigger_error($connect->error);
   }
-  
-  header('Content-Type: application/json');
 ?>

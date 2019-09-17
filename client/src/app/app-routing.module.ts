@@ -33,8 +33,8 @@ const routes: Routes = [
   { path: 'circuitos/edit/:id', component: CircuitoFormComponent },
 
   { path: 'clasificaciones', component: ClasificacionesListComponent },
-  { path: 'clasificaciones/add', component: ClasificacionFormComponent },
-  { path: 'clasificaciones/edit/:id', component: ClasificacionFormComponent }
+  { path: 'clasificaciones/add/:circuito/:categoria', component: ClasificacionFormComponent },
+  { path: 'clasificaciones/edit/:circuito/:categoria/:id', component: ClasificacionFormComponent }
 ];
 
 @NgModule({

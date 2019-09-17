@@ -1,6 +1,8 @@
 <?php 
   header('Access-Control-Allow-Origin: *'); 
   header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
+  header('Content-Type: application/json');
+
   
   require("conexion.php");
   $connect = retornarConexion();
@@ -14,11 +16,12 @@
     $query = "SELECT * FROM equipos WHERE id = $piloto[equipo]";
     $result2 = $connect->query($query) or trigger_error($connect->error);
     
-    $piloto["equipo"] = $result2->fetch_assoc();
-  }
-  
-  $salida = json_encode($piloto);
-  echo $salida;
+    if ($equipo = $result2->fetch_assoc())  
+    {
+      $piloto["equipo"] = $equipo;
+    }
 
-  header('Content-Type: application/json');
+    $salida = json_encode($piloto);
+    echo $salida;
+  }
 ?>

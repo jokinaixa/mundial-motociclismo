@@ -10,6 +10,23 @@
 <div class="row">
     <div class="col-lg-4 col-lg-offset-2">
         <img [src]="piloto.imagen == '' ? 'assets/images/sin_imagen.jpg' : piloto.imagen" class="img-thumbnail" alt="Imagen">
+
+        <br/>
+
+        <div *ngIf="clasificacionesByPiloto?.length > 0">
+            <table class="table table-condensed">
+                <tbody>
+                    <tr>
+                        <th>Circuito</th>
+                        <th class="text-center">Posición</th>
+                    </tr>
+                    <tr *ngFor="let clasificacionByPiloto of clasificacionesByPiloto">
+                        <td><a [routerLink]="['/circuitos/edit/', clasificacionByPiloto.circuito.id]">{{ clasificacionByPiloto.circuito.nombre }} </a><small>({{ clasificacionByPiloto.circuito.pais }})</small></td>
+                        <td class="text-center">{{ clasificacionByPiloto.posicion }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
 
     <div class="col-lg-4">
@@ -19,7 +36,7 @@
                 <input type="text" name="nombre" [(ngModel)]="piloto.nombre" placeholder="Nombre" class="form-control" autofocus>
             </div>
             <div class="form-group">
-                <label>Equipos</label>
+                <label>Equipo</label>
                 <select class="form-control" [(ngModel)]="piloto.equipo.id" [ngModelOptions]="{standalone: true}">
                     <option value="0">Seleccione un equipo</option>
                     <option *ngFor="let equipo of equipos" value="{{ equipo.id }}">{{ equipo.nombre }}</option>

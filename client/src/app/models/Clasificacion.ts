@@ -3,10 +3,9 @@ import { Circuito } from "./Circuito";
 
 export interface Clasificacion {
     id?: number,
-    anio?: number,
     circuito?: Circuito,
+    localidad?: string,
     piloto?: Piloto,
-    tipo?: number;
-    categoria?: number;
-    posicion?: string,
+    categoria?: string,
+    posicion?: number
 };
