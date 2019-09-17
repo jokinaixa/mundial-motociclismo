@@ -48,7 +48,7 @@ export class PilotoFormComponent implements OnInit {
       this.pilotosService.mostrarPiloto(params.id)
       .subscribe(
         res => {
-          console.log(res);
+          //console.log(res);
           this.piloto = res;
           this.edit = true;
 
@@ -123,4 +123,3 @@ export class PilotoFormComponent implements OnInit {
       )
   }
 }
-

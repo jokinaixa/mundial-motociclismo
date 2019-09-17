@@ -32,6 +32,7 @@ import { CircuitoFichaComponent } from './components/circuitos/circuito-ficha/ci
 import { ClasificacionFormComponent } from './components/clasificaciones/clasificacion-form/clasificacion-form.component';
 import { ClasificacionesListComponent } from './components/clasificaciones/clasificaciones-list/clasificaciones-list.component';
 import { ClasificacionesNavComponent } from './components/clasificaciones/clasificaciones-nav/clasificaciones-nav.component';
+import { NavegadorComponent } from './components/navegador/navegador.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,8 @@ import { ClasificacionesNavComponent } from './components/clasificaciones/clasif
     ClasificacionFormComponent,
     ClasificacionesListComponent,
     ClasificacionesNavComponent,
-    CircuitoFichaComponent
+    CircuitoFichaComponent,
+    NavegadorComponent
   ],
   imports: [
     BrowserModule,

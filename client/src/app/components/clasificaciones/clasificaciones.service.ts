@@ -8,7 +8,8 @@ export class ClasificacionesService {
 
   circuitos: any = [];
   
-  API_URI = 'http://localhost/api';
+  //API_URI = 'http://localhost/api';
+  API_URI = 'http://localhost:8080/api';
 
   constructor(private http: HttpClient) { }
 

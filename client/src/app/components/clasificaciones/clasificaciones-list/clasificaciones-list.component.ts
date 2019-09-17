@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 
 import { ClasificacionesService } from '../clasificaciones.service';
 import { CircuitosService } from '../../circuitos/circuitos.service';
 
-import { Piloto } from '../../../models/Piloto';
 import { Circuito } from '../../../models/Circuito';
 
 @Component({
@@ -13,8 +13,8 @@ import { Circuito } from '../../../models/Circuito';
 })
 export class ClasificacionesListComponent implements OnInit {
 
-  piloto: Piloto;
   circuitos: Circuito[];
+  selected: number;
   
   clasificacionesByMotoGP: any = [];
   clasificacionesByMoto2: any = [];
@@ -26,16 +26,21 @@ export class ClasificacionesListComponent implements OnInit {
 
   ngOnInit() {
     this.circuitosService.obtenerCircuitos().subscribe(
-      data => this.circuitos = data
+      data => {
+        this.circuitos = data;
+        this.obtenerClasificaciones(data[0]);
+      }
     );
   }
 
-  obtenerClasificaciones(circuito: number)
-  {
-    this.circuitosService.mostrarCircuito(circuito).subscribe(
-      data => this.piloto = data
-    );
+  isActive(id: number) {
+    return this.selected === id;
+  };
 
+  obtenerClasificaciones(circuito: Circuito)
+  {
+    this.selected = circuito.id;
+    
     this.clasificacionesByMotoGP = [];
     this.clasificacionesByMoto2 = [];
     this.clasificacionesByMoto3 = [];
@@ -45,17 +50,17 @@ export class ClasificacionesListComponent implements OnInit {
         data => {
           this.clasificacionesByMotoGP = data
             .filter(
-              clasificacion => clasificacion.circuito.id === circuito && clasificacion.categoria === 'MotoGP'
+              clasificacion => clasificacion.circuito.id === circuito.id && clasificacion.categoria === 'MotoGP'
             );
 
           this.clasificacionesByMoto2 = data
             .filter(
-              clasificacion => clasificacion.circuito.id === circuito && clasificacion.categoria === 'Moto2'
+              clasificacion => clasificacion.circuito.id === circuito.id && clasificacion.categoria === 'Moto2'
             );
 
           this.clasificacionesByMoto3 = data
             .filter(
-              clasificacion => clasificacion.circuito.id === circuito && clasificacion.categoria === 'Moto3'
+              clasificacion => clasificacion.circuito.id === circuito.id && clasificacion.categoria === 'Moto3'
             );
         }
       );

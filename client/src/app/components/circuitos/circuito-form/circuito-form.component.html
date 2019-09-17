@@ -11,58 +11,60 @@
     <div class="col-lg-4 col-lg-offset-2">
         <img [src]="circuito.imagen == '' ? 'assets/images/sin_imagen.jpg' : circuito.imagen" class="img-thumbnail" alt="Imagen">
 
-        <br/>
+        <br/><br/>
 
-        <div *ngIf="clasificacionesByMotoGP?.length > 0">
-            <h4>MotoGP</h4>
-            <table class="table table-condensed">
-                <tbody>
-                    <tr>
+        <ul class="nav nav-tabs">
+            <li class="active"><a data-toggle="tab" href="#MotoGP">MotoGP</a></li>
+            <li><a data-toggle="tab" href="#Moto2">Moto2</a></li>
+            <li><a data-toggle="tab" href="#Moto3">Moto3</a></li>
+        </ul>
+        
+        <div class="tab-content">
+            <div id="MotoGP" class="tab-pane fade in active">
+                <h3>MotoGP</h3>
+                <table class="table table-hover">
+                    <tbody>
+                        <tr>
+                            <th>Piloto</th>
+                            <th class="text-center">Posición</th>
+                        </tr>
+                        <tr *ngFor="let clasificacionByMotoGP of clasificacionesByMotoGP">
+                            <td><a [routerLink]="['/pilotos/edit/', clasificacionByMotoGP.piloto.id]">{{ clasificacionByMotoGP.piloto.nombre }} </a><small>({{ clasificacionByMotoGP.piloto.equipo.moto }})</small></td>
+                            <td class="text-center">{{ clasificacionByMotoGP.posicion }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div id="Moto2" class="tab-pane fade">
+                <h3>Moto2</h3>
+                <table class="table">
+                    <tbody>
+                        <tr>
                         <th>Piloto</th>
                         <th class="text-center">Posición</th>
-                    </tr>
-                    <tr *ngFor="let clasificacionByMotoGP of clasificacionesByMotoGP">
-                        <td><a [routerLink]="['/pilotos/edit/', clasificacionByMotoGP.piloto.id]">{{ clasificacionByMotoGP.piloto.nombre }} </a><small>({{ clasificacionByMotoGP.piloto.equipo.moto }})</small></td>
-                        <td class="text-center">{{ clasificacionByMotoGP.posicion }}</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-
-        <br/>
-      
-        <div *ngIf="clasificacionesByMoto2?.length > 0">
-            <h4>Moto2</h4>
-            <table class="table table-condensed">
-                <tbody>
-                    <tr>
-                        <th>Piloto</th>
-                        <th class="text-center">Posición</th>
-                    </tr>
-                    <tr *ngFor="let clasificacionByMoto2 of clasificacionesByMoto2">
+                        </tr>
+                        <tr *ngFor="let clasificacionByMoto2 of clasificacionesByMoto2">
                         <td><a [routerLink]="['/pilotos/edit/', clasificacionByMoto2.piloto.id]">{{ clasificacionByMoto2.piloto.nombre }} </a><small>({{ clasificacionByMoto2.piloto.equipo.moto }})</small></td>
                         <td class="text-center">{{ clasificacionByMoto2.posicion }}</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-
-        <br/>
-      
-        <div *ngIf="clasificacionesByMoto3?.length > 0">
-            <h4>Moto3</h4>
-            <table class="table table-condensed">
-                <tbody>
-                    <tr>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div id="Moto3" class="tab-pane fade">
+                <h3>Moto3</h3>
+                <table class="table">
+                    <tbody>
+                        <tr>
                         <th>Piloto</th>
                         <th class="text-center">Posición</th>
-                    </tr>
-                    <tr *ngFor="let clasificacionByMoto3 of clasificacionesByMoto3">
-                        <td><a [routerLink]="['/circuitos/edit/', clasificacionByMoto3.circuito.id]">{{ clasificacionByMoto3.circuito.nombre }} </a><small>({{ clasificacionByMoto3.piloto.equipo.moto }})</small></td>
+                        </tr>
+                        <tr *ngFor="let clasificacionByMoto3 of clasificacionesByMoto3">
+                        <td><a [routerLink]="['/pilotos/edit/', clasificacionByMoto3.piloto.id]">{{ clasificacionByMoto3.piloto.nombre }} </a><small>({{ clasificacionByMoto3.piloto.equipo.moto }})</small></td>
                         <td class="text-center">{{ clasificacionByMoto3.posicion }}</td>
-                    </tr>
-                </tbody>
-            </table>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 

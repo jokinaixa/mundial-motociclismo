@@ -11,24 +11,12 @@ import { Circuito } from '../../../models/Circuito';
 })
 export class CircuitoFichaComponent implements OnInit {
 
-  @Input() variable1 = '';
-  @Input() id_circuito;
+  @Input() circuito = [];
 
-  circuito: Circuito = {
-    id: null,
-    nombre: '',
-    pais: '',
-    longitud: 0,
-    imagen: ''
-  };
   
-  constructor(
-    private circuitosService: CircuitosService) { }
+  constructor() { }
 
   ngOnInit() {
-    this.circuitosService.mostrarCircuito(this.id_circuito).subscribe(
-      data => this.circuito = data
-    );
   }
 
 }

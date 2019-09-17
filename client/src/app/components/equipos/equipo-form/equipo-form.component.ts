@@ -37,7 +37,7 @@ export class EquipoFormComponent implements OnInit {
       this.equiposService.mostrarEquipo(params.id)
       .subscribe(
         res => {
-          console.log(res);
+          //console.log(res);
           this.equipo = res;
           this.edit = true;
         },

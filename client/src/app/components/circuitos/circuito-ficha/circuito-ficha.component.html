@@ -1,7 +1,14 @@
 <div class="thumbnail">
-  <img src="assets/images/sin_imagen.jpg" class="img-responsive">
+  <a [routerLink]="['/circuitos/edit/', circuito?.id]">
+    <img [src]="circuito?.imagen" class="img-responsive" [alt]="circuito?.nombre">
+  </a>
   <div class="caption">
-    <h4>{{ variable1 }}</h4>
-    <p>{{ kk.campo2 }}</p>
+    <h4>
+      {{ circuito?.nombre }} <small>({{ circuito?.pais }})</small>
+    </h4>
+    <dl>
+      <dt>Longitud</dt>
+      <dd>{{ circuito?.longitud }}</dd>
+    </dl>
   </div>
 </div>
