@@ -8,7 +8,7 @@
 </p>
 
 <div class="row">
-  <div class="col-lg-4" *ngFor="let equipo of equipos">
+  <div class="col-lg-3" *ngFor="let equipo of equipos">
     <div class="thumbnail">
       <a [routerLink]="['/equipos/edit/', equipo.id]">
         <img [src]="equipo.imagen" alt="equipo.nombre">

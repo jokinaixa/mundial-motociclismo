@@ -1,6 +1,6 @@
 <ol class="breadcrumb">
   <li><a [routerLink]="['/inicio']">Inicio</a></li>
-  <li><a [routerLink]="['/clasificaciones']">Clasificaciones</a></li>
+  <li><a [routerLink]="['/clasificaciones/show', clasificacion.circuito]">Clasificaciones</a></li>
   <li class="active">
       <span *ngIf="edit">Editar</span>
       <span *ngIf="!edit">Nuevo</span>
@@ -8,7 +8,7 @@
 </ol>
 
 <div class="row">
-  <div class="col-lg-4 col-lg-offset-4">
+  <div class="col-lg-6 col-lg-offset-3">
       <form action="">
         <div class="form-group">
           <label>Circuito</label>
@@ -26,10 +26,17 @@
         </div>
         <div class="form-group">
           <label>Piloto</label>
-          <select class="form-control" [(ngModel)]="clasificacion.piloto" [ngModelOptions]="{standalone: true}">
-            <option value="0">Seleccione un piloto</option>
-            <option *ngFor="let piloto of pilotosByCategoria" [value]="piloto.id">{{ piloto.nombre }}</option>
-          </select>
+          <div class="row">
+            <div class="col-lg-9">
+              <select class="form-control" [(ngModel)]="clasificacion.piloto" [ngModelOptions]="{standalone: true}">
+                <option value="0">Seleccione un piloto</option>
+                <option *ngFor="let piloto of pilotosByCategoria" [value]="piloto.id">{{ piloto.nombre }}</option>
+              </select>
+            </div>
+            <div class="col-lg-3 text-right">
+                <a [routerLink]="['/pilotos/add']" class="btn btn-success">Nuevo Piloto</a>
+            </div>
+          </div>
         </div>
         <div class="form-group">
           <label>Posición</label>
@@ -38,7 +45,7 @@
 
         <br/>
 
-        <button class="btn btn-success" (click)="edit ? cambiarClasificacion() : crearClasificacion()">Guardar</button>
+        <button class="btn btn-warning" (click)="edit ? cambiarClasificacion() : crearClasificacion()">Guardar</button>
         <span *ngIf="edit" class="pull-right">
           <button class="btn btn-danger" (click)="borrarClasificacion(clasificacion.id)">Borrar</button>
         </span>

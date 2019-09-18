@@ -95,7 +95,7 @@ export class ClasificacionFormComponent implements OnInit {
       .subscribe(
         res => {
           //console.log(res);
-          this.router.navigate(['/clasificaciones']);
+          this.router.navigate(['/clasificaciones/show', this.clasificacion.circuito]);
         },
         err => console.error(err)
       );
@@ -103,13 +103,11 @@ export class ClasificacionFormComponent implements OnInit {
 
   cambiarClasificacion()
   {
-    console.log(this.clasificacion);
-
     this.clasificacionesService.cambiarClasificacion(this.clasificacion.id, this.clasificacion)
       .subscribe(
         res => { 
           //console.log(res);
-          this.router.navigate(['/clasificaciones']);
+          this.router.navigate(['/clasificaciones/show', this.clasificacion.circuito]);
         },
         err => console.error(err)
       );
@@ -121,7 +119,7 @@ export class ClasificacionFormComponent implements OnInit {
       .subscribe(
         res => {
           //console.log(res);
-          this.router.navigate(['/clasificaciones']);
+          this.router.navigate(['/clasificaciones/show', this.clasificacion.circuito]);
         },
         err => console.error(err)
       );

@@ -34,7 +34,7 @@ export class PilotoFormComponent implements OnInit {
     nombre: '',
     imagen: '',
     fecha: new Date(),
-    pais: ''
+    pais: '0'
   };
 
   equipos: Equipo[];
@@ -102,7 +102,7 @@ export class PilotoFormComponent implements OnInit {
     this.clasificacionesService.obtenerClasifByPiloto(this.piloto.id)
     .subscribe(
       data => {
-        console.log(data);
+        //console.log(data);
         this.clasificacionesByPiloto = data
       }
     );

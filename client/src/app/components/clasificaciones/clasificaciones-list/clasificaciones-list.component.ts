@@ -23,14 +23,21 @@ export class ClasificacionesListComponent implements OnInit {
   
   constructor(
     private clasificacionesService: ClasificacionesService,
-    private circuitosService: CircuitosService) { }
+    private circuitosService: CircuitosService,
+    private activatedRoute: ActivatedRoute,
+    private router: Router) { }
 
   ngOnInit() {
+
+    const params = this.activatedRoute.snapshot.params;
+
     this.circuitosService.obtenerCircuitos().subscribe(
       data => {
         this.circuitos = data; 
-        
-        this.obtenerClasificaciones(data[0]);
+
+        this.circuito = (params.circuito) ? params.circuito : data[0].id;
+        this.obtenerClasificaciones(this.circuito);
+        this.selected = this.circuito;
       }
     );
   }
@@ -39,13 +46,13 @@ export class ClasificacionesListComponent implements OnInit {
     return this.selected === id;
   };
 
-  modifiedLink(selected: number, id: number) {
-    this.router.navigate(['/clasificaciones/edit/', selected, 'MotoGP', id]);
+  modifiedLink(id: number) {
+    this.router.navigate(['/clasificaciones/edit/', this.selected, 'MotoGP', id]);
   }
 
-  obtenerClasificaciones(circuito: Circuito)
+  obtenerClasificaciones(id: number)
   {
-    this.selected = circuito.id;
+    this.selected = id;
     
     this.clasificacionesByMotoGP = [];
     this.clasificacionesByMoto2 = [];
@@ -56,17 +63,17 @@ export class ClasificacionesListComponent implements OnInit {
         data => {
           this.clasificacionesByMotoGP = data
             .filter(
-              clasificacion => clasificacion.circuito.id === circuito.id && clasificacion.categoria === 'MotoGP'
+              clasificacion => clasificacion.circuito.id === this.selected && clasificacion.categoria === 'MotoGP'
             );
 
           this.clasificacionesByMoto2 = data
             .filter(
-              clasificacion => clasificacion.circuito.id === circuito.id && clasificacion.categoria === 'Moto2'
+              clasificacion => clasificacion.circuito.id === this.selected && clasificacion.categoria === 'Moto2'
             );
 
           this.clasificacionesByMoto3 = data
             .filter(
-              clasificacion => clasificacion.circuito.id === circuito.id && clasificacion.categoria === 'Moto3'
+              clasificacion => clasificacion.circuito.id === this.selected && clasificacion.categoria === 'Moto3'
             );
         }
       );

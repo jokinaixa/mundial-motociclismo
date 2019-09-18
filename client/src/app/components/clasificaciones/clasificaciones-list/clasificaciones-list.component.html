@@ -8,7 +8,7 @@
     <div class="list-group">
       <a class="list-group-item" 
         *ngFor="let circuito of circuitos" 
-        (click)="obtenerClasificaciones(circuito)" 
+        (click)="obtenerClasificaciones(circuito.id)" 
         [ngClass]="{active: isActive(circuito.id)}">
           <img class="flag" src="assets/images/flags/{{ circuito.pais }}.png" [alt]="circuito.pais"> {{ circuito.nombre }}
       </a>
@@ -36,7 +36,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let clasificacionByMotoGP of clasificacionesByMotoGP" (click)="modifiedLink(selected, clasificacionByMotoGP.id)">
+            <tr *ngFor="let clasificacionByMotoGP of clasificacionesByMotoGP" (click)="modifiedLink(clasificacionByMotoGP.id)">
               <td>{{ clasificacionByMotoGP.piloto.nombre }}<small> ({{ clasificacionByMotoGP.piloto.equipo.moto }})</small></td>
               <td class="text-center">{{ clasificacionByMotoGP.posicion }}</td>
             </tr>
@@ -56,7 +56,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let clasificacionByMoto2 of clasificacionesByMoto2" (click)="modifiedLink(selected, clasificacionByMoto2.id)">
+            <tr *ngFor="let clasificacionByMoto2 of clasificacionesByMoto2" (click)="modifiedLink(clasificacionByMoto2.id)">
               <td>{{ clasificacionByMoto2.piloto.nombre }}<small> ({{ clasificacionByMoto2.piloto.equipo.moto }})</small></td>
               <td class="text-center">{{ clasificacionByMoto2.posicion }}</td>
             </tr>
@@ -76,7 +76,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let clasificacionByMoto3 of clasificacionesByMoto3" (click)="modifiedLink(selected, clasificacionByMoto3.id)">
+            <tr *ngFor="let clasificacionByMoto3 of clasificacionesByMoto3" (click)="modifiedLink(clasificacionByMoto3.id)">
               <td>{{ clasificacionByMoto3.piloto.nombre }}<small> ({{ clasificacionByMoto3.piloto.equipo.moto }})</small></td>
               <td class="text-center">{{ clasificacionByMoto3.posicion }}</td>
             </tr>
