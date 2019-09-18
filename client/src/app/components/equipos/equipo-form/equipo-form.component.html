@@ -8,8 +8,10 @@
 </ol>
 
 <div class="row">
-    <div class="col-lg-4 col-lg-offset-2">
-        <img [src]="equipo.imagen == '' ? 'assets/images/sin_imagen.jpg' : equipo.imagen" class="img-thumbnail" alt="Imagen">
+    <div class="col-lg-4 col-lg-offset-1">
+        <div class="text-center">
+            <img [src]="equipo.imagen == '' ? 'assets/images/sin_imagen.jpg' : equipo.imagen" class="img-thumbnail" [alt]="equipo.nombre" [title]="equipo.nombre">
+        </div>
         
         <br/><hr/>
 
@@ -23,7 +25,7 @@
         </div>
     </div>
 
-    <div class="col-lg-4">
+    <div class="col-lg-5 col-lg-offset-1">
         <form action="">
             <div class="form-group">
                 <label>Nombre</label>

@@ -5,5 +5,6 @@ export interface Piloto {
     equipo?: Equipo; 
     nombre?: string,
     imagen?: string,
-    edad?: number
+    fecha?: Date,
+    pais?: string
 };

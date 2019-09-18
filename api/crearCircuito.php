@@ -14,7 +14,7 @@
   {
     $circuito = json_decode($postdata);
    
-    $query = "INSERT INTO circuitos (nombre, pais, longitud, imagen) VALUES ('$circuito->nombre', '$circuito->pais', $circuito->longitud, '$circuito->imagen')";
+    $query = "INSERT INTO circuitos (nombre, pais, localidad, longitud, imagen, fecha) VALUES ('$circuito->nombre', '$circuito->pais', '$circuito->localidad', $circuito->longitud, '$circuito->imagen', '$circuito->fecha')";
     $connect->query($query) or trigger_error($connect->error);
   }
 ?>

@@ -15,7 +15,7 @@
 
   while($equipo = $result1->fetch_assoc())
   {
-    $query = "SELECT * FROM pilotos WHERE equipo = $equipo[id]";
+    $query = "SELECT *, TIMESTAMPDIFF(YEAR, fecha, CURDATE()) AS edad FROM pilotos WHERE equipo = $equipo[id]";
     $result2 = $connect->query($query) or trigger_error($connect->error);
     
     while($piloto = $result2->fetch_assoc())

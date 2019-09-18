@@ -10,12 +10,12 @@
 
   $clasificaciones = [];
 
-  $query = "SELECT * FROM clasificaciones";
+  $query = "SELECT * FROM clasificaciones ORDER BY circuito, posicion ASC";
   $result1 = $connect->query($query) or trigger_error($connect->error);
   
   while($clasificacion = $result1->fetch_assoc())
   {
-    $query = "SELECT * FROM pilotos WHERE id = $clasificacion[piloto]";
+    $query = "SELECT *, TIMESTAMPDIFF(YEAR, fecha, CURDATE()) AS edad FROM pilotos WHERE id = $clasificacion[piloto]";
     $result2 = $connect->query($query) or trigger_error($connect->error);
 
     if ($piloto = $result2->fetch_assoc())  
@@ -32,7 +32,7 @@
     }
 
 
-    $query = "SELECT * FROM circuitos WHERE id = $clasificacion[circuito]";
+    $query = "SELECT * FROM circuitos WHERE id = $clasificacion[circuito] ORDER BY fecha ASC";
     $result3 = $connect->query($query) or trigger_error($connect->error);
 
     if ($circuito = $result3->fetch_assoc())  

@@ -16,7 +16,7 @@
     
     $id_equipo = $piloto->equipo->id;
  
-    $query = "UPDATE pilotos SET nombre = '$piloto->nombre', equipo = $id_equipo, edad = $piloto->edad, imagen = '$piloto->imagen' WHERE id = $_GET[id]";
+    $query = "UPDATE pilotos SET nombre = '$piloto->nombre', equipo = $id_equipo, dorsal = $piloto->dorsal, fecha = '$piloto->fecha', imagen = '$piloto->imagen', pais = '$piloto->pais' WHERE id = $_GET[id]";
     $connect->query($query) or trigger_error($connect->error);
   }
 ?>

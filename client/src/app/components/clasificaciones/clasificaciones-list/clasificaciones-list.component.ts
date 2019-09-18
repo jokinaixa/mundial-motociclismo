@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Router, ActivatedRoute } from '@angular/router';
 
 import { ClasificacionesService } from '../clasificaciones.service';
 import { CircuitosService } from '../../circuitos/circuitos.service';
@@ -13,6 +13,7 @@ import { Circuito } from '../../../models/Circuito';
 })
 export class ClasificacionesListComponent implements OnInit {
 
+  circuito: number;
   circuitos: Circuito[];
   selected: number;
   
@@ -27,7 +28,8 @@ export class ClasificacionesListComponent implements OnInit {
   ngOnInit() {
     this.circuitosService.obtenerCircuitos().subscribe(
       data => {
-        this.circuitos = data;
+        this.circuitos = data; 
+        
         this.obtenerClasificaciones(data[0]);
       }
     );
@@ -36,6 +38,10 @@ export class ClasificacionesListComponent implements OnInit {
   isActive(id: number) {
     return this.selected === id;
   };
+
+  modifiedLink(selected: number, id: number) {
+    this.router.navigate(['/clasificaciones/edit/', selected, 'MotoGP', id]);
+  }
 
   obtenerClasificaciones(circuito: Circuito)
   {

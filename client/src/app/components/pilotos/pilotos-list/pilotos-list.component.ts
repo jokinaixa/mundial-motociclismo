@@ -2,6 +2,8 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 import { PilotosService } from '../pilotos.service';
 
+import { Piloto } from '../../../models/Piloto';
+
 @Component({
   selector: 'app-pilotos-list',
   templateUrl: './pilotos-list.component.html',

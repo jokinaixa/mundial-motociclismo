@@ -1,0 +1,10 @@
+[
+    { "id": "es", "nombre": "España" },
+    { "id": "fr", "nombre": "Francia" },
+    { "id": "it", "nombre": "Italia" },
+    { "id": "gb", "nombre": "Gran Bretaña" },
+    { "id": "au", "nombre": "Australia" },
+    { "id": "ar", "nombre": "Argentina" },
+    { "id": "qa", "nombre": "Qatar" },
+    { "id": "us", "nombre": "EE.UU." }
+]

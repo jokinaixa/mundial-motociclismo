@@ -6,5 +6,6 @@ export interface Circuito {
     localidad?: string,
     pais?: string,
     longitud?: number,
-    imagen?: string
+    imagen?: string,
+    fecha?: Date
 };

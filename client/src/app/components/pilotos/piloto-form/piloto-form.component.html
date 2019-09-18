@@ -8,9 +8,11 @@
 </ol>
 
 <div class="row">
-    <div class="col-lg-4 col-lg-offset-2">
-        <img [src]="piloto.imagen == '' ? 'assets/images/sin_imagen.jpg' : piloto.imagen" class="img-thumbnail" alt="Imagen">
-
+    <div class="col-lg-4 col-lg-offset-1">
+        <div class="text-center">
+            <img [src]="piloto.imagen == '' ? 'assets/images/sin_imagen.jpg' : piloto.imagen" class="img-thumbnail" [alt]="piloto.nombre" [title]="piloto.nombre">
+        </div>
+        
         <br/><br/>
 
         <div *ngIf="clasificacionesByPiloto?.length > 0">
@@ -21,7 +23,10 @@
                         <th class="text-center">Posición</th>
                     </tr>
                     <tr *ngFor="let clasificacionByPiloto of clasificacionesByPiloto">
-                        <td><a [routerLink]="['/circuitos/edit/', clasificacionByPiloto.circuito.id]">{{ clasificacionByPiloto.circuito.nombre }} </a><small>({{ clasificacionByPiloto.circuito.pais }})</small></td>
+                        <td>
+                            <img class="flag" src="assets/images/flags/{{ clasificacionByPiloto.pais }}.png" [alt]="clasificacionByPiloto.pais" [title]="clasificacionByPiloto.pais">
+                            <a [routerLink]="['/circuitos/edit/', clasificacionByPiloto.id]">{{ clasificacionByPiloto.nombre }}</a>
+                        </td>
                         <td class="text-center">{{ clasificacionByPiloto.posicion }}</td>
                     </tr>
                 </tbody>
@@ -29,7 +34,7 @@
         </div>
     </div>
 
-    <div class="col-lg-4">
+    <div class="col-lg-5 col-lg-offset-1">
         <form action="">
             <div class="form-group">
                 <label>Nombre</label>
@@ -43,8 +48,20 @@
                 </select>
             </div>
             <div class="form-group">
-                <label>Edad</label>
-                <input type="number" name="edad" [(ngModel)]="piloto.edad" placeholder="Edad" class="form-control">
+                <label>Dorsal</label>
+                <input type="number" name="dorsal" [(ngModel)]="piloto.dorsal" placeholder="Dorsal" class="form-control">
+            </div>
+            <div class="form-group">
+                <label>Pais</label>
+                <!-- <input type="text" name="pais" [(ngModel)]="piloto.pais" placeholder="País" class="form-control"> -->
+                <select class="form-control" [(ngModel)]="piloto.pais" [ngModelOptions]="{standalone: true}">
+                    <option value="0">Seleccione un país</option>
+                    <option *ngFor="let pais of paises | sortBy: 'nombre'" value="{{ pais.id }}">{{ pais.nombre }} ({{ pais.id }})</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Fecha nacimiento</label>
+                <input type="date" name="fecha" [(ngModel)]="piloto.fecha" placeholder="Fecha nacimiento" class="form-control">
             </div>
             <div class="form-group">
                 <label>Imagen</label>

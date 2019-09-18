@@ -6,11 +6,16 @@
 <div class="row">
   <div class="col-lg-4 col-md-offset-1">
     <div class="list-group">
-      <a class="list-group-item" *ngFor="let circuito of circuitos" (click)="obtenerClasificaciones(circuito)" [ngClass]="{active: isActive(circuito.id)}">{{ circuito.nombre }}</a>
+      <a class="list-group-item" 
+        *ngFor="let circuito of circuitos" 
+        (click)="obtenerClasificaciones(circuito)" 
+        [ngClass]="{active: isActive(circuito.id)}">
+          <img class="flag" src="assets/images/flags/{{ circuito.pais }}.png" [alt]="circuito.pais"> {{ circuito.nombre }}
+      </a>
     </div>
   </div>
 
-  <div class="col-lg-6">
+  <div class="col-lg-5 col-lg-offset-1">
     <ul class="nav nav-tabs">
       <li class="active"><a data-toggle="tab" href="#MotoGP">MotoGP</a></li>
       <li><a data-toggle="tab" href="#Moto2">Moto2</a></li>
@@ -21,18 +26,18 @@
       <div id="MotoGP" class="tab-pane fade in active">
         <h3>MotoGP</h3>
         <p class="text-right">
-          <a [routerLink]="['/clasificaciones/add', 1, 'MotoGP']" class="btn btn-success">Nueva Clasificación MotoGP</a>
+          <a [routerLink]="['/clasificaciones/add', selected, 'MotoGP']" class="btn btn-success">Nueva Clasificación MotoGP</a>
         </p>
         <table class="table table-hover">
-          <tbody>
+          <thead>
             <tr>
-              <th>#</th>
               <th>Piloto</th>
               <th class="text-center">Posición</th>
             </tr>
-            <tr *ngFor="let clasificacionByMotoGP of clasificacionesByMotoGP">
-              <td><a [routerLink]="['/clasificaciones/edit/', 1, 'MotoGP', clasificacionByMotoGP.id]">modificar</a></td>
-              <td><a [routerLink]="['/pilotos/edit/', clasificacionByMotoGP.piloto.id]">{{ clasificacionByMotoGP.piloto.nombre }} </a><small>({{ clasificacionByMotoGP.piloto.equipo.moto }})</small></td>
+          </thead>
+          <tbody>
+            <tr *ngFor="let clasificacionByMotoGP of clasificacionesByMotoGP" (click)="modifiedLink(selected, clasificacionByMotoGP.id)">
+              <td>{{ clasificacionByMotoGP.piloto.nombre }}<small> ({{ clasificacionByMotoGP.piloto.equipo.moto }})</small></td>
               <td class="text-center">{{ clasificacionByMotoGP.posicion }}</td>
             </tr>
           </tbody>
@@ -41,18 +46,18 @@
       <div id="Moto2" class="tab-pane fade">
         <h3>Moto2</h3>
         <p class="text-right">
-          <a [routerLink]="['/clasificaciones/add', 1, 'Moto2']" class="btn btn-success">Nueva Clasificación Moto2</a>
+          <a [routerLink]="['/clasificaciones/add', selected, 'Moto2']" class="btn btn-success">Nueva Clasificación Moto2</a>
         </p>
-        <table class="table">
-          <tbody>
+        <table class="table table-hover">
+          <thead>
             <tr>
-              <th>#</th>
               <th>Piloto</th>
               <th class="text-center">Posición</th>
             </tr>
-            <tr *ngFor="let clasificacionByMoto2 of clasificacionesByMoto2">
-              <td><a [routerLink]="['/clasificaciones/edit/', 1, 'Moto2', clasificacionByMoto2.id]">modificar</a></td>
-              <td><a [routerLink]="['/pilotos/edit/', clasificacionByMoto2.piloto.id]">{{ clasificacionByMoto2.piloto.nombre }} </a><small>({{ clasificacionByMoto2.piloto.equipo.moto }})</small></td>
+          </thead>
+          <tbody>
+            <tr *ngFor="let clasificacionByMoto2 of clasificacionesByMoto2" (click)="modifiedLink(selected, clasificacionByMoto2.id)">
+              <td>{{ clasificacionByMoto2.piloto.nombre }}<small> ({{ clasificacionByMoto2.piloto.equipo.moto }})</small></td>
               <td class="text-center">{{ clasificacionByMoto2.posicion }}</td>
             </tr>
           </tbody>
@@ -61,18 +66,18 @@
       <div id="Moto3" class="tab-pane fade">
         <h3>Moto3</h3>
         <p class="pull-right">
-          <a [routerLink]="['/clasificaciones/add', 1, 'Moto3']" class="btn btn-success">Nueva Clasificación Moto3</a>
+          <a [routerLink]="['/clasificaciones/add', selected, 'Moto3']" class="btn btn-success">Nueva Clasificación Moto3</a>
         </p>
-        <table class="table">
-          <tbody>
+        <table class="table table-hover">
+          <thead>
             <tr>
-              <th>#</th>
               <th>Piloto</th>
               <th class="text-center">Posición</th>
             </tr>
-            <tr *ngFor="let clasificacionByMoto3 of clasificacionesByMoto3">
-              <td><a [routerLink]="['/clasificaciones/edit/', 1, 'Moto3', clasificacionByMoto3.id]">modificar</a></td>
-              <td><a [routerLink]="['/pilotos/edit/', clasificacionByMoto3.piloto.id]">{{ clasificacionByMoto3.piloto.nombre }} </a><small>({{ clasificacionByMoto3.piloto.equipo.moto }})</small></td>
+          </thead>
+          <tbody>
+            <tr *ngFor="let clasificacionByMoto3 of clasificacionesByMoto3" (click)="modifiedLink(selected, clasificacionByMoto3.id)">
+              <td>{{ clasificacionByMoto3.piloto.nombre }}<small> ({{ clasificacionByMoto3.piloto.equipo.moto }})</small></td>
               <td class="text-center">{{ clasificacionByMoto3.posicion }}</td>
             </tr>
           </tbody>

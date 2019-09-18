@@ -3,26 +3,38 @@ import { Router, ActivatedRoute } from '@angular/router';
 
 import { PilotosService } from '../pilotos.service';
 import { EquiposService } from '../../equipos/equipos.service';
+import { GamesService } from '../../../services/games.service';
 import { ClasificacionesService } from '../../clasificaciones/clasificaciones.service';
 
+import { Piloto } from '../../../models/Piloto';
 import { Equipo } from '../../../models/Equipo';
 
 @Component({
   selector: 'app-piloto-form',
   templateUrl: './piloto-form.component.html',
-  styleUrls: ['./piloto-form.component.css'],
+  styleUrls: ['./piloto-form.component.css']
 })
 
 export class PilotoFormComponent implements OnInit {
 
   clasificacionesByPiloto: any = [];
+  paises: any = [];
   
-  piloto: any = {
+  equipo: Equipo = {
+    id: 0,
+    nombre: '',
+    moto: '',
+    imagen: '',
+    categoria: 'MotoGP'
+  }
+
+  piloto: Piloto = {
     id: null,
-    equipo: 0,
+    equipo: this.equipo,
     nombre: '',
     imagen: '',
-    edad: 0,
+    fecha: new Date(),
+    pais: ''
   };
 
   equipos: Equipo[];
@@ -31,7 +43,8 @@ export class PilotoFormComponent implements OnInit {
 
   constructor(
     private pilotosService: PilotosService, 
-    private equiposService: EquiposService, 
+    private equiposService: EquiposService,
+    private gamesService: GamesService, 
     private clasificacionesService: ClasificacionesService, 
     private activatedRoute: ActivatedRoute,
     private router: Router) { }
@@ -42,6 +55,7 @@ export class PilotoFormComponent implements OnInit {
     const params = this.activatedRoute.snapshot.params;
 
     this.obtenerEquipos();
+    this.obtenerPaises();
 
     if (params.id)
     {
@@ -71,15 +85,25 @@ export class PilotoFormComponent implements OnInit {
     );
   }
 
+  obtenerPaises()
+  {
+    this.gamesService.obtenerPaises()
+    .subscribe(
+      res => {
+        //console.log(res);
+        this.paises = res;
+      },
+      err => console.log(err)
+    );
+  }
+
   obtenerClasificaciones()
   {
-    this.clasificacionesService.obtenerClasificaciones()
+    this.clasificacionesService.obtenerClasifByPiloto(this.piloto.id)
     .subscribe(
       data => {
+        console.log(data);
         this.clasificacionesByPiloto = data
-          .filter(
-            clasificacion => clasificacion.piloto.id === this.piloto.id
-          );
       }
     );
   }

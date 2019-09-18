@@ -1,5 +1,0 @@
-[
-    {"id_equipo": 1, "id_piloto": 1, "nombre": "Repsol Honda Team", "moto": "Honda", "imagen": "sin_imagen.jpg" },
-    {"id_equipo": 2, "id_piloto": 2, "nombre": "Repsol Honda Team", "moto": "Honda", "imagen": "sin_imagen.jpg" },
-    {"id_equipo": 3, "id_piloto": 3, "nombre": "Monster Energy Yamaha MotoGP", "moto": "Yamaha", "imagen": "sin_imagen.jpg" }
-]

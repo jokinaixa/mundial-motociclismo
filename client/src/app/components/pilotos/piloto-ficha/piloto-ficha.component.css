@@ -1,0 +1,11 @@
+img.flag {
+    width: 20px;
+    margin-right: 5px;
+}
+
+.texto-encima{
+    position: absolute;
+    top: 10px;
+    left: 30px;
+    font-size: 45px;
+}

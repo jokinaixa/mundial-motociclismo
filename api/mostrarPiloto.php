@@ -8,7 +8,7 @@
   $connect = retornarConexion();
   mysqli_set_charset($connect, "utf8");
 
-  $query = "SELECT * FROM pilotos WHERE id = $_GET[id]";
+  $query = "SELECT *, TIMESTAMPDIFF(YEAR, fecha, CURDATE()) AS edad FROM pilotos WHERE id = $_GET[id]";
   $result1 = $connect->query($query) or trigger_error($connect->error);
   
   if ($piloto = $result1->fetch_assoc())  

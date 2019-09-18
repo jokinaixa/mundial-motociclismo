@@ -10,7 +10,7 @@
 
   $circuitos = [];
 
-  $query = "SELECT * FROM circuitos";
+  $query = "SELECT * FROM circuitos ORDER BY fecha ASC";
   $resultado = $connect->query($query) or trigger_error($connect->error);
 
   while($circuito = $resultado->fetch_assoc())

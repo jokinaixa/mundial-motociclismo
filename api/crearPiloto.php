@@ -16,7 +16,7 @@
     
     $id_equipo = $piloto->equipo->id;
    
-    $query = "INSERT INTO pilotos (nombre, equipo, edad, imagen) VALUES ('$piloto->nombre', $id_equipo, $piloto->edad, '$piloto->imagen')";
+    $query = "INSERT INTO pilotos (nombre, equipo, dorsal, fecha, imagen, pais) VALUES ('$piloto->nombre', $id_equipo, $piloto->dorsal, '$piloto->fecha', '$piloto->imagen', '$piloto->pais')";
     $connect->query($query) or trigger_error($connect->error);
   }
 ?>

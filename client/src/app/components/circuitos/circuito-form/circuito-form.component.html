@@ -8,8 +8,10 @@
 </ol>
 
 <div class="row">
-    <div class="col-lg-4 col-lg-offset-2">
-        <img [src]="circuito.imagen == '' ? 'assets/images/sin_imagen.jpg' : circuito.imagen" class="img-thumbnail" alt="Imagen">
+    <div class="col-lg-4 col-lg-offset-1">
+        <div class="text-center">
+            <img [src]="circuito.imagen == '' ? 'assets/images/sin_imagen.jpg' : circuito.imagen" class="img-thumbnail" [alt]="circuito.nombre" [title]="circuito.nombre">
+        </div>
 
         <br/><br/>
 
@@ -68,7 +70,7 @@
         </div>
     </div>
 
-    <div class="col-lg-4">
+    <div class="col-lg-5 col-lg-offset-1">
         <form action="">
             <div class="form-group">
                 <label>Nombre</label>
@@ -76,7 +78,15 @@
             </div>
             <div class="form-group">
                 <label>País</label>
-                <input type="text" name="pais" [(ngModel)]="circuito.pais" placeholder="País" class="form-control">
+                <!-- <input type="text" name="pais" [(ngModel)]="circuito.pais" placeholder="País" class="form-control"> -->
+                <select class="form-control" [(ngModel)]="circuito.pais" [ngModelOptions]="{standalone: true}">
+                    <option value="0">Seleccione un país</option>
+                    <option *ngFor="let pais of paises" value="{{ pais.id }}">{{ pais.nombre }} ({{ pais.id }})</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Localidad</label>
+                <input type="text" name="localidad" [(ngModel)]="circuito.localidad" placeholder="Localidad" class="form-control">
             </div>
             <div class="form-group">
                 <label>Longitud</label>
@@ -85,6 +95,10 @@
             <div class="form-group">
                 <label>Imagen</label>
                 <input type="url" name="imagen" [(ngModel)]="circuito.imagen" placeholder="Imagen" class="form-control">
+            </div>
+            <div class="form-group">
+                <label>Fecha</label>
+                <input type="date" name="fecha" [(ngModel)]="circuito.fecha" placeholder="dd/mm/yyyy" class="form-control">
             </div>
 
             <br/>

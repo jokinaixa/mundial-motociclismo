@@ -8,32 +8,12 @@ import { Observable } from 'rxjs';
 })
 export class GamesService {
 
-  games: any = [];
-  
-  API_URI = 'http://localhost/api';
+  API_URI = 'assets/data';
 
   constructor(private http: HttpClient) { }
 
-  getGames() {
-    console.log("services");
-    //return this.http.get(`${this.API_URI}/games`);
-    return this.http.get(`${this.API_URI}/obtenerGames.php`);
-  }
-
-  getGame(id: string) {
-    return this.http.get(`${this.API_URI}/games/${id}`);
-  }
-
-  deleteGame(id: string) {
-    return this.http.delete(`${this.API_URI}/games/${id}`);
-  }
-
-  saveGame(game: Game) {
-    return this.http.post(`${this.API_URI}/games`, game);
-  }
-
-  updateGame(id: string|number, updatedGame: Game): Observable<Game> {
-    return this.http.put(`${this.API_URI}/games/${id}`, updatedGame);
+  obtenerPaises() {
+    return this.http.get(`${this.API_URI}/paises.json`);
   }
 
 }

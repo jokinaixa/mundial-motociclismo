@@ -1,15 +1,17 @@
 <div class="thumbnail">
   <a [routerLink]="['/pilotos/edit/', piloto.id]">
-    <img [src]="piloto.imagen" class="img-responsive" alt="piloto.nombre">
+    <img [src]="piloto.imagen" class="img-responsive" [alt]="piloto.nombre" [title]="piloto.nombre">
   </a>
+  <span class="texto-encima text-info"><strong>{{ piloto.dorsal }}</strong></span>
   <div class="caption">
     <h4>
       <a [routerLink]="['/pilotos/edit/', piloto.id]">{{ piloto.nombre }} </a>
       <small>({{ piloto.edad }})</small>
     </h4>
+
     <dl>
       <dt>Equipo</dt>
-      <dd><a [routerLink]="['/equipos/edit/', piloto.id]">{{ piloto.equipo.nombre }} </a><small>({{ piloto.equipo.moto }})</small></dd>
+      <dd><a [routerLink]="['/equipos/edit/', piloto.equipo.id]">{{ piloto.equipo.nombre }} </a><small>({{ piloto.equipo.moto }})</small></dd>
     </dl>
   </div>
 </div>

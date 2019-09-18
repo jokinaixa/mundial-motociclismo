@@ -3,6 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 
 import { CircuitosService } from '../circuitos.service';
 import { ClasificacionesService } from '../../clasificaciones/clasificaciones.service';
+import { GamesService } from '../../../services/games.service';
 
 import { Circuito } from '../../../models/Circuito';
 
@@ -16,13 +17,16 @@ export class CircuitoFormComponent implements OnInit {
   clasificacionesByMotoGP: any = [];
   clasificacionesByMoto2: any = [];
   clasificacionesByMoto3: any = [];
+  paises: any = [];
   
   circuito: Circuito = {
     id: null,
     nombre: '',
-    pais: '',
+    pais: '0',
+    localidad: '',
     longitud: 0,
-    imagen: ''
+    imagen: '',
+    fecha: new Date()
   };
 
   edit: boolean = false;  
@@ -30,6 +34,7 @@ export class CircuitoFormComponent implements OnInit {
   constructor(
     private circuitosService: CircuitosService, 
     private clasificacionesService: ClasificacionesService, 
+    private gamesService: GamesService,
     private activatedRoute: ActivatedRoute,
     private router: Router) { }
 
@@ -37,6 +42,8 @@ export class CircuitoFormComponent implements OnInit {
   ngOnInit() {
 
     const params = this.activatedRoute.snapshot.params;
+
+    this.obtenerPaises();
 
     if (params.id)
     {
@@ -52,6 +59,18 @@ export class CircuitoFormComponent implements OnInit {
         err => console.log(err)
       )
     }
+  }
+
+  obtenerPaises()
+  {
+    this.gamesService.obtenerPaises()
+    .subscribe(
+      res => {
+        //console.log(res);
+        this.paises = res;
+      },
+      err => console.log(err)
+    );
   }
 
   obtenerClasificaciones()
