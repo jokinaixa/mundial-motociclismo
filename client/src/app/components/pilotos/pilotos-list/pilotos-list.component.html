@@ -3,9 +3,16 @@
     <li class="active">Pilotos</li>
 </ol>
 
-<p class="text-right">
-  <a [routerLink]="['/pilotos/add', categoria]" class="btn btn-success">Nuevo Piloto {{ categoria }}</a>
-</p>
+<div class="row">
+  <div class="col-lg-9">
+    <input type="text" class="form-control" name="filterPiloto" placeholder="Search..." [(ngModel)]="filterPiloto">
+  </div>
+  <div class="col-lg-3 text-right">
+    <a [routerLink]="['/pilotos/add', categoria]" class="btn btn-success">Nuevo Piloto {{ categoria }}</a>
+  </div>
+</div>
+
+<br/>
 
 <ul class="nav nav-tabs">
   <li [ngClass]="{ 'active': categoria === 'MotoGP' }">
@@ -23,7 +30,7 @@
   <div id="MotoGP" class="tab-pane fade" [ngClass]="{ 'in active': categoria === 'MotoGP' }">
     <br/><br/>
     <div class="row">
-      <div class="col-lg-3" *ngFor="let motoGP of pilotosByMotoGP">
+      <div class="col-lg-3" *ngFor="let motoGP of pilotosByMotoGP | filter: filterPiloto">
         <app-piloto-ficha [piloto]="motoGP"></app-piloto-ficha>
       </div>
     </div>
@@ -32,7 +39,7 @@
   <div id="Moto2" class="tab-pane fade" [ngClass]="{ 'in active': categoria === 'Moto2' }">
     <br/><br/>
     <div class="row">
-      <div class="col-lg-3" *ngFor="let moto2 of pilotosByMoto2">
+      <div class="col-lg-3" *ngFor="let moto2 of pilotosByMoto2 | filter: filterPiloto">
         <app-piloto-ficha [piloto]="moto2"></app-piloto-ficha>
       </div>
     </div>
@@ -41,7 +48,7 @@
   <div id="Moto3" class="tab-pane fade" [ngClass]="{ 'in active': categoria === 'Moto3' }">
     <br/><br/>
     <div class="row">
-      <div class="col-lg-3" *ngFor="let moto3 of pilotosByMoto3">
+      <div class="col-lg-3" *ngFor="let moto3 of pilotosByMoto3 | filter: filterPiloto">
         <app-piloto-ficha [piloto]="moto3"></app-piloto-ficha>
       </div>
     </div>

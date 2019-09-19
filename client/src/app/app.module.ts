@@ -38,6 +38,7 @@ import { SortByPipe } from './components/pilotos/sort-by.pipe';
 import { EquipoFichaComponent } from './components/equipos/equipo-ficha/equipo-ficha.component';
 import { PilotoDetalleComponent } from './components/pilotos/piloto-detalle/piloto-detalle.component';
 import { EquipoDetalleComponent } from './components/equipos/equipo-detalle/equipo-detalle.component';
+import { FilterPipe } from './pipes/filter.pipe';
 
 @NgModule({
   declarations: [
@@ -62,7 +63,8 @@ import { EquipoDetalleComponent } from './components/equipos/equipo-detalle/equi
     SortByPipe,
     EquipoFichaComponent,
     PilotoDetalleComponent,
-    EquipoDetalleComponent
+    EquipoDetalleComponent,
+    FilterPipe
   ],
   imports: [
     BrowserModule,

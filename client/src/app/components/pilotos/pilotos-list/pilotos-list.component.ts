@@ -17,6 +17,8 @@ export class PilotosListComponent implements OnInit {
   pilotosByMoto2: any = [];
   pilotosByMoto3: any = [];
 
+  filterPiloto = '';
+
 
   constructor(
     private pilotosService: PilotosService,

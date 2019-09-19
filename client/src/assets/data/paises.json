@@ -8,5 +8,9 @@
     { "id": "qa", "nombre": "Qatar" },
     { "id": "us", "nombre": "EE.UU." },
     { "id": "ch", "nombre": "Suiza" },
-    { "id": "de", "nombre": "Alemania" }
+    { "id": "de", "nombre": "Alemania" },
+    { "id": "za", "nombre": "Sudáfrica" },
+    { "id": "ad", "nombre": "Andorra" },
+    { "id": "nl", "nombre": "Holanda" },
+    { "id": "po", "nombre": "Portugal" }
 ]

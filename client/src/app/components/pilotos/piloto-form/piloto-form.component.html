@@ -68,7 +68,6 @@
             </div>
             <div class="form-group">
                 <label>Pais</label>
-                <!-- <input type="text" name="pais" [(ngModel)]="piloto.pais" placeholder="País" class="form-control"> -->
                 <select class="form-control" [(ngModel)]="piloto.pais" [ngModelOptions]="{standalone: true}">
                     <option value="0">Seleccione un país</option>
                     <option *ngFor="let pais of paises | sortBy: 'nombre'" value="{{ pais.id }}">{{ pais.nombre }} ({{ pais.id }})</option>

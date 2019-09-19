@@ -10,7 +10,7 @@
 
   $pilotos = [];
 
-  $query = "SELECT *, TIMESTAMPDIFF(YEAR, fecha, CURDATE()) AS edad FROM pilotos ORDER BY nombre ASC";
+  $query = "SELECT *, TIMESTAMPDIFF(YEAR, fecha, CURDATE()) AS edad FROM pilotos ORDER BY dorsal ASC";
   $result1 = $connect->query($query) or trigger_error($connect->error);
 
   while($piloto = $result1->fetch_assoc())

@@ -1,3 +1,7 @@
+.thumbnail {
+    min-height: 345px;
+}
+
 img.principal {
     height: 150px;
 }
