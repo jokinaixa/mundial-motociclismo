@@ -1,4 +1,4 @@
-import { Component, OnInit, HostBinding } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
 import { PilotosService } from '../pilotos.service';
@@ -18,6 +18,7 @@ import { Equipo } from '../../../models/Equipo';
 export class PilotoFormComponent implements OnInit {
 
   clasificacionesByPiloto: any = [];
+  categoria: string;
   paises: any = [];
   
   equipo: Equipo = {
@@ -25,13 +26,14 @@ export class PilotoFormComponent implements OnInit {
     nombre: '',
     moto: '',
     imagen: '',
-    categoria: 'MotoGP'
+    categoria: ''
   }
 
   piloto: Piloto = {
     id: null,
     equipo: this.equipo,
     nombre: '',
+    apellido: '',
     imagen: '',
     fecha: new Date(),
     pais: '0'
@@ -53,7 +55,8 @@ export class PilotoFormComponent implements OnInit {
   ngOnInit() {
 
     const params = this.activatedRoute.snapshot.params;
-
+    this.categoria = params.categoria;
+    
     this.obtenerEquipos();
     this.obtenerPaises();
 
@@ -71,15 +74,21 @@ export class PilotoFormComponent implements OnInit {
         err => console.log(err)
       );
     }
+
+    if (params.categoria)
+    {
+      this.equipo.categoria = params.categoria;
+    }
   }
 
   obtenerEquipos()
   {
-    this.equiposService.obtenerEquipos()
-    .subscribe(
+    this.equiposService.obtenerEquipos().subscribe(
       res => {
         //console.log(res);
-        this.equipos = res;
+        this.equipos = res.filter(
+          equipo => equipo.categoria === this.categoria
+        );
       },
       err => console.log(err)
     );
@@ -112,12 +121,13 @@ export class PilotoFormComponent implements OnInit {
   {
     delete this.piloto.id;
     this.piloto.imagen = (this.piloto.imagen == '') ? 'assets/images/sin_imagen.jpg' : this.piloto.imagen;
+    this.piloto.apellido = this.piloto.apellido.toLocaleUpperCase();
 
     this.pilotosService.crearPiloto(this.piloto)
       .subscribe(
         res => {
           //console.log(res);
-          this.router.navigate(['/pilotos']);
+          this.router.navigate(['/pilotos', this.equipo.categoria]);
         },
         err => console.error(err)
       );
@@ -125,11 +135,13 @@ export class PilotoFormComponent implements OnInit {
 
   cambiarPiloto()
   {
+    this.piloto.apellido = this.piloto.apellido.toLocaleUpperCase();
+    
     this.pilotosService.cambiarPiloto(this.piloto.id, this.piloto)
       .subscribe(
         res => { 
           //console.log(res);
-          this.router.navigate(['/pilotos']);
+          this.router.navigate(['/pilotos', this.equipo.categoria]);
         },
         err => console.error(err)
       );
@@ -141,7 +153,7 @@ export class PilotoFormComponent implements OnInit {
       .subscribe(
         res => {
           //console.log(res);
-          this.router.navigate(['/pilotos']);
+          this.router.navigate(['/pilotos', this.equipo.categoria]);
         },
         err => console.error(err)
       )

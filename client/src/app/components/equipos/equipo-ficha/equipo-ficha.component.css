@@ -1,0 +1,11 @@
+.thumbnail {
+    min-height: 320px;
+}
+
+img.principal {
+    height: 150px;
+}
+
+.caption h4.titulo {
+    min-height: 40px;
+}

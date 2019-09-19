@@ -1,14 +1,15 @@
 <div class="thumbnail">
-  <a [routerLink]="['/circuitos/edit/', circuito?.id]">
-    <img [src]="circuito?.imagen" class="img-responsive" [alt]="circuito?.nombre">
+  <a [routerLink]="['/circuitos/edit/', circuito.id]">
+    <img class="principal" [src]="circuito.imagen" [alt]="circuito.nombre" [title]="circuito.nombre">
   </a>
   <div class="caption">
-    <h4>
-      {{ circuito?.nombre }} <small>({{ circuito?.pais }})</small>
+    <h4 class="titulo">
+      <img class="flag" src="assets/images/flags/{{ circuito.pais }}.png" [alt]="circuito.pais" [title]="circuito.pais">
+      <a [routerLink]="['/circuitos/edit/', circuito.id]">{{ circuito.nombre }}</a>
     </h4>
     <dl>
       <dt>Longitud</dt>
-      <dd>{{ circuito?.longitud }}</dd>
+      <dd>{{ circuito.longitud }} metros</dd>
     </dl>
   </div>
 </div>

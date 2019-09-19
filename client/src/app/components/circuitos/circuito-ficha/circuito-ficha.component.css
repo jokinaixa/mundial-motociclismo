@@ -1,0 +1,13 @@
+img.principal {
+    height: 150px;
+}
+
+img.flag {
+    width: 20px;
+    margin-right: 8px;
+    padding-bottom: 3px;
+}
+
+.caption h4.titulo {
+    min-height: 40px;
+}

@@ -49,8 +49,7 @@ export class ClasificacionFormComponent implements OnInit {
 
     if (params.id)
     {
-      this.clasificacionesService.mostrarClasificacion(params.id)
-      .subscribe(
+      this.clasificacionesService.mostrarClasificacion(params.id).subscribe(
         res => {
           //console.log(res);
           this.clasificacion = res;
@@ -63,8 +62,7 @@ export class ClasificacionFormComponent implements OnInit {
 
   obtenerCircuitos()
   {
-    this.circuitosService.obtenerCircuitos()
-    .subscribe(
+    this.circuitosService.obtenerCircuitos().subscribe(
       res => {
         //console.log(res);
         this.circuitos = res;
@@ -75,13 +73,11 @@ export class ClasificacionFormComponent implements OnInit {
 
   obtenerPilotos()
   {
-    this.pilotosService.obtenerPilotos()
-    .subscribe(
+    this.pilotosService.obtenerPilotos().subscribe(
       data => {
-        this.pilotosByCategoria = data
-          .filter(
-            piloto => piloto.equipo.categoria === this.clasificacion.categoria
-          );
+        this.pilotosByCategoria = data.filter(
+          piloto => piloto.equipo.categoria === this.clasificacion.categoria
+        );
       },
       err => console.log(err)
     );
@@ -91,37 +87,34 @@ export class ClasificacionFormComponent implements OnInit {
   {
     delete this.clasificacion.id;
 
-    this.clasificacionesService.crearClasificacion(this.clasificacion)
-      .subscribe(
-        res => {
-          //console.log(res);
-          this.router.navigate(['/clasificaciones/show', this.clasificacion.circuito]);
-        },
-        err => console.error(err)
-      );
+    this.clasificacionesService.crearClasificacion(this.clasificacion).subscribe(
+      res => {
+        //console.log(res);
+        this.router.navigate(['/clasificaciones', this.clasificacion.categoria, this.clasificacion.circuito]);
+      },
+      err => console.error(err)
+    );
   }
 
   cambiarClasificacion()
   {
-    this.clasificacionesService.cambiarClasificacion(this.clasificacion.id, this.clasificacion)
-      .subscribe(
-        res => { 
-          //console.log(res);
-          this.router.navigate(['/clasificaciones/show', this.clasificacion.circuito]);
-        },
-        err => console.error(err)
-      );
+    this.clasificacionesService.cambiarClasificacion(this.clasificacion.id, this.clasificacion).subscribe(
+      res => { 
+        //console.log(res);
+        this.router.navigate(['/clasificaciones', this.clasificacion.categoria, this.clasificacion.circuito]);
+      },
+      err => console.error(err)
+    );
   }
 
   borrarClasificacion(id: string)
   {
-    this.clasificacionesService.borrarClasificacion(id, this.clasificacion)
-      .subscribe(
-        res => {
-          //console.log(res);
-          this.router.navigate(['/clasificaciones/show', this.clasificacion.circuito]);
-        },
-        err => console.error(err)
-      );
+    this.clasificacionesService.borrarClasificacion(id, this.clasificacion).subscribe(
+      res => {
+        //console.log(res);
+        this.router.navigate(['/clasificaciones', this.clasificacion.categoria, this.clasificacion.circuito]);
+      },
+      err => console.error(err)
+    );
   }
 }

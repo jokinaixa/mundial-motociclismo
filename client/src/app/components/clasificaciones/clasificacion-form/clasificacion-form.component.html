@@ -1,6 +1,6 @@
 <ol class="breadcrumb">
   <li><a [routerLink]="['/inicio']">Inicio</a></li>
-  <li><a [routerLink]="['/clasificaciones/show', clasificacion.circuito]">Clasificaciones</a></li>
+  <li><a [routerLink]="['/clasificaciones', clasificacion.categoria, clasificacion.circuito]">Clasificaciones</a></li>
   <li class="active">
       <span *ngIf="edit">Editar</span>
       <span *ngIf="!edit">Nuevo</span>
@@ -30,7 +30,7 @@
             <div class="col-lg-9">
               <select class="form-control" [(ngModel)]="clasificacion.piloto" [ngModelOptions]="{standalone: true}">
                 <option value="0">Seleccione un piloto</option>
-                <option *ngFor="let piloto of pilotosByCategoria" [value]="piloto.id">{{ piloto.nombre }}</option>
+                <option *ngFor="let piloto of pilotosByCategoria" [value]="piloto.id">{{ piloto.nombre }} {{ piloto.apellido }}</option>
               </select>
             </div>
             <div class="col-lg-3 text-right">

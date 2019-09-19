@@ -23,22 +23,22 @@
         
         <div class="tab-content">
             <div id="MotoGP" class="tab-pane fade in active">
-                <h3>MotoGP</h3>
-                <table class="table table-hover">
+                <br/><br/>
+                <table class="table">
                     <tbody>
                         <tr>
                             <th>Piloto</th>
                             <th class="text-center">Posición</th>
                         </tr>
                         <tr *ngFor="let clasificacionByMotoGP of clasificacionesByMotoGP">
-                            <td><a [routerLink]="['/pilotos/edit/', clasificacionByMotoGP.piloto.id]">{{ clasificacionByMotoGP.piloto.nombre }} </a><small>({{ clasificacionByMotoGP.piloto.equipo.moto }})</small></td>
+                            <td><a [routerLink]="['/pilotos/edit/', clasificacionByMotoGP.piloto.id]">{{ clasificacionByMotoGP.piloto.nombre }} {{ clasificacionByMotoGP.piloto.apellido }} </a><small>({{ clasificacionByMotoGP.piloto.equipo.moto }})</small></td>
                             <td class="text-center">{{ clasificacionByMotoGP.posicion }}</td>
                         </tr>
                     </tbody>
                 </table>
             </div>
             <div id="Moto2" class="tab-pane fade">
-                <h3>Moto2</h3>
+                <br/><br/>
                 <table class="table">
                     <tbody>
                         <tr>
@@ -46,14 +46,14 @@
                         <th class="text-center">Posición</th>
                         </tr>
                         <tr *ngFor="let clasificacionByMoto2 of clasificacionesByMoto2">
-                        <td><a [routerLink]="['/pilotos/edit/', clasificacionByMoto2.piloto.id]">{{ clasificacionByMoto2.piloto.nombre }} </a><small>({{ clasificacionByMoto2.piloto.equipo.moto }})</small></td>
+                        <td><a [routerLink]="['/pilotos/edit/', clasificacionByMoto2.piloto.id]">{{ clasificacionByMoto2.piloto.nombre }} {{ clasificacionByMoto2.piloto.apellido }} </a><small>({{ clasificacionByMoto2.piloto.equipo.moto }})</small></td>
                         <td class="text-center">{{ clasificacionByMoto2.posicion }}</td>
                         </tr>
                     </tbody>
                 </table>
             </div>
             <div id="Moto3" class="tab-pane fade">
-                <h3>Moto3</h3>
+                <br/><br/>
                 <table class="table">
                     <tbody>
                         <tr>
@@ -61,7 +61,7 @@
                         <th class="text-center">Posición</th>
                         </tr>
                         <tr *ngFor="let clasificacionByMoto3 of clasificacionesByMoto3">
-                        <td><a [routerLink]="['/pilotos/edit/', clasificacionByMoto3.piloto.id]">{{ clasificacionByMoto3.piloto.nombre }} </a><small>({{ clasificacionByMoto3.piloto.equipo.moto }})</small></td>
+                        <td><a [routerLink]="['/pilotos/edit/', clasificacionByMoto3.piloto.id]">{{ clasificacionByMoto3.piloto.nombre }} {{ clasificacionByMoto3.piloto.apellido }} </a><small>({{ clasificacionByMoto3.piloto.equipo.moto }})</small></td>
                         <td class="text-center">{{ clasificacionByMoto3.posicion }}</td>
                         </tr>
                     </tbody>
@@ -78,7 +78,6 @@
             </div>
             <div class="form-group">
                 <label>País</label>
-                <!-- <input type="text" name="pais" [(ngModel)]="circuito.pais" placeholder="País" class="form-control"> -->
                 <select class="form-control" [(ngModel)]="circuito.pais" [ngModelOptions]="{standalone: true}">
                     <option value="0">Seleccione un país</option>
                     <option *ngFor="let pais of paises" value="{{ pais.id }}">{{ pais.nombre }} ({{ pais.id }})</option>

@@ -4,28 +4,45 @@
 </ol>
 
 <p class="text-right">
-  <a [routerLink]="['/equipos/add']" class="btn btn-success">Nuevo Equipo</a>
+  <a [routerLink]="['/equipos/add', categoria]" class="btn btn-success">Nuevo Equipo {{ categoria }}</a>
 </p>
 
-<div class="row">
-  <div class="col-lg-3" *ngFor="let equipo of equipos">
-    <div class="thumbnail">
-      <a [routerLink]="['/equipos/edit/', equipo.id]">
-        <img [src]="equipo.imagen" alt="equipo.nombre">
-      </a>
-      <div class="caption">
-        <h4>
-          <a [routerLink]="['/equipos/edit/', equipo.id]">{{ equipo.nombre }} </a>
-          <small>({{ equipo.moto }})</small>
-        </h4>
-        <div *ngIf="equipo.pilotos?.length > 0">
-          <h5>Pilotos:</h5>
-          <ul>
-            <li *ngFor="let piloto of equipo.pilotos">
-              <a [routerLink]="['/pilotos/edit/', piloto.id]">{{ piloto.nombre }} </a><small>({{ piloto.edad }})</small>
-            </li>
-          </ul>
-        </div>
+<ul class="nav nav-tabs">
+  <li [ngClass]="{ 'active': categoria === 'MotoGP' }">
+    <a data-toggle="tab" href="#MotoGP" (click)="muestraContenido('MotoGP')">MotoGP</a>
+  </li>
+  <li [ngClass]="{ 'active': categoria === 'Moto2' }">
+    <a data-toggle="tab" href="#Moto2" (click)="muestraContenido('Moto2')">Moto2</a>
+  </li>
+  <li [ngClass]="{ 'active': categoria === 'Moto3' }">
+    <a data-toggle="tab" href="#Moto3" (click)="muestraContenido('Moto3')">Moto3</a>
+  </li>
+</ul>
+
+<div class="tab-content">
+  <div id="MotoGP" class="tab-pane fade" [ngClass]="{ 'in active': categoria === 'MotoGP' }">
+    <br/><br/>
+    <div class="row">
+      <div class="col-lg-3" *ngFor="let equipoByMotoGP of equiposByMotoGP">
+        <app-equipo-ficha [equipo]="equipoByMotoGP"></app-equipo-ficha>
+      </div>
+    </div>
+  </div>
+
+  <div id="MotoGP" class="tab-pane fade" [ngClass]="{ 'in active': categoria === 'Moto2' }">
+    <br/><br/>
+    <div class="row">
+      <div class="col-lg-3" *ngFor="let equipoByMoto2 of equiposByMoto2">
+        <app-equipo-ficha [equipo]="equipoByMoto2"></app-equipo-ficha>
+      </div>
+    </div>
+  </div>
+
+  <div id="MotoGP" class="tab-pane fade" [ngClass]="{ 'in active': categoria === 'Moto3' }">
+    <br/><br/>
+    <div class="row">
+      <div class="col-lg-3" *ngFor="let equipoByMoto3 of equiposByMoto3">
+        <app-equipo-ficha [equipo]="equipoByMoto3"></app-equipo-ficha>
       </div>
     </div>
   </div>

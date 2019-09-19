@@ -1,6 +1,6 @@
 <ol class="breadcrumb">
     <li><a [routerLink]="['/inicio']">Inicio</a></li>
-    <li><a [routerLink]="['/pilotos']">Pilotos</a></li>
+    <li><a [routerLink]="['/pilotos', piloto.equipo.categoria]">Pilotos</a></li>
     <li class="active">
         <span *ngIf="edit">Editar</span>
         <span *ngIf="!edit">Nuevo</span>
@@ -37,8 +37,16 @@
     <div class="col-lg-5 col-lg-offset-1">
         <form action="">
             <div class="form-group">
-                <label>Nombre</label>
-                <input type="text" name="nombre" [(ngModel)]="piloto.nombre" placeholder="Nombre" class="form-control" autofocus>
+                <label>Piloto</label>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <input type="text" name="nombre" [(ngModel)]="piloto.nombre" placeholder="Nombre" class="form-control" autofocus>
+                    </div>
+                    <div class="col-lg-6">
+                        <input type="text" name="apellido" [(ngModel)]="piloto.apellido" placeholder="Apellido" class="form-control">
+                    </div>
+                </div>
+               
             </div>           
             <div class="form-group">
                 <label>Equipo</label>
@@ -46,11 +54,11 @@
                     <div class="col-lg-8">
                         <select class="form-control" [(ngModel)]="piloto.equipo.id" [ngModelOptions]="{standalone: true}">
                             <option value="0">Seleccione un equipo</option>
-                            <option *ngFor="let equipo of equipos" value="{{ equipo.id }}">{{ equipo.nombre }}</option>
+                            <option *ngFor="let equipo of equipos | sortBy: 'nombre'" value="{{ equipo.id }}">{{ equipo.nombre }}</option>
                         </select>
                     </div>
                     <div class="col-lg-4 text-right">
-                        <a [routerLink]="['/equipos/add']" class="btn btn-success">Nuevo Equipo</a>
+                        <a [routerLink]="['/equipos/add', piloto.equipo.categoria]" class="btn btn-success">Nuevo Equipo</a>
                     </div>
                 </div>
             </div>           

@@ -18,18 +18,20 @@ export class EquipoFormComponent implements OnInit {
     nombre: '',
     moto: '',
     imagen: '',
-    categoria: 'MotoGP'
+    categoria: ''
   };
 
   categorias: string[] = ['MotoGP', 'Moto2', 'Moto3'];
 
   edit: boolean = false;  
 
-  constructor(private equiposService: EquiposService, private router: Router, private activatedRoute: ActivatedRoute) { }
+  constructor(
+    private equiposService: EquiposService, 
+    private activatedRoute: ActivatedRoute,
+    private router: Router) { }
 
     
   ngOnInit() {
-
     const params = this.activatedRoute.snapshot.params;
 
     if (params.id)
@@ -44,6 +46,11 @@ export class EquipoFormComponent implements OnInit {
         err => console.log(err)
       )
     }
+
+    if (params.categoria)
+    {
+      this.equipo.categoria = params.categoria;
+    }
   }
 
   crearEquipo()
@@ -55,8 +62,8 @@ export class EquipoFormComponent implements OnInit {
     this.equiposService.crearEquipo(this.equipo)
       .subscribe(
         res => {
-          console.log(res);
-          this.router.navigate(['/equipos']);
+          //console.log(res);
+          this.router.navigate(['/equipos', this.equipo.categoria]);
         },
         err => console.error(err)
       );
@@ -67,8 +74,8 @@ export class EquipoFormComponent implements OnInit {
     this.equiposService.cambiarEquipo(this.equipo.id, this.equipo)
       .subscribe(
         res => { 
-          console.log(res);
-          this.router.navigate(['/equipos']);
+          //console.log(res);
+          this.router.navigate(['/equipos', this.equipo.categoria]);
         },
         err => console.error(err)
       );
@@ -79,8 +86,8 @@ export class EquipoFormComponent implements OnInit {
     this.equiposService.borrarEquipo(id, this.equipo)
       .subscribe(
         res => {
-          console.log(res);
-          this.router.navigate(['/equipos']);
+          //console.log(res);
+          this.router.navigate(['/equipos', this.equipo.categoria]);
         },
         err => console.error(err)
       )

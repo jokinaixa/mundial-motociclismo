@@ -20,22 +20,21 @@ const routes: Routes = [
 
   { path: 'inicio', component: InicioComponent },
 
-  { path: 'pilotos', component: PilotosListComponent },
-  { path: 'pilotos/add', component: PilotoFormComponent },
-  { path: 'pilotos/edit/:id', component: PilotoFormComponent },
+  { path: 'pilotos/:categoria', component: PilotosListComponent },
+  { path: 'pilotos/add/:categoria', component: PilotoFormComponent },
+  { path: 'pilotos/edit/:categoria/:id', component: PilotoFormComponent },
 
-  { path: 'equipos', component: EquiposListComponent },
-  { path: 'equipos/add', component: EquipoFormComponent },
-  { path: 'equipos/edit/:id', component: EquipoFormComponent },
+  { path: 'equipos/:categoria', component: EquiposListComponent },
+  { path: 'equipos/add/:categoria', component: EquipoFormComponent },
+  { path: 'equipos/edit/:categoria/:id', component: EquipoFormComponent },
 
   { path: 'circuitos', component: CircuitosListComponent },
   { path: 'circuitos/add', component: CircuitoFormComponent },
   { path: 'circuitos/edit/:id', component: CircuitoFormComponent },
 
-  { path: 'clasificaciones', component: ClasificacionesListComponent },
-  { path: 'clasificaciones/show/:circuito', component: ClasificacionesListComponent },
-  { path: 'clasificaciones/add/:circuito/:categoria', component: ClasificacionFormComponent },
-  { path: 'clasificaciones/edit/:circuito/:categoria/:id', component: ClasificacionFormComponent }
+  { path: 'clasificaciones/:categoria/:circuito', component: ClasificacionesListComponent },
+  { path: 'clasificaciones/add/:categoria/:circuito', component: ClasificacionFormComponent },
+  { path: 'clasificaciones/edit/:categoria/:circuito/:id', component: ClasificacionFormComponent }
 ];
 
 @NgModule({

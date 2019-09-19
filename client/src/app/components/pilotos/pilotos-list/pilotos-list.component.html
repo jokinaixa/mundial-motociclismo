@@ -4,11 +4,46 @@
 </ol>
 
 <p class="text-right">
-  <a [routerLink]="['/pilotos/add']" class="btn btn-success">Nuevo Piloto</a>
+  <a [routerLink]="['/pilotos/add', categoria]" class="btn btn-success">Nuevo Piloto {{ categoria }}</a>
 </p>
 
-<div class="row">
-  <div class="col-lg-3" *ngFor="let piloto of pilotos">
-    <app-piloto-ficha [piloto]="piloto"></app-piloto-ficha>
+<ul class="nav nav-tabs">
+  <li [ngClass]="{ 'active': categoria === 'MotoGP' }">
+    <a data-toggle="tab" href="#MotoGP" (click)="muestraContenido('MotoGP')">MotoGP</a>
+  </li>
+  <li [ngClass]="{ 'active': categoria === 'Moto2' }">
+    <a data-toggle="tab" href="#Moto2" (click)="muestraContenido('Moto2')">Moto2</a>
+  </li>
+  <li [ngClass]="{ 'active': categoria === 'Moto3' }">
+    <a data-toggle="tab" href="#Moto3" (click)="muestraContenido('Moto3')">Moto3</a>
+  </li>
+</ul>
+
+<div class="tab-content">
+  <div id="MotoGP" class="tab-pane fade" [ngClass]="{ 'in active': categoria === 'MotoGP' }">
+    <br/><br/>
+    <div class="row">
+      <div class="col-lg-3" *ngFor="let motoGP of pilotosByMotoGP">
+        <app-piloto-ficha [piloto]="motoGP"></app-piloto-ficha>
+      </div>
+    </div>
+  </div>
+
+  <div id="Moto2" class="tab-pane fade" [ngClass]="{ 'in active': categoria === 'Moto2' }">
+    <br/><br/>
+    <div class="row">
+      <div class="col-lg-3" *ngFor="let moto2 of pilotosByMoto2">
+        <app-piloto-ficha [piloto]="moto2"></app-piloto-ficha>
+      </div>
+    </div>
+  </div>
+
+  <div id="Moto3" class="tab-pane fade" [ngClass]="{ 'in active': categoria === 'Moto3' }">
+    <br/><br/>
+    <div class="row">
+      <div class="col-lg-3" *ngFor="let moto3 of pilotosByMoto3">
+        <app-piloto-ficha [piloto]="moto3"></app-piloto-ficha>
+      </div>
+    </div>
   </div>
 </div>

@@ -1,8 +1,7 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 import { PilotosService } from '../pilotos.service';
-
-import { Piloto } from '../../../models/Piloto';
 
 @Component({
   selector: 'app-pilotos-list',
@@ -12,15 +11,43 @@ import { Piloto } from '../../../models/Piloto';
 
 export class PilotosListComponent implements OnInit {
 
-  pilotos: any = [];
+  categoria: string;
+  
+  pilotosByMotoGP: any = [];
+  pilotosByMoto2: any = [];
+  pilotosByMoto3: any = [];
 
-  constructor(private pilotosService: PilotosService) { }
+
+  constructor(
+    private pilotosService: PilotosService,
+    private activatedRoute: ActivatedRoute) { }
 
 
   ngOnInit() {
+    const params = this.activatedRoute.snapshot.params;
+    this.categoria = params.categoria;
+
     this.pilotosService.obtenerPilotos()
     .subscribe(
-      data => this.pilotos = data
+      data => {
+        this.pilotosByMotoGP = data.filter(
+          piloto => piloto.equipo.categoria === 'MotoGP'
+        );
+
+        this.pilotosByMoto2 = data
+          .filter(
+            piloto => piloto.equipo.categoria === 'Moto2'
+          );
+
+        this.pilotosByMoto3 = data
+          .filter(
+            piloto => piloto.equipo.categoria === 'Moto3'
+          );
+      }
     );
+  }
+
+  muestraContenido(categoria) {
+    this.categoria = categoria;
   }
 }

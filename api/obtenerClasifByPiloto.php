@@ -10,7 +10,7 @@
 
   $clasificaciones = [];
 
-  $query = "SELECT b.id, b.pais, b.nombre, a.posicion FROM clasificaciones a, circuitos b WHERE a.circuito = b.id AND a.piloto = $_GET[id] ORDER BY b.fecha ASC, a.posicion ";
+  $query = "SELECT b.id, b.pais, b.nombre, a.posicion FROM clasificaciones a, circuitos b WHERE a.circuito = b.id AND a.piloto = 1 ORDER BY b.fecha ASC, a.posicion ";
   $resultado = $connect->query($query) or trigger_error($connect->error);
   
   while($clasificacion = $resultado->fetch_assoc())

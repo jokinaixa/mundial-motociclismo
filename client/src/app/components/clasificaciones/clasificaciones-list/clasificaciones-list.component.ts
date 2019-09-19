@@ -13,9 +13,10 @@ import { Circuito } from '../../../models/Circuito';
 })
 export class ClasificacionesListComponent implements OnInit {
 
-  circuito: number;
+  categoria: string;
+  circuitoSeleccionado: number;
+  
   circuitos: Circuito[];
-  selected: number;
   
   clasificacionesByMotoGP: any = [];
   clasificacionesByMoto2: any = [];
@@ -28,32 +29,35 @@ export class ClasificacionesListComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit() {
-
     const params = this.activatedRoute.snapshot.params;
+    this.categoria = params.categoria;
 
     this.circuitosService.obtenerCircuitos().subscribe(
       data => {
         this.circuitos = data; 
 
-        this.circuito = (params.circuito) ? params.circuito : data[0].id;
-        this.obtenerClasificaciones(this.circuito);
-        this.selected = this.circuito;
+        this.circuitoSeleccionado = (params.circuito == 0) ? data[params.circuito].id : params.circuito;
+        this.obtenerClasificaciones();
       }
     );
   }
 
-  isActive(id: number) {
-    return this.selected === id;
-  };
+  muestraCircuito(circuito: number) {
+    this.circuitoSeleccionado = circuito;
 
-  modifiedLink(id: number) {
-    this.router.navigate(['/clasificaciones/edit/', this.selected, 'MotoGP', id]);
+    this.obtenerClasificaciones();
   }
 
-  obtenerClasificaciones(id: number)
+  muestraCategoria(categoria: string) {
+    this.categoria = categoria;
+  }
+
+  modifiedLink(id: number) {
+    this.router.navigate(['/clasificaciones/edit/', this.categoria, this.circuitoSeleccionado, id]);
+  }
+
+  obtenerClasificaciones()
   {
-    this.selected = id;
-    
     this.clasificacionesByMotoGP = [];
     this.clasificacionesByMoto2 = [];
     this.clasificacionesByMoto3 = [];
@@ -61,20 +65,17 @@ export class ClasificacionesListComponent implements OnInit {
     this.clasificacionesService.obtenerClasificaciones()
       .subscribe(
         data => {
-          this.clasificacionesByMotoGP = data
-            .filter(
-              clasificacion => clasificacion.circuito.id === this.selected && clasificacion.categoria === 'MotoGP'
-            );
+          this.clasificacionesByMotoGP = data.filter(
+            clasificacion => clasificacion.circuito.id === this.circuitoSeleccionado && clasificacion.categoria === 'MotoGP'
+          );
 
-          this.clasificacionesByMoto2 = data
-            .filter(
-              clasificacion => clasificacion.circuito.id === this.selected && clasificacion.categoria === 'Moto2'
-            );
+          this.clasificacionesByMoto2 = data.filter(
+            clasificacion => clasificacion.circuito.id === this.circuitoSeleccionado && clasificacion.categoria === 'Moto2'
+          );
 
-          this.clasificacionesByMoto3 = data
-            .filter(
-              clasificacion => clasificacion.circuito.id === this.selected && clasificacion.categoria === 'Moto3'
-            );
+          this.clasificacionesByMoto3 = data.filter(
+            clasificacion => clasificacion.circuito.id === this.circuitoSeleccionado && clasificacion.categoria === 'Moto3'
+          );
         }
       );
   }

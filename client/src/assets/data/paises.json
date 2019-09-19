@@ -6,5 +6,7 @@
     { "id": "au", "nombre": "Australia" },
     { "id": "ar", "nombre": "Argentina" },
     { "id": "qa", "nombre": "Qatar" },
-    { "id": "us", "nombre": "EE.UU." }
+    { "id": "us", "nombre": "EE.UU." },
+    { "id": "ch", "nombre": "Suiza" },
+    { "id": "de", "nombre": "Alemania" }
 ]

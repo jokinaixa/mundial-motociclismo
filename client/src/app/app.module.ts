@@ -35,6 +35,9 @@ import { ClasificacionesNavComponent } from './components/clasificaciones/clasif
 import { NavegadorComponent } from './components/navegador/navegador.component';
 
 import { SortByPipe } from './components/pilotos/sort-by.pipe';
+import { EquipoFichaComponent } from './components/equipos/equipo-ficha/equipo-ficha.component';
+import { PilotoDetalleComponent } from './components/pilotos/piloto-detalle/piloto-detalle.component';
+import { EquipoDetalleComponent } from './components/equipos/equipo-detalle/equipo-detalle.component';
 
 @NgModule({
   declarations: [
@@ -56,7 +59,10 @@ import { SortByPipe } from './components/pilotos/sort-by.pipe';
     ClasificacionesNavComponent,
     CircuitoFichaComponent,
     NavegadorComponent,
-    SortByPipe
+    SortByPipe,
+    EquipoFichaComponent,
+    PilotoDetalleComponent,
+    EquipoDetalleComponent
   ],
   imports: [
     BrowserModule,
