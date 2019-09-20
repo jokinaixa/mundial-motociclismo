@@ -16,7 +16,7 @@ import { ClasificacionFormComponent } from './components/clasificaciones/clasifi
 import { InicioComponent } from './components/inicio/inicio.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/inicio', pathMatch: 'full' },
+  { path: '', redirectTo: 'inicio', pathMatch: 'full' },
 
   { path: 'inicio', component: InicioComponent },
 

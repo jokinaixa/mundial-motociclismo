@@ -34,11 +34,14 @@ import { ClasificacionesListComponent } from './components/clasificaciones/clasi
 import { ClasificacionesNavComponent } from './components/clasificaciones/clasificaciones-nav/clasificaciones-nav.component';
 import { NavegadorComponent } from './components/navegador/navegador.component';
 
-import { SortByPipe } from './components/pilotos/sort-by.pipe';
 import { EquipoFichaComponent } from './components/equipos/equipo-ficha/equipo-ficha.component';
 import { PilotoDetalleComponent } from './components/pilotos/piloto-detalle/piloto-detalle.component';
 import { EquipoDetalleComponent } from './components/equipos/equipo-detalle/equipo-detalle.component';
+
+// Pipes
+import { SortByPipe } from './pipes/sort-by.pipe';
 import { FilterPipe } from './pipes/filter.pipe';
+import { FilterMotoPipe } from './pipes/filter-moto.pipe';
 
 @NgModule({
   declarations: [
@@ -60,11 +63,12 @@ import { FilterPipe } from './pipes/filter.pipe';
     ClasificacionesNavComponent,
     CircuitoFichaComponent,
     NavegadorComponent,
-    SortByPipe,
     EquipoFichaComponent,
     PilotoDetalleComponent,
     EquipoDetalleComponent,
-    FilterPipe
+    SortByPipe,
+    FilterPipe,
+    FilterMotoPipe
   ],
   imports: [
     BrowserModule,

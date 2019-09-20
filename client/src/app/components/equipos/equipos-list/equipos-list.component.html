@@ -19,30 +19,72 @@
   </li>
 </ul>
 
-<div class="tab-content">
+<div class="tab-content">      
   <div id="MotoGP" class="tab-pane fade" [ngClass]="{ 'in active': categoria === 'MotoGP' }">
-    <br/><br/>
+    <br/>
     <div class="row">
-      <div class="col-lg-3" *ngFor="let equipoByMotoGP of equiposByMotoGP">
-        <app-equipo-ficha [equipo]="equipoByMotoGP"></app-equipo-ficha>
+      <div class="col-lg-2">
+        <h3 *ngIf="marcasMotoGP?.length > 0">Marcas</h3>
+        <div class="checkbox" *ngFor="let motoGP of marcasMotoGP">
+          <label>           
+            <input type="checkbox" [value]="motoGP" name="motoGP" (click)="seleccionMarcasMotoGP(motoGP, $event.target.checked)">{{ motoGP }}
+          </label>
+        </div>
+      </div>
+
+      <div class="col-lg-10">
+        <br/>
+        <div class="row">
+          <div class="col-lg-4" *ngFor="let equipoByMotoGP of equiposByMotoGP | filterMoto: marcasMotoGPSeleccionadas">
+            <app-equipo-ficha [equipo]="equipoByMotoGP"></app-equipo-ficha>
+          </div>
+        </div>
       </div>
     </div>
   </div>
-
-  <div id="MotoGP" class="tab-pane fade" [ngClass]="{ 'in active': categoria === 'Moto2' }">
-    <br/><br/>
+    
+  <div id="Moto2" class="tab-pane fade" [ngClass]="{ 'in active': categoria === 'Moto2' }">
+    <br/>
     <div class="row">
-      <div class="col-lg-3" *ngFor="let equipoByMoto2 of equiposByMoto2">
-        <app-equipo-ficha [equipo]="equipoByMoto2"></app-equipo-ficha>
+      <div class="col-lg-2">
+        <h3>Marcas</h3>
+        <div class="checkbox"  *ngFor="let moto2 of marcasMoto2">
+          <label>           
+            <input type="checkbox" [value]="moto2" name="moto2" (click)="seleccionMarcasMoto2(moto2, $event.target.checked)">{{ moto2 }}
+          </label>
+        </div>
+      </div>
+  
+      <div class="col-lg-10">
+        <br/>
+        <div class="row">
+          <div class="col-lg-4" *ngFor="let equipoByMoto2 of equiposByMoto2 | filterMoto: marcasMoto2Seleccionadas">
+            <app-equipo-ficha [equipo]="equipoByMoto2"></app-equipo-ficha>
+          </div>
+        </div>
       </div>
     </div>
   </div>
-
-  <div id="MotoGP" class="tab-pane fade" [ngClass]="{ 'in active': categoria === 'Moto3' }">
-    <br/><br/>
+    
+  <div id="Moto3" class="tab-pane fade" [ngClass]="{ 'in active': categoria === 'Moto3' }">
+    <br/>
     <div class="row">
-      <div class="col-lg-3" *ngFor="let equipoByMoto3 of equiposByMoto3">
-        <app-equipo-ficha [equipo]="equipoByMoto3"></app-equipo-ficha>
+      <div class="col-lg-2">
+        <h3 *ngIf="marcasMoto3?.length > 0">Marcas</h3>
+        <div class="checkbox"  *ngFor="let moto3 of marcasMoto3">
+          <label>           
+            <input type="checkbox" [value]="moto3" name="moto3" (click)="seleccionMarcasMoto3(moto3, $event.target.checked)">{{ moto3 }}
+          </label>
+        </div>
+      </div>
+      
+      <div class="col-lg-10">
+        <br/>
+        <div class="row">
+          <div class="col-lg-4" *ngFor="let equipoByMoto3 of equiposByMoto3 | filterMoto: marcasMoto3Seleccionadas">
+            <app-equipo-ficha [equipo]="equipoByMoto3"></app-equipo-ficha>
+          </div>
+        </div>
       </div>
     </div>
   </div>

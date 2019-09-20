@@ -8,13 +8,17 @@ export class EquiposService {
 
   equipos: any = [];
   
-  //API_URI = 'http://localhost/api';
-  API_URI = 'http://localhost:8080/api';
+  API_URI = 'http://localhost/api';
+  //API_URI = 'http://localhost:8080/api';
 
   constructor(private http: HttpClient) { }
 
   obtenerEquipos(): Observable<Equipo[]> {
     return this.http.get<Equipo[]>(`${this.API_URI}/obtenerEquipos.php`);
+  }
+
+  obtenerMotos(categoria: string) {
+    return this.http.get(`${this.API_URI}/obtenerMotos.php?categoria=${categoria}`);
   }
 
   mostrarEquipo(id: number): Observable<Equipo> {

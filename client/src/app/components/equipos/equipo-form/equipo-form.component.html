@@ -1,6 +1,6 @@
 <ol class="breadcrumb">
     <li><a [routerLink]="['/inicio']">Inicio</a></li>
-    <li><a [routerLink]="['/equipos/show', equipo.categoria]">Equipos</a></li>
+    <li><a [routerLink]="['/equipos', equipo.categoria]">Equipos</a></li>
     <li class="active">
         <span *ngIf="edit">Editar</span>
         <span *ngIf="!edit">Nuevo</span>
