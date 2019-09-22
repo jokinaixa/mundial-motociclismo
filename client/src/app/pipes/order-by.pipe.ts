@@ -1,18 +1,18 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-  name: 'sortBy'
+  name: 'orderBy'
 })
-export class SortByPipe implements PipeTransform {
+export class OrderByPipe implements PipeTransform {
 
-  transform(array: Array<any>, args: string): Array<any> {
+  transform(value: any, args?: any): any {
 
-    if (!array || array === undefined || array.length === 0) return null;
+    if (!value || value === undefined || value.length === 0) return null;
 
-    array.sort((a: any, b: any) => {
+    value.sort((a: any, b: any) => {
       // ordenamos la lista segun la columna legendIndex en el orden inverso
       //const newSeries = datosConsumos.graficoConsumos.serieConsumo.sort((con1: any, con2: any) => !('' + con1.legendIndex).localeCompare(con2.legendIndex));
-      //const newSeries = $filter('orderBy')(datosConsumos.graficoConsumos.serieConsumo, 'legendIndex', true);      
+      ////const newSeries = $filter('orderBy')(datosConsumos.graficoConsumos.serieConsumo, 'legendIndex', true);      
 
       if (a[args] < b[args]) {
         return -1;
@@ -23,7 +23,7 @@ export class SortByPipe implements PipeTransform {
       }
     });
 
-    return array;
+    return value;
   }
 
 }

@@ -13,20 +13,13 @@ export class EquiposListComponent implements OnInit {
 
   categoria: string;
   
-  equiposByMotoGP: any = [];
-  equiposByMoto2: any = [];
-  equiposByMoto3: any = [];
+  equiposMotoGP: any = [];
+  equiposMoto2: any = [];
+  equiposMoto3: any = [];
 
-  marcasMotoGP: any = ["Honda", "Yamaha",  "Suzuki", "Ducati"];
-  marcasMoto2: any = ["KTM", "Kalex"];
-  marcasMoto3: any = [];
-  //marcasMotoGP: any = [];
-  //marcasMoto2: any = [];
-  //marcasMoto3: any = [];
-
-  marcasMotoGPSeleccionadas: any = [];
-  marcasMoto2Seleccionadas: any = [];
-  marcasMoto3Seleccionadas: any = [];
+  seleccionMotoGP: any = [];
+  seleccionMoto2: any = [];
+  seleccionMoto3: any = [];
 
 
   constructor(
@@ -38,21 +31,17 @@ export class EquiposListComponent implements OnInit {
     const params = this.activatedRoute.snapshot.params;
     this.categoria = params.categoria;
 
-    //this.equiposService.obtenerMotos('MotoGP').subscribe(
-    //  data => this.marcasMotoGP = data
-    //);
-
     this.equiposService.obtenerEquipos().subscribe(
       data => {
-        this.equiposByMotoGP = data.filter(
+        this.equiposMotoGP = data.filter(
           equipo => equipo.categoria === 'MotoGP'
         );
 
-        this.equiposByMoto2 = data.filter(
+        this.equiposMoto2 = data.filter(
           equipo => equipo.categoria === 'Moto2'
         );
 
-        this.equiposByMoto3 = data.filter(
+        this.equiposMoto3 = data.filter(
           equipo => equipo.categoria === 'Moto3'
         );
       }
@@ -63,34 +52,28 @@ export class EquiposListComponent implements OnInit {
     this.categoria = categoria;
   }
 
-  seleccionMarcasMotoGP(moto:string, isChecked: boolean) { 
+  seleccion(moto:string, cadena:any, categoria:string, isChecked:boolean)
+  {
     if (isChecked) {
-      this.marcasMotoGPSeleccionadas.push(moto);
+      cadena.push(moto);
     } else {
-      var index = this.marcasMotoGPSeleccionadas.indexOf(moto);
-      this.marcasMotoGPSeleccionadas.splice(index, 1);
+      var index = cadena.indexOf(moto);
+      cadena.splice(index, 1);
     }
-    this.marcasMotoGPSeleccionadas = this.marcasMotoGPSeleccionadas.slice();
+
+    switch (categoria) {
+      case 'MotoGP':
+        this.seleccionMotoGP = cadena.slice();
+        break;
+ 
+      case 'Moto2':
+        this.seleccionMoto2 = cadena.slice();
+        break;
+          
+      case 'Moto3':
+        this.seleccionMoto3 = cadena.slice();
+        break;
+    }
   }
 
-  seleccionMarcasMoto2(moto:string, isChecked: boolean) { 
-    if (isChecked) {
-      this.marcasMoto2Seleccionadas.push(moto);
-    } else {
-      var index = this.marcasMoto2Seleccionadas.indexOf(moto);
-      this.marcasMoto2Seleccionadas.splice(index, 1);
-    }
-    this.marcasMoto2Seleccionadas = this.marcasMoto2Seleccionadas.slice();
-  }
-
-  seleccionMarcasMoto3(moto:string, categoria: string, isChecked: boolean) { 
-    
-    if (isChecked) {
-      this.marcasMoto3Seleccionadas.push(moto);
-    } else {
-      var index = this.marcasMoto3Seleccionadas.indexOf(moto);
-      this.marcasMoto3Seleccionadas.splice(index, 1);
-    }
-    this.marcasMoto3Seleccionadas = this.marcasMoto3Seleccionadas.slice();
-  }
 }

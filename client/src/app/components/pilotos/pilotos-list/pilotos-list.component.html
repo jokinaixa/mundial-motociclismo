@@ -28,28 +28,64 @@
 
 <div class="tab-content">
   <div id="MotoGP" class="tab-pane fade" [ngClass]="{ 'in active': categoria === 'MotoGP' }">
-    <br/><br/>
+    <br/>
     <div class="row">
-      <div class="col-lg-3" *ngFor="let motoGP of pilotosByMotoGP | filter: filterPiloto">
-        <app-piloto-ficha [piloto]="motoGP"></app-piloto-ficha>
+      <div class="col-lg-2">
+        <h3>Equipos</h3>
+        <div class="checkbox" *ngFor="let a1 of pilotosMotoGP | distinct: 'equipo.nombre'">
+          <label>           
+            <input type="checkbox" (click)="seleccion(a1, seleccionMotoGP, 'MotoGP', $event.target.checked)">{{ a1 }}
+          </label>
+        </div>
+      </div>
+
+      <div class="col-lg-10">
+        <br/>
+        <div class="col-lg-3" *ngFor="let a2 of pilotosMotoGP | filterNombre: filterPiloto | filterPiloto: seleccionMotoGP">
+          <app-piloto-ficha [piloto]="a2"></app-piloto-ficha>
+        </div>
       </div>
     </div>
   </div>
 
   <div id="Moto2" class="tab-pane fade" [ngClass]="{ 'in active': categoria === 'Moto2' }">
-    <br/><br/>
+    <br/>
     <div class="row">
-      <div class="col-lg-3" *ngFor="let moto2 of pilotosByMoto2 | filter: filterPiloto">
-        <app-piloto-ficha [piloto]="moto2"></app-piloto-ficha>
+      <div class="col-lg-2">
+        <h3>Equipos</h3>
+        <div class="checkbox" *ngFor="let b1 of pilotosMoto2 | distinct: 'equipo.nombre'">
+          <label>           
+            <input type="checkbox" (click)="seleccion(b1, seleccionMoto2, 'Moto2', $event.target.checked)">{{ b1 }}
+          </label>
+        </div>
+      </div>
+
+      <div class="col-lg-10">
+        <br/>
+        <div class="col-lg-3" *ngFor="let b2 of pilotosMoto2 | filterNombre: filterPiloto | filterPiloto: seleccionMoto2">
+          <app-piloto-ficha [piloto]="b2"></app-piloto-ficha>
+        </div>
       </div>
     </div>
   </div>
 
   <div id="Moto3" class="tab-pane fade" [ngClass]="{ 'in active': categoria === 'Moto3' }">
-    <br/><br/>
+    <br/>
     <div class="row">
-      <div class="col-lg-3" *ngFor="let moto3 of pilotosByMoto3 | filter: filterPiloto">
-        <app-piloto-ficha [piloto]="moto3"></app-piloto-ficha>
+      <div class="col-lg-2">
+        <h3>Equipos</h3>
+        <div class="checkbox" *ngFor="let c1 of pilotosMoto3 | distinct: 'equipo.nombre'">
+          <label>           
+            <input type="checkbox" (click)="seleccion(c1, seleccionMoto3, 'Moto3', $event.target.checked)">{{ c1 }}
+          </label>
+        </div>
+      </div>
+
+      <div class="col-lg-10">
+        <br/>
+        <div class="col-lg-3" *ngFor="let c2 of pilotosByMoto3 | filterNombre: filterPiloto | filterPiloto: seleccionMoto3">
+          <app-piloto-ficha [piloto]="c2"></app-piloto-ficha>
+        </div>
       </div>
     </div>
   </div>

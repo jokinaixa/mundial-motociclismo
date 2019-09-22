@@ -6,9 +6,8 @@
   <div class="caption">
     <h4 class="titulo">
       <img class="flag" src="assets/images/flags/{{ piloto.pais }}.png" [alt]="piloto.pais">
-      <a [routerLink]="['/pilotos/edit/', piloto.equipo.categoria, piloto.id]">
-        <app-piloto-detalle [piloto]="piloto" [extra]="piloto.edad"></app-piloto-detalle>
-      </a>
+      <a [routerLink]="['/pilotos/edit/', piloto.equipo.categoria, piloto.id]">{{ piloto.nombre }} {{ piloto.apellido }}</a>
+      <small> ({{ piloto.edad }})</small>
     </h4>
 
     <dl>
@@ -16,7 +15,7 @@
       <dd>
         <h5>
           <a [routerLink]="['/equipos/edit/', piloto.equipo.categoria, piloto.equipo.id]">
-            <app-equipo-detalle [equipo]="piloto.equipo"></app-equipo-detalle>
+            {{ piloto.equipo.nombre }} <small>({{ piloto.equipo.moto }})</small>
           </a>
         </h5>
       </dd>

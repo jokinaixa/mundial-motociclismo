@@ -15,22 +15,8 @@
         
         <br/><br/>
 
-        <div *ngIf="clasificacionesByPiloto?.length > 0">
-            <table class="table table-condensed">
-                <tbody>
-                    <tr>
-                        <th>Circuito</th>
-                        <th class="text-center">Posición</th>
-                    </tr>
-                    <tr *ngFor="let clasificacionByPiloto of clasificacionesByPiloto">
-                        <td>
-                            <img class="flag" src="assets/images/flags/{{ clasificacionByPiloto.pais }}.png" [alt]="clasificacionByPiloto.pais" [title]="clasificacionByPiloto.pais">
-                            <a [routerLink]="['/circuitos/edit/', clasificacionByPiloto.id]">{{ clasificacionByPiloto.nombre }}</a>
-                        </td>
-                        <td class="text-center">{{ clasificacionByPiloto.posicion }}</td>
-                    </tr>
-                </tbody>
-            </table>
+        <div *ngIf="edit">
+            <app-clasificaciones-piloto [piloto]="piloto?.id"></app-clasificaciones-piloto>
         </div>
     </div>
 
@@ -46,7 +32,6 @@
                         <input type="text" name="apellido" [(ngModel)]="piloto.apellido" placeholder="Apellido" class="form-control">
                     </div>
                 </div>
-               
             </div>           
             <div class="form-group">
                 <label>Equipo</label>
@@ -54,7 +39,7 @@
                     <div class="col-lg-8">
                         <select class="form-control" [(ngModel)]="piloto.equipo.id" [ngModelOptions]="{standalone: true}">
                             <option value="0">Seleccione un equipo</option>
-                            <option *ngFor="let equipo of equipos | sortBy: 'nombre'" value="{{ equipo.id }}">{{ equipo.nombre }}</option>
+                            <option *ngFor="let equipo of equipos | orderBy: 'nombre'" value="{{ equipo.id }}">{{ equipo.nombre }}</option>
                         </select>
                     </div>
                     <div class="col-lg-4 text-right">
@@ -70,7 +55,7 @@
                 <label>Pais</label>
                 <select class="form-control" [(ngModel)]="piloto.pais" [ngModelOptions]="{standalone: true}">
                     <option value="0">Seleccione un país</option>
-                    <option *ngFor="let pais of paises | sortBy: 'nombre'" value="{{ pais.id }}">{{ pais.nombre }} ({{ pais.id }})</option>
+                    <option *ngFor="let pais of paises | orderBy: 'nombre'" value="{{ pais.id }}">{{ pais.nombre }} ({{ pais.id }})</option>
                 </select>
             </div>
             <div class="form-group">

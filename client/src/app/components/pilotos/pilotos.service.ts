@@ -8,13 +8,17 @@ export class PilotosService {
 
   pilotos: any = [];
   
-  API_URI = 'http://localhost/api';
-  //API_URI = 'http://localhost:8080/api';
+  //API_URI = 'http://localhost/api';
+  API_URI = 'http://localhost:8080/api';
 
   constructor(private http: HttpClient) { }
 
   obtenerPilotos(): Observable<Piloto[]> {
     return this.http.get<Piloto[]>(`${this.API_URI}/obtenerPilotos.php`);
+  }
+
+  obtenerPilotosPorEquipo(equipo: number): Observable<Piloto[]> {
+    return this.http.get<Piloto[]>(`${this.API_URI}/obtenerPilotosPorEquipo.php?equipo=${equipo}`);
   }
 
   mostrarPiloto(id: number): Observable<Piloto> {

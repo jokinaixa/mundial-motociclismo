@@ -45,7 +45,7 @@
           </thead>
           <tbody>
             <tr *ngFor="let motoGP of clasificacionesByMotoGP" (click)="modifiedLink(clasificacionByMotoGP.id)">
-              <td><app-piloto-detalle [piloto]="motoGP.piloto" [extra]="motoGP.piloto.equipo.moto"></app-piloto-detalle></td>
+              <td>{{ motoGP.piloto.nombre }} {{ motoGP.piloto.apellido }}<small> ({{ motoGP.piloto.equipo.moto }})</small></td>
               <td class="text-center">{{ motoGP.posicion }}</td>
             </tr>
           </tbody>
@@ -63,7 +63,7 @@
           </thead>
           <tbody>
             <tr *ngFor="let moto2 of clasificacionesByMoto2" (click)="modifiedLink(clasificacionByMoto2.id)">
-              <td><app-piloto-detalle [piloto]="moto2.piloto" [extra]="moto2.piloto.equipo.moto"></app-piloto-detalle></td>
+              <td>{{ moto2.piloto.nombre }} {{ moto2.piloto.apellido }}<small> ({{ moto2.piloto.equipo.moto }})</small></td>
               <td class="text-center">{{ moto2.posicion }}</td>
             </tr>
           </tbody>
@@ -81,8 +81,8 @@
           </thead>
           <tbody>
             <tr *ngFor="let moto3 of clasificacionesByMoto3" (click)="modifiedLink(clasificacionByMoto3.id)">
-              <td><app-piloto-detalle [piloto]="moto3.piloto" [extra]="moto3.piloto.equipo.moto"></app-piloto-detalle></td>
-              <td class="text-center">{{ clasificacionByMoto3.posicion }}</td>
+              <td>{{ moto3.piloto.nombre }} {{ moto3.piloto.apellido }}<small> ({{ moto3.piloto.equipo.moto }})</small></td>
+              <td class="text-center">{{ moto3.posicion }}</td>
             </tr>
           </tbody>
         </table>

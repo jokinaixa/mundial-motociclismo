@@ -1,34 +1,34 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-  name: 'filterMoto'
+  name: 'filterPiloto'
 })
-export class FilterMotoPipe implements PipeTransform {
+export class FilterPilotoPipe implements PipeTransform {
 
   transform(value: any, args?: any): any {
 
     if (!value || value === undefined || value.length === 0) return null;
-    const resultEquipo = [];
+    const resultPiloto = [];
 
-    for (const equipo of value) 
+    for (const piloto of value) 
     {
       if (args.length > 0)
       {
         for (const arg of args) 
         {
-          if (equipo.moto.indexOf(arg) > -1)
+          if (piloto.equipo.nombre.indexOf(arg) > -1)
           {
-            resultEquipo.push(equipo);
+            resultPiloto.push(piloto);
           }
         }
       }
       else
       {
-        resultEquipo.push(equipo);
+        resultPiloto.push(piloto);
       }
     } 
 
-    return resultEquipo;
+    return resultPiloto;
   }
 
 }

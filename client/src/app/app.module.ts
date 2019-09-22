@@ -23,6 +23,7 @@ import { PilotoFichaComponent } from './components/pilotos/piloto-ficha/piloto-f
 import { EquipoFormComponent } from './components/equipos/equipo-form/equipo-form.component';
 import { EquiposListComponent } from './components/equipos/equipos-list/equipos-list.component';
 import { EquiposNavComponent } from './components/equipos/equipos-nav/equipos-nav.component';
+import { EquipoFichaComponent } from './components/equipos/equipo-ficha/equipo-ficha.component';
 
 import { CircuitoFormComponent } from './components/circuitos/circuito-form/circuito-form.component';
 import { CircuitosListComponent } from './components/circuitos/circuitos-list/circuitos-list.component';
@@ -32,16 +33,18 @@ import { CircuitoFichaComponent } from './components/circuitos/circuito-ficha/ci
 import { ClasificacionFormComponent } from './components/clasificaciones/clasificacion-form/clasificacion-form.component';
 import { ClasificacionesListComponent } from './components/clasificaciones/clasificaciones-list/clasificaciones-list.component';
 import { ClasificacionesNavComponent } from './components/clasificaciones/clasificaciones-nav/clasificaciones-nav.component';
+
 import { NavegadorComponent } from './components/navegador/navegador.component';
 
-import { EquipoFichaComponent } from './components/equipos/equipo-ficha/equipo-ficha.component';
-import { PilotoDetalleComponent } from './components/pilotos/piloto-detalle/piloto-detalle.component';
-import { EquipoDetalleComponent } from './components/equipos/equipo-detalle/equipo-detalle.component';
-
 // Pipes
-import { SortByPipe } from './pipes/sort-by.pipe';
-import { FilterPipe } from './pipes/filter.pipe';
+import { OrderByPipe } from './pipes/order-by.pipe';
+import { DistinctPipe } from './pipes/distinct.pipe';
+import { FilterNombrePipe } from './pipes/filter-nombre.pipe';
 import { FilterMotoPipe } from './pipes/filter-moto.pipe';
+import { FilterPilotoPipe } from './pipes/filter-piloto.pipe';
+import { ClasificacionesPilotoComponent } from './components/clasificaciones/clasificaciones-piloto/clasificaciones-piloto.component';
+import { ClasificacionesCircuitoComponent } from './components/clasificaciones/clasificaciones-circuito/clasificaciones-circuito.component';
+import { PilotosEquipoComponent } from './components/pilotos/pilotos-equipo/pilotos-equipo.component';
 
 @NgModule({
   declarations: [
@@ -64,11 +67,14 @@ import { FilterMotoPipe } from './pipes/filter-moto.pipe';
     CircuitoFichaComponent,
     NavegadorComponent,
     EquipoFichaComponent,
-    PilotoDetalleComponent,
-    EquipoDetalleComponent,
-    SortByPipe,
-    FilterPipe,
-    FilterMotoPipe
+    OrderByPipe,
+    DistinctPipe,
+    FilterNombrePipe,
+    FilterMotoPipe,
+    FilterPilotoPipe,
+    ClasificacionesPilotoComponent,
+    ClasificacionesCircuitoComponent,
+    PilotosEquipoComponent
   ],
   imports: [
     BrowserModule,

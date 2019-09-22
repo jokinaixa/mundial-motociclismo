@@ -13,9 +13,13 @@ export class PilotosListComponent implements OnInit {
 
   categoria: string;
   
-  pilotosByMotoGP: any = [];
-  pilotosByMoto2: any = [];
-  pilotosByMoto3: any = [];
+  pilotosMotoGP: any = [];
+  pilotosMoto2: any = [];
+  pilotosMoto3: any = [];
+
+  seleccionMotoGP: any = [];
+  seleccionMoto2: any = [];
+  seleccionMoto3: any = [];
 
   filterPiloto = '';
 
@@ -32,24 +36,47 @@ export class PilotosListComponent implements OnInit {
     this.pilotosService.obtenerPilotos()
     .subscribe(
       data => {
-        this.pilotosByMotoGP = data.filter(
+        this.pilotosMotoGP = data.filter(
           piloto => piloto.equipo.categoria === 'MotoGP'
         );
 
-        this.pilotosByMoto2 = data
-          .filter(
-            piloto => piloto.equipo.categoria === 'Moto2'
-          );
+        this.pilotosMoto2 = data.filter(
+          piloto => piloto.equipo.categoria === 'Moto2'
+        );
 
-        this.pilotosByMoto3 = data
-          .filter(
-            piloto => piloto.equipo.categoria === 'Moto3'
-          );
+        this.pilotosMoto3 = data.filter(
+          piloto => piloto.equipo.categoria === 'Moto3'
+        );
       }
     );
   }
 
-  muestraContenido(categoria) {
+  muestraContenido(categoria: string) {
     this.categoria = categoria;
   }
+
+  seleccion(moto:string, cadena:any, categoria:string, isChecked:boolean)
+  {
+    if (isChecked) {
+      cadena.push(moto);
+    } else {
+      var index = cadena.indexOf(moto);
+      cadena.splice(index, 1);
+    }
+
+    switch (categoria) {
+      case 'MotoGP':
+        this.seleccionMotoGP = cadena.slice();
+        break;
+ 
+      case 'Moto2':
+        this.seleccionMoto2 = cadena.slice();
+        break;
+          
+      case 'Moto3':
+        this.seleccionMoto3 = cadena.slice();
+        break;
+    }
+  }
+
 }

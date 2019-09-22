@@ -5,20 +5,9 @@
   <div class="caption">
     <h4 class="titulo">
       <a [routerLink]="['/equipos/edit/', equipo.categoria, equipo.id]">
-        <app-equipo-detalle [equipo]="equipo"></app-equipo-detalle>
+        {{ equipo.nombre }} <small>({{ equipo.moto }})</small>
       </a>
     </h4>
-    <div *ngIf="equipo.pilotos?.length > 0">
-      <h5>Pilotos:</h5>
-      <ul>
-        <li *ngFor="let piloto of equipo.pilotos">
-          <h5>
-            <a [routerLink]="['/pilotos/edit/', piloto.equipo.categoria, piloto.id]">
-              <app-piloto-detalle [piloto]="piloto" [extra]="piloto.edad"></app-piloto-detalle>
-            </a>
-          </h5>
-        </li>
-      </ul>
-    </div>
+    <app-pilotos-equipo [equipo]="equipo?.id" [categoria]="equipo?.categoria"></app-pilotos-equipo>
   </div>
 </div>

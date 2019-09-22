@@ -1,19 +1,22 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-  name: 'filter'
+  name: 'filterNombre'
 })
-export class FilterPipe implements PipeTransform {
+export class FilterNombrePipe implements PipeTransform {
 
   transform(value: any, arg: any): any {
+    
     if (arg === '' || arg.length < 3) return value;
 
     const resultPiloto = [];
 
-    for (const piloto of value) {
+    for (const piloto of value) 
+    {
       const completo = piloto.nombre + ' ' + piloto.apellido;
       
-      if (completo.toLowerCase().indexOf(arg.toLowerCase()) > -1) {
+      if (completo.toLowerCase().indexOf(arg.toLowerCase()) > -1) 
+      {
         resultPiloto.push(piloto);
       }
     }

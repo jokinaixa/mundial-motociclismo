@@ -13,17 +13,10 @@
             <img [src]="equipo.imagen == '' ? 'assets/images/sin_imagen.jpg' : equipo.imagen" class="img-thumbnail" [alt]="equipo.nombre" [title]="equipo.nombre">
         </div>
         
-        <br/><hr/>
+        <hr/>
 
-        <div *ngIf="equipo.pilotos?.length > 0">
-            <h5>Pilotos:</h5>
-            <ul>
-              <li *ngFor="let piloto of equipo.pilotos">
-                <a [routerLink]="['/pilotos/edit/', piloto.equipo.categoria, piloto.id]">
-                    <app-piloto-detalle [piloto]="piloto" [extra]="piloto.edad"></app-piloto-detalle>
-                </a>
-              </li>
-            </ul>
+        <div *ngIf="edit">
+            <app-pilotos-equipo [equipo]="equipo?.id" [categoria]="equipo?.categoria"></app-pilotos-equipo>
         </div>
     </div>
 

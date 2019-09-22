@@ -14,7 +14,6 @@ import { Equipo } from '../../../models/Equipo';
 export class EquipoFormComponent implements OnInit {
 
   equipo: Equipo = {
-    id: null,
     nombre: '',
     moto: '',
     imagen: '',
@@ -23,7 +22,7 @@ export class EquipoFormComponent implements OnInit {
 
   categorias: string[] = ['MotoGP', 'Moto2', 'Moto3'];
 
-  edit: boolean = false;  
+  edit: boolean = false;
 
   constructor(
     private equiposService: EquiposService, 
@@ -60,36 +59,36 @@ export class EquipoFormComponent implements OnInit {
     this.equipo.imagen = (this.equipo.imagen == '') ? 'assets/images/sin_imagen.jpg' : this.equipo.imagen;
 
     this.equiposService.crearEquipo(this.equipo)
-      .subscribe(
-        res => {
-          //console.log(res);
-          this.router.navigate(['/equipos', this.equipo.categoria]);
-        },
-        err => console.error(err)
-      );
+    .subscribe(
+      res => {
+        //console.log(res);
+        this.router.navigate(['/equipos', this.equipo.categoria]);
+      },
+      err => console.error(err)
+    );
   }
 
   cambiarEquipo()
   {
     this.equiposService.cambiarEquipo(this.equipo.id, this.equipo)
-      .subscribe(
-        res => { 
-          //console.log(res);
-          this.router.navigate(['/equipos', this.equipo.categoria]);
-        },
-        err => console.error(err)
-      );
+    .subscribe(
+      res => { 
+        //console.log(res);
+        this.router.navigate(['/equipos', this.equipo.categoria]);
+      },
+      err => console.error(err)
+    );
   }
 
   borrarEquipo(id: string)
   {
     this.equiposService.borrarEquipo(id, this.equipo)
-      .subscribe(
-        res => {
-          //console.log(res);
-          this.router.navigate(['/equipos', this.equipo.categoria]);
-        },
-        err => console.error(err)
-      )
+    .subscribe(
+      res => {
+        //console.log(res);
+        this.router.navigate(['/equipos', this.equipo.categoria]);
+      },
+      err => console.error(err)
+    );
   }
 }

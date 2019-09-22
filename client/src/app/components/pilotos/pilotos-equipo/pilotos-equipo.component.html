@@ -1,0 +1,11 @@
+<div *ngIf="pilotos?.length > 0">
+    <h4>Pilotos:</h4>
+    <ul>
+        <li *ngFor="let piloto of pilotos">
+            <a [routerLink]="['/pilotos/edit', categoria, piloto.id]">
+                {{ piloto.nombre }} {{ piloto.apellido }}
+            </a>
+            <small> ({{ piloto.edad }})</small>
+        </li>
+    </ul>
+</div>

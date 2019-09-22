@@ -2,8 +2,8 @@
 -- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
--- Servidor: 127.0.0.1
--- Tiempo de generación: 19-09-2019 a las 18:03:37
+-- Servidor: localhost
+-- Tiempo de generación: 22-09-2019 a las 23:22:10
 -- Versión del servidor: 10.1.38-MariaDB
 -- Versión de PHP: 7.3.2
 
@@ -78,61 +78,50 @@ CREATE TABLE `clasificaciones` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
--- Volcado de datos para la tabla `equipos`
+-- Volcado de datos para la tabla `clasificaciones`
 --
 
 INSERT INTO `clasificaciones` (`id`, `circuito`, `categoria`, `posicion`, `piloto`) VALUES
 (1, 1, 'MotoGP', 1, 1),
 (2, 1, 'MotoGP', 2, 23),
 (3, 1, 'MotoGP', 3, 10),
-
 (4, 2, 'MotoGP', 1, 23),
 (5, 2, 'MotoGP', 2, 16),
 (6, 2, 'MotoGP', 3, 1),
-
 (7, 3, 'MotoGP', 1, 13),
 (8, 3, 'MotoGP', 2, 16),
 (9, 3, 'MotoGP', 3, 14),
-
 (10, 4, 'MotoGP', 1, 23),
 (11, 4, 'MotoGP', 2, 13),
 (12, 4, 'MotoGP', 3, 4),
-
 (13, 5, 'MotoGP', 1, 23),
 (14, 5, 'MotoGP', 2, 1),
 (15, 5, 'MotoGP', 3, 3),
-
 (16, 6, 'MotoGP', 1, 3),
 (17, 6, 'MotoGP', 2, 23),
 (18, 6, 'MotoGP', 3, 1),
-
 (19, 7, 'MotoGP', 1, 23),
 (20, 7, 'MotoGP', 2, 6),
 (21, 7, 'MotoGP', 3, 3),
-
 (22, 8, 'MotoGP', 1, 4),
 (23, 8, 'MotoGP', 2, 23),
 (24, 8, 'MotoGP', 3, 6),
-
 (25, 9, 'MotoGP', 1, 23),
 (26, 9, 'MotoGP', 2, 4),
 (27, 9, 'MotoGP', 3, 10),
-
 (28, 10, 'MotoGP', 1, 23),
 (29, 10, 'MotoGP', 2, 1),
 (30, 10, 'MotoGP', 3, 14),
-
 (31, 11, 'MotoGP', 1, 1),
 (32, 11, 'MotoGP', 2, 23),
 (33, 11, 'MotoGP', 3, 6),
-
 (34, 12, 'MotoGP', 1, 13),
 (35, 12, 'MotoGP', 2, 23),
 (36, 12, 'MotoGP', 3, 4),
-
 (37, 13, 'MotoGP', 1, 23),
 (38, 13, 'MotoGP', 2, 6),
 (39, 13, 'MotoGP', 3, 4);
+
 -- --------------------------------------------------------
 
 --
@@ -163,9 +152,7 @@ INSERT INTO `equipos` (`id`, `nombre`, `moto`, `imagen`, `categoria`) VALUES
 (9, 'Team SUZUKI ECSTAR', 'Suzuki', 'https://www.motogp.com/en/api/rider/photo/bike/old/8150', 'MotoGP'),
 (10, 'Pramac Racing', 'Ducati', 'https://www.motogp.com/en/api/rider/photo/bike/old/8049', 'MotoGP'),
 (11, 'Red Bull KTM Tech 3', 'KTM', 'https://www.motogp.com/en/api/rider/photo/bike/old/8132', 'MotoGP'),
-(12, 'Repsol Honda Team', 'Honda', 'https://www.motogp.com/en/api/rider/photo/bike/old/7444', 'MotoGP');
-
-INSERT INTO `equipos` (`id`, `nombre`, `moto`, `imagen`, `categoria`) VALUES
+(12, 'Repsol Honda Team', 'Honda', 'https://www.motogp.com/en/api/rider/photo/bike/old/7444', 'MotoGP'),
 (13, 'Kiefer Racing', 'KTM', 'https://www.motogp.com/en/api/rider/photo/bike/old/8355', 'Moto2');
 
 -- --------------------------------------------------------
@@ -208,50 +195,48 @@ INSERT INTO `pilotos` (`id`, `equipo`, `nombre`, `apellido`, `dorsal`, `imagen`,
 (16, 3, 'Valentino', 'Rossi', 46, 'https://photos.motogp.com/2019/riders/motogp/grid/206x181/rider_158_1554806223.jpg', '2019-09-19', 'it'),
 (17, 9, 'Sylvain', 'Guintoli', 50, 'https://photos.motogp.com/2019/riders/motogp/grid/206x181/rider_5687_1560497665.jpg', '2019-09-19', 'fr'),
 (18, 1, 'Michele', 'Pirro', 51, 'https://photos.motogp.com/2019/riders/motogp/grid/206x181/rider_6231_1559244853.jpg', '2019-09-19', 'it'),
-(19, 4, 'Tito', 'Rabat', 53, 'https://photos.motogp.com/2019/riders/motogp/grid/206x181/rider_7013_1554806201.jpg', '2019-09-192', 'es'),
+(19, 4, 'Tito', 'Rabat', 53, 'https://photos.motogp.com/2019/riders/motogp/grid/206x181/rider_7013_1554806201.jpg', '0000-00-00', 'es'),
 (20, 11, 'Hafizh', 'Syahrin', 55, 'https://photos.motogp.com/2019/riders/motogp/grid/206x181/rider_8132_1554806196.jpg', '2019-09-19', 'th'),
 (21, 10, 'Francesco', 'Bagnaia', 63, 'https://photos.motogp.com/2019/riders/motogp/grid/206x181/rider_8273_1554806163.jpg', '2019-09-19', 'it'),
 (22, 11, 'Miguel', 'Oliveira', 88, 'https://photos.motogp.com/2019/riders/motogp/grid/206x181/rider_7199_1554806227.jpg', '2019-09-19', 'pt'),
 (23, 12, 'Marc', 'Marquez', 93, 'https://photos.motogp.com/2019/riders/motogp/grid/206x181/rider_7444_1554806167.jpg', '2019-09-19', 'es'),
-(24, 12, 'Jorge', 'Lorenzo', 99, 'https://photos.motogp.com/2019/riders/motogp/grid/206x181/rider_6060_1554806219.jpg', '2019-09-19', 'es');
+(24, 12, 'Jorge', 'Lorenzo', 99, 'https://photos.motogp.com/2019/riders/motogp/grid/206x181/rider_6060_1554806219.jpg', '2019-09-19', 'es'),
+(25, 13, 'Lukas', 'TULOVIC', 3, 'https://www.motogp.com/en/api/rider/photo/grid/old/8355', '2019-09-19', 'de'),
+(26, 13, 'Steven', 'ODENDAAL', 4, 'https://www.motogp.com/en/api/rider/photo/grid/old/8028', '2019-09-19', 'za'),
+(27, 13, 'Andrea', 'LOCATELLI', 5, 'https://www.motogp.com/en/api/rider/photo/grid/old/8349', '2019-09-19', 'it'),
+(28, 13, 'Lorenzo', 'BALDASSARRI', 7, 'https://www.motogp.com/en/api/rider/photo/grid/old/8030', '2019-09-19', 'it'),
+(29, 13, 'Jorge', 'NAVARRO', 9, 'https://www.motogp.com/en/api/rider/photo/grid/old/7742', '2019-09-19', 'es'),
+(30, 13, 'Luca', 'MARINI', 10, 'https://www.motogp.com/en/api/rider/photo/grid/old/8431', '2019-09-19', 'it'),
+(31, 13, 'Nicolo', 'BULEGA', 11, 'https://www.motogp.com/en/api/rider/photo/grid/old/8756', '2019-09-19', 'it'),
+(32, 13, 'Thomas', 'LUTHI', 12, 'https://www.motogp.com/en/api/rider/photo/grid/old/6121', '2019-09-19', 'ch'),
+(33, 13, 'Joe', 'ROBERTS', 16, 'https://www.motogp.com/en/api/rider/photo/grid/old/7946', '2019-09-19', 'us'),
+(34, 13, 'Xavi', 'CARDELUS', 18, 'https://www.motogp.com/en/api/rider/photo/grid/old/8518', '2019-09-19', 'md'),
+(35, 13, 'Dimas', 'EKKY PRATAMA', 20, 'https://www.motogp.com/en/api/rider/photo/grid/old/8165', '2019-09-19', 'id'),
+(36, 13, 'Fabio', 'DI GIANNANTONIO', 21, 'https://www.motogp.com/en/api/rider/photo/grid/old/8539', '2019-09-19', 'it'),
+(37, 13, 'Sam', 'LOWES', 22, 'https://www.motogp.com/en/api/rider/photo/grid/old/8469', '2019-09-19', 'gb'),
+(38, 13, 'Marcel', 'SCHROTTER', 23, 'https://www.motogp.com/en/api/rider/photo/grid/old/7538', '2019-09-19', 'de'),
+(39, 13, 'Simone', 'CORSI', 24, 'https://www.motogp.com/en/api/rider/photo/grid/old/6077', '2019-09-19', 'it'),
+(40, 13, 'Iker', 'LECUONA', 27, 'https://www.motogp.com/en/api/rider/photo/grid/old/8947', '2019-09-19', 'es'),
+(41, 13, 'Enea', 'BASTIANINI', 33, 'https://www.motogp.com/en/api/rider/photo/grid/old/8295', '2019-09-19', 'it'),
+(42, 13, 'Somkiat', 'CHANTRA', 35, 'https://www.motogp.com/en/api/rider/photo/grid/old/8476', '2019-09-19', 'th'),
+(43, 13, 'Andi', 'FARID IZDIHAR', 36, 'https://www.motogp.com/en/api/rider/photo/grid/old/8582', '0000-00-00', 'id'),
+(44, 13, 'Augusto', 'FERNANDEZ', 40, 'https://www.motogp.com/en/api/rider/photo/grid/old/9973', '2019-09-19', 'es'),
+(45, 13, 'Brad', 'Binder', 41, 'assets/images/sin_imagen.jpg', '2019-09-19', 'za'),
+(46, 13, 'Tetsuta', 'Nagashima', 45, 'assets/images/sin_imagen.jpg', '2019-09-19', 'jp'),
+(47, 13, 'Adam', 'Norrodin', 47, 'assets/images/sin_imagen.jpg', '2019-09-19', 'my'),
+(48, 13, 'Mattia', 'Pasini', 54, 'assets/images/sin_imagen.jpg', '2019-09-19', 'it'),
+(49, 13, 'Stefano', 'Manzi', 62, 'assets/images/sin_imagen.jpg', '2019-09-19', 'it'),
+(50, 13, 'Bo', 'Bendsneyder', 64, 'assets/images/sin_imagen.jpg', '2019-09-19', 'nl'),
+(51, 13, 'Philipp', 'Oettl', 65, 'assets/images/sin_imagen.jpg', '2019-09-19', 'de'),
+(52, 13, 'Marco', 'Bezzecchi', 72, 'assets/images/sin_imagen.jpg', '2019-09-19', 'it'),
+(53, 13, 'Alex', 'Marquez', 73, 'assets/images/sin_imagen.jpg', '2019-09-19', 'es'),
+(54, 13, 'Dominique', 'Aegerter', 77, 'assets/images/sin_imagen.jpg', '2019-09-19', 'ch'),
+(55, 13, 'Remy', 'Gardner', 87, 'assets/images/sin_imagen.jpg', '2019-09-19', 'au'),
+(56, 13, 'Jorge', 'Martin', 88, 'assets/images/sin_imagen.jpg', '2019-09-19', 'es'),
+(57, 13, 'Khairul', 'Idham Pawi', 89, 'assets/images/sin_imagen.jpg', '2019-09-19', 'my'),
+(58, 13, 'Jake', 'Dixon', 96, 'assets/images/sin_imagen.jpg', '2019-09-19', 'gb'),
+(59, 13, 'Xavi', 'Vierge', 97, 'assets/images/sin_imagen.jpg', '2019-09-19', 'es');
 
-
-INSERT INTO `pilotos` (`id`, `equipo`, `nombre`, `apellido`, `dorsal`, `imagen`, `fecha`, `pais`) VALUES
-(25, 13, 'Lukas', 'Tulovic', 3, 'assets/images/sin_imagen.jpg', '2019-09-19', 'kk'),
-(26, 13, 'Steven', 'Odendaal', 4, 'assets/images/sin_imagen.jpg', '2019-09-19', 'kk'),
-(27, 13, 'Andrea', 'Locatelli', 5, 'assets/images/sin_imagen.jpg', '2019-09-19', 'kk'),
-(28, 13, 'Lorenzo', 'Baldassarri', 7, 'assets/images/sin_imagen.jpg', '2019-09-19', 'kk'),
-(29, 13, 'Jorge', 'Navarro', 9, 'assets/images/sin_imagen.jpg', '2019-09-19', 'kk'),
-(30, 13, 'Luca', 'Marini', 10, 'assets/images/sin_imagen.jpg', '2019-09-19', 'kk'),
-(31, 13, 'Nicolo', 'Bulega', 11, 'assets/images/sin_imagen.jpg', '2019-09-19', 'kk'),
-(32, 13, 'Thomas', 'Luthi', 12, 'assets/images/sin_imagen.jpg', '2019-09-19', 'kk'),
-(33, 13, 'Joe', 'Roberts', 16, 'assets/images/sin_imagen.jpg', '2019-09-19', 'kk'),
-(34, 13, 'Xavi', 'Cardelus', 18, 'assets/images/sin_imagen.jpg', '2019-09-19', 'kk'),
-(35, 13, 'Dimas', 'Ekky Pratama', 20, 'assets/images/sin_imagen.jpg', '2019-09-19', 'kk'),
-(36, 13, 'Fabio', 'Di Giannantonio', 21, 'assets/images/sin_imagen.jpg', '2019-09-19', 'kk'),
-(37, 13, 'Sam', 'Lowes', 22, 'assets/images/sin_imagen.jpg', '2019-09-19', 'kk'),
-(38, 13, 'Marcel', 'Schrotter', 23, 'assets/images/sin_imagen.jpg', '2019-09-19', 'kk'),
-(39, 13, 'Simone', 'Corsi', 24, 'assets/images/sin_imagen.jpg', '2019-09-19', 'kk'),
-(40, 13, 'Iker', 'Lecuona', 27, 'assets/images/sin_imagen.jpg', '2019-09-19', 'kk'),
-(41, 13, 'Enea', 'Bastianini', 33, 'assets/images/sin_imagen.jpg', '2019-09-19', 'kk'),
-(42, 13, 'Somkiat', 'Chantra', 35, 'assets/images/sin_imagen.jpg', '2019-09-19', 'kk'),
-(43, 13, 'Andi', 'Farid Izdihar', 36, 'assets/images/sin_imagen.jpg', '2019-09-192', 'kk'),
-(44, 13, 'Augusto', 'Fernandez', 40, 'assets/images/sin_imagen.jpg', '2019-09-19', 'kk'),
-(45, 13, 'Brad', 'Binder', 41, 'assets/images/sin_imagen.jpg', '2019-09-19', 'kk'),
-(46, 13, 'Tetsuta', 'Nagashima', 45, 'assets/images/sin_imagen.jpg', '2019-09-19', 'kk'),
-(47, 13, 'Adam', 'Norrodin', 47, 'assets/images/sin_imagen.jpg', '2019-09-19', 'kk'),
-(48, 13, 'Mattia', 'Pasini', 54, 'assets/images/sin_imagen.jpg', '2019-09-19', 'kk'),
-(49, 13, 'Stefano', 'Manzi', 62, 'assets/images/sin_imagen.jpg', '2019-09-19', 'kk'),
-(50, 13, 'Bo', 'Bendsneyder', 64, 'assets/images/sin_imagen.jpg', '2019-09-19', 'kk'),
-(51, 13, 'Philipp', 'Oettl', 65, 'assets/images/sin_imagen.jpg', '2019-09-19', 'kk'),
-(52, 13, 'Marco', 'Bezzecchi', 72, 'assets/images/sin_imagen.jpg', '2019-09-19', 'kk'),
-(53, 13, 'Alex', 'Marquez', 73, 'assets/images/sin_imagen.jpg', '2019-09-19', 'kk'),
-(54, 13, 'Dominique', 'Aegerter', 77, 'assets/images/sin_imagen.jpg', '2019-09-19', 'kk'),
-(55, 13, 'Remy', 'Gardner', 87, 'assets/images/sin_imagen.jpg', '2019-09-19', 'kk'),
-(56, 13, 'Jorge', 'Martin', 88, 'assets/images/sin_imagen.jpg', '2019-09-19', 'kk'),
-(57, 13, 'Khairul', 'Idham Pawi', 89, 'assets/images/sin_imagen.jpg', '2019-09-19', 'kk'),
-(58, 13, 'Jake', 'Dixon', 96, 'assets/images/sin_imagen.jpg', '2019-09-19', 'kk'),
-(59, 13, 'Xavi', 'Vierge', 97, 'assets/images/sin_imagen.jpg', '2019-09-19', 'kk');
 --
 -- Índices para tablas volcadas
 --
@@ -298,19 +283,19 @@ ALTER TABLE `circuitos`
 -- AUTO_INCREMENT de la tabla `clasificaciones`
 --
 ALTER TABLE `clasificaciones`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 
 --
 -- AUTO_INCREMENT de la tabla `equipos`
 --
 ALTER TABLE `equipos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT de la tabla `pilotos`
 --
 ALTER TABLE `pilotos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
 
 --
 -- Restricciones para tablas volcadas
