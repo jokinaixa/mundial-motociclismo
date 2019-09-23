@@ -1,3 +1,9 @@
-<p>
-  clasificaciones-nav works!
-</p>
+<h4>Circuitos</h4>
+<div class="list-group">
+  <a class="list-group-item" 
+    *ngFor="let circuito of circuitos" 
+    [ngClass]="{'active': selectedCircuito  == circuito.id}"
+    (click)="gestionaSeleccion(circuito.id)">
+      <img class="flag" src="assets/images/flags/{{ circuito.pais }}.png" [alt]="circuito.pais"> {{ circuito.id }} {{ circuito.nombre }}
+  </a>
+</div>

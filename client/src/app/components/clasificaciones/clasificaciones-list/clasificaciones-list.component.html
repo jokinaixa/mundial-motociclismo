@@ -4,21 +4,13 @@
 </ol>
 
 <div class="row">
-  <div class="col-lg-4 col-md-offset-1">
-    <h4>Circuitos</h4>
-    <div class="list-group">
-      <a class="list-group-item" 
-        *ngFor="let circuito of circuitos" 
-        (click)="muestraCircuito(circuito.id)" 
-        [ngClass]="{ 'active': circuito.id === circuitoSeleccionado }">
-          <img class="flag" src="assets/images/flags/{{ circuito.pais }}.png" [alt]="circuito.pais"> {{ circuito.nombre }}
-      </a>
-    </div>
+  <div class="col-lg-4">
+      <app-clasificaciones-nav [circuito]="seleccionCircuito" (seleccion)="muestraCircuito($event)"></app-clasificaciones-nav>
   </div>
 
-  <div class="col-lg-5 col-lg-offset-1">
+  <div class="col-lg-7 col-lg-offset-1">
     <p class="text-right">
-      <a [routerLink]="['/clasificaciones/add', categoria, circuitoSeleccionado]" class="btn btn-success">Nueva Clasificación {{ categoria }}</a>
+      <a [routerLink]="['/clasificaciones/add', categoria, seleccionCircuito]" class="btn btn-success">Nueva Clasificación {{ categoria }}</a>
     </p>
 
     <ul class="nav nav-tabs">
@@ -36,56 +28,17 @@
     <div class="tab-content">
       <div id="MotoGP" class="tab-pane fade" [ngClass]="{ 'in active': categoria === 'MotoGP' }">
         <br/><br/>
-        <table class="table table-hover">
-          <thead>
-            <tr>
-              <th>Piloto</th>
-              <th class="text-center">Posición</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let motoGP of clasificacionesByMotoGP" (click)="modifiedLink(clasificacionByMotoGP.id)">
-              <td>{{ motoGP.piloto.nombre }} {{ motoGP.piloto.apellido }}<small> ({{ motoGP.piloto.equipo.moto }})</small></td>
-              <td class="text-center">{{ motoGP.posicion }}</td>
-            </tr>
-          </tbody>
-        </table>
+        <app-clasificaciones-ficha [clasificaciones]="clasificacionesByMotoGP"></app-clasificaciones-ficha>
       </div>
 
       <div id="Moto2" class="tab-pane fade" [ngClass]="{ 'in active': categoria === 'Moto2' }">
         <br/><br/>
-        <table class="table table-hover">
-          <thead>
-            <tr>
-              <th>Piloto</th>
-              <th class="text-center">Posición</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let moto2 of clasificacionesByMoto2" (click)="modifiedLink(clasificacionByMoto2.id)">
-              <td>{{ moto2.piloto.nombre }} {{ moto2.piloto.apellido }}<small> ({{ moto2.piloto.equipo.moto }})</small></td>
-              <td class="text-center">{{ moto2.posicion }}</td>
-            </tr>
-          </tbody>
-        </table>
+        <app-clasificaciones-ficha [clasificaciones]="clasificacionesByMoto2"></app-clasificaciones-ficha>
       </div>
 
       <div id="Moto3" class="tab-pane fade" [ngClass]="{ 'in active': categoria === 'Moto3' }">
         <br/><br/>
-        <table class="table table-hover">
-          <thead>
-            <tr>
-              <th>Piloto</th>
-              <th class="text-center">Posición</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let moto3 of clasificacionesByMoto3" (click)="modifiedLink(clasificacionByMoto3.id)">
-              <td>{{ moto3.piloto.nombre }} {{ moto3.piloto.apellido }}<small> ({{ moto3.piloto.equipo.moto }})</small></td>
-              <td class="text-center">{{ moto3.posicion }}</td>
-            </tr>
-          </tbody>
-        </table>
+        <app-clasificaciones-ficha [clasificaciones]="clasificacionesByMoto3"></app-clasificaciones-ficha>
       </div>
     </div>
   </div>

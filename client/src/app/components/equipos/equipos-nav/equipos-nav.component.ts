@@ -1,6 +1,6 @@
-import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output, ViewChildren, QueryList, ElementRef } from '@angular/core';
 
-import { Equipo } from '../../../models/Equipo';
+import { EquiposService } from '../../equipos/equipos.service';
 
 @Component({
   selector: 'app-equipos-nav',
@@ -9,41 +9,51 @@ import { Equipo } from '../../../models/Equipo';
 })
 export class EquiposNavComponent implements OnInit {
 
-  @Input() categoria: string = 'MotoGP';
-  @Input() equipos: Equipo[];
-  @Input() seleccion: any[];
+  @Input() categoria: string;
 
-  @Output() public seleccionMotoGP = new EventEmitter<any>();
-  @Output() public seleccionMoto2 = new EventEmitter<any>();
-  @Output() public seleccionMoto3 = new EventEmitter<any>();
+  @Output() seleccion: any = new EventEmitter();
 
-  constructor() { }
+  @ViewChildren("checkboxes") checkboxes: QueryList<ElementRef>;
+
+  cadena: any = [];
+  equipos: any = [];
+
+
+  constructor(
+    private equiposService: EquiposService
+  ) { }
+
 
   ngOnInit() {
+    this.equiposService.obtenerEquipos().subscribe(
+      data => {
+        this.equipos = data.filter(
+          equipo => equipo.categoria === this.categoria
+        );
+      }
+    );
   }
 
-  seleccionaMoto(moto:string, cadena:any, categoria:string, isChecked:boolean)
+
+  gestionaSeleccion(moto: string, isChecked: boolean)
   {
     if (isChecked) {
-      cadena.push(moto);
+      this.cadena.push(moto);
     } else {
-      var index = cadena.indexOf(moto);
-      cadena.splice(index, 1);
+      var index = this.cadena.indexOf(moto);
+      this.cadena.splice(index, 1);
     }
 
-    switch (categoria) {
-      case 'MotoGP':
-        this.seleccionMotoGP = cadena.slice();
-        break;
- 
-      case 'Moto2':
-        this.seleccionMoto2 = cadena.slice();
-        break;
-          
-      case 'Moto3':
-        this.seleccionMoto3 = cadena.slice();
-        break;
-    }
+    this.seleccion.emit(this.cadena.slice());
+  }
+
+  uncheckMotos() {
+    this.checkboxes.forEach((element) => {
+      element.nativeElement.checked = false;
+    });
+
+    this.cadena = [];
+    this.seleccion.emit(this.cadena.slice());
   }
 
 }

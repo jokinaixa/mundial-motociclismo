@@ -24,16 +24,14 @@
     <br/>
     <div class="row">
       <div class="col-lg-2">
-        <app-equipos-nav [categoria]="MotoGP" [equipos]="equiposMotoGP" [seleccion]="seleccionMotoGP"></app-equipos-nav>
-
-        {{ seleccionMotoGP | json }}
+        <app-equipos-nav [categoria]="'MotoGP'" (seleccion)="obtenerSeleccion($event)"></app-equipos-nav>
       </div>
 
       <div class="col-lg-10">
         <br/>
         <div class="row">
-          <div class="col-lg-4" *ngFor="let a2 of equiposMotoGP | filterMoto: seleccionMotoGP | orderBy: 'nombre'">
-            <app-equipo-ficha [equipo]="a2"></app-equipo-ficha>
+          <div class="col-lg-4" *ngFor="let motoGP of equiposMotoGP | filterMoto: seleccionMotoGP | orderBy: 'nombre'">
+            <app-equipo-ficha [equipo]="motoGP"></app-equipo-ficha>
           </div>
         </div>
       </div>
@@ -44,19 +42,14 @@
     <br/>
     <div class="row">
       <div class="col-lg-2">
-        <h3>Marcas</h3>
-        <div class="checkbox" *ngFor="let b1 of equiposMoto2 | distinct: 'moto'">
-          <label>           
-            <input type="checkbox" (click)="seleccion(b1, seleccionMotoGP, 'Moto2', $event.target.checked)">{{ b1 }}
-          </label>
-        </div>
+        <app-equipos-nav [categoria]="'Moto2'" (seleccion)="obtenerSeleccion($event)"></app-equipos-nav>
       </div>
   
       <div class="col-lg-10">
         <br/>
         <div class="row">
-          <div class="col-lg-4" *ngFor="let b2 of equiposMoto2 | filterMoto: seleccionMoto2 | orderBy: 'nombre'">
-            <app-equipo-ficha [equipo]="b2"></app-equipo-ficha>
+          <div class="col-lg-4" *ngFor="let moto2 of equiposMoto2 | filterMoto: seleccionMoto2 | orderBy: 'nombre'">
+            <app-equipo-ficha [equipo]="moto2"></app-equipo-ficha>
           </div>
         </div>
       </div>
@@ -67,19 +60,14 @@
     <br/>
     <div class="row">
       <div class="col-lg-2">
-        <h3>Marcas</h3>
-        <div class="checkbox" *ngFor="let c1 of equiposMoto3 | distinct: 'moto'">
-          <label>           
-            <input type="checkbox" (click)="seleccion(c1, seleccionMotoGP, 'Moto3', $event.target.checked)">{{ c1 }}
-          </label>
-        </div>
+        <app-equipos-nav [categoria]="'Moto3'" (seleccion)="obtenerSeleccion($event)"></app-equipos-nav>
       </div>
       
       <div class="col-lg-10">
         <br/>
         <div class="row">
-          <div class="col-lg-4" *ngFor="let c2 of equiposMoto3 | filterMoto: seleccionMoto3 | orderBy: 'nombre'">
-            <app-equipo-ficha [equipo]="c2"></app-equipo-ficha>
+          <div class="col-lg-4" *ngFor="let moto3 of equiposMoto3 | filterMoto: seleccionMoto3 | orderBy: 'nombre'">
+            <app-equipo-ficha [equipo]="moto3"></app-equipo-ficha>
           </div>
         </div>
       </div>

@@ -27,7 +27,6 @@ import { EquipoFichaComponent } from './components/equipos/equipo-ficha/equipo-f
 
 import { CircuitoFormComponent } from './components/circuitos/circuito-form/circuito-form.component';
 import { CircuitosListComponent } from './components/circuitos/circuitos-list/circuitos-list.component';
-import { CircuitosNavComponent } from './components/circuitos/circuitos-nav/circuitos-nav.component';
 import { CircuitoFichaComponent } from './components/circuitos/circuito-ficha/circuito-ficha.component';
 
 import { ClasificacionFormComponent } from './components/clasificaciones/clasificacion-form/clasificacion-form.component';
@@ -45,6 +44,7 @@ import { FilterPilotoPipe } from './pipes/filter-piloto.pipe';
 import { ClasificacionesPilotoComponent } from './components/clasificaciones/clasificaciones-piloto/clasificaciones-piloto.component';
 import { ClasificacionesCircuitoComponent } from './components/clasificaciones/clasificaciones-circuito/clasificaciones-circuito.component';
 import { PilotosEquipoComponent } from './components/pilotos/pilotos-equipo/pilotos-equipo.component';
+import { ClasificacionesFichaComponent } from './components/clasificaciones/clasificaciones-ficha/clasificaciones-ficha.component';
 
 @NgModule({
   declarations: [
@@ -60,7 +60,6 @@ import { PilotosEquipoComponent } from './components/pilotos/pilotos-equipo/pilo
     InicioComponent,
     CircuitoFormComponent,
     CircuitosListComponent,
-    CircuitosNavComponent,
     ClasificacionFormComponent,
     ClasificacionesListComponent,
     ClasificacionesNavComponent,
@@ -74,7 +73,8 @@ import { PilotosEquipoComponent } from './components/pilotos/pilotos-equipo/pilo
     FilterPilotoPipe,
     ClasificacionesPilotoComponent,
     ClasificacionesCircuitoComponent,
-    PilotosEquipoComponent
+    PilotosEquipoComponent,
+    ClasificacionesFichaComponent
   ],
   imports: [
     BrowserModule,

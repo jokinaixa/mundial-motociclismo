@@ -8,7 +8,6 @@ export class ClasificacionesService {
 
   circuitos: any = [];
   
-  //API_URI = 'http://localhost/api';
   API_URI = 'http://localhost:8080/api';
 
   constructor(private http: HttpClient) { }
@@ -22,7 +21,7 @@ export class ClasificacionesService {
   }
 
   obtenerClasifsPorCircuito(circuito: number): Observable<Clasificacion[]> {
-    return this.http.get<Clasificacion[]>(`${this.API_URI}/obtenerClasifsPorPiloto.php?circuito=${circuito}`);
+    return this.http.get<Clasificacion[]>(`${this.API_URI}/obtenerClasifsPorCircuito.php?circuito=${circuito}`);
   }
 
   mostrarClasificacion(id: number): Observable<Clasificacion> {

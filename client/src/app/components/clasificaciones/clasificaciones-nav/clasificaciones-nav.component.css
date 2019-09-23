@@ -1,0 +1,9 @@
+.list-group a, .table-hover tbody tr {
+    cursor: pointer
+}
+
+img.flag {
+    width: 20px;
+    margin-right: 8px;
+    padding-bottom: 3px;
+}

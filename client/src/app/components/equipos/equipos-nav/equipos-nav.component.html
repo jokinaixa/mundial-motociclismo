@@ -1,6 +1,8 @@
-<h3>Marcas</h3>
-<div class="checkbox" *ngFor="let equipo of equipos | distinct: 'moto'">
+<h3>Motos</h3>
+<div class="checkbox" *ngFor="let moto of equipos | distinct: 'moto'">
   <label>           
-    <input type="checkbox" (click)="seleccionaMoto(equipo, seleccion, categoria, $event.target.checked)">{{ equipo }}
+    <input #checkboxes type="checkbox" (click)="gestionaSeleccion(moto, $event.target.checked)">{{ moto }}
   </label>
 </div>
+
+<button type="button" class="btn btn-link" (click)="uncheckMotos()">Quitar filtro</button>

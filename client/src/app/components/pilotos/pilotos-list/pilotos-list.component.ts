@@ -11,7 +11,7 @@ import { PilotosService } from '../pilotos.service';
 
 export class PilotosListComponent implements OnInit {
 
-  categoria: string;
+  categoria: string = "MotoGP";
   
   pilotosMotoGP: any = [];
   pilotosMoto2: any = [];
@@ -33,8 +33,7 @@ export class PilotosListComponent implements OnInit {
     const params = this.activatedRoute.snapshot.params;
     this.categoria = params.categoria;
 
-    this.pilotosService.obtenerPilotos()
-    .subscribe(
+    this.pilotosService.obtenerPilotos().subscribe(
       data => {
         this.pilotosMotoGP = data.filter(
           piloto => piloto.equipo.categoria === 'MotoGP'
@@ -51,30 +50,24 @@ export class PilotosListComponent implements OnInit {
     );
   }
 
-  muestraContenido(categoria: string) {
+  muestraContenido(categoria: string)
+  {
     this.categoria = categoria;
   }
 
-  seleccion(moto:string, cadena:any, categoria:string, isChecked:boolean)
+  obtenerSeleccion(e: any)
   {
-    if (isChecked) {
-      cadena.push(moto);
-    } else {
-      var index = cadena.indexOf(moto);
-      cadena.splice(index, 1);
-    }
-
-    switch (categoria) {
+    switch (this.categoria) {
       case 'MotoGP':
-        this.seleccionMotoGP = cadena.slice();
+        this.seleccionMotoGP = e;
         break;
  
       case 'Moto2':
-        this.seleccionMoto2 = cadena.slice();
+        this.seleccionMoto2 = e;
         break;
           
       case 'Moto3':
-        this.seleccionMoto3 = cadena.slice();
+        this.seleccionMoto3 = e;
         break;
     }
   }

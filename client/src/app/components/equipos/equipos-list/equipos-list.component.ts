@@ -11,7 +11,7 @@ import { EquiposService } from '../equipos.service';
 
 export class EquiposListComponent implements OnInit {
 
-  categoria: string;
+  categoria: string = "MotoGP";
   
   equiposMotoGP: any = [];
   equiposMoto2: any = [];
@@ -34,44 +34,38 @@ export class EquiposListComponent implements OnInit {
     this.equiposService.obtenerEquipos().subscribe(
       data => {
         this.equiposMotoGP = data.filter(
-          equipo => equipo.categoria === 'MotoGP'
+          equipo => equipo.categoria === "MotoGP"
         );
 
         this.equiposMoto2 = data.filter(
-          equipo => equipo.categoria === 'Moto2'
+          equipo => equipo.categoria === "Moto2"
         );
 
         this.equiposMoto3 = data.filter(
-          equipo => equipo.categoria === 'Moto3'
+          equipo => equipo.categoria === "Moto3"
         );
       }
     );
   }
 
-  muestraContenido(categoria) {
+  muestraContenido(categoria: string)
+  {
     this.categoria = categoria;
   }
 
-  seleccion(moto:string, cadena:any, categoria:string, isChecked:boolean)
+  obtenerSeleccion(e: any)
   {
-    if (isChecked) {
-      cadena.push(moto);
-    } else {
-      var index = cadena.indexOf(moto);
-      cadena.splice(index, 1);
-    }
-
-    switch (categoria) {
+    switch (this.categoria) {
       case 'MotoGP':
-        this.seleccionMotoGP = cadena.slice();
+        this.seleccionMotoGP = e;
         break;
  
       case 'Moto2':
-        this.seleccionMoto2 = cadena.slice();
+        this.seleccionMoto2 = e;
         break;
           
       case 'Moto3':
-        this.seleccionMoto3 = cadena.slice();
+        this.seleccionMoto3 = e;
         break;
     }
   }

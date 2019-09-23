@@ -1,17 +1,8 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" routerLink="/">ngMysql CRUD</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
-    aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNav">
-    <ul class="navbar-nav ml-auto">
-      <li class="nav-item active">
-        <a class="nav-link" routerLink="/pilotos" routerLinkActive="active"><i class="fas fa-pilotopad"></i> Pilotos </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/pilotos/add" routerLinkActive="active"><i class="fas fa-plus-circle"></i> ADD GAME </a>
-      </li>
-    </ul>
-  </div>
-</nav>
+<h3>Equipos</h3>
+<div class="checkbox" *ngFor="let equipo of equipos | distinct: 'nombre'">
+  <label>           
+    <input #checkboxes type="checkbox" (click)="gestionaSeleccion(equipo, $event.target.checked)">{{ equipo }}
+  </label>
+</div>
+
+<button type="button" class="btn btn-link" (click)="uncheckEquipos()">Quitar filtro</button>

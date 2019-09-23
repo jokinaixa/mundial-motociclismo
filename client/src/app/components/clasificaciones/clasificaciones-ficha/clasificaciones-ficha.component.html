@@ -1,0 +1,14 @@
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Piloto</th>
+      <th class="text-center">Posición</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let clasificaciones of clasificaciones" (click)="modifiedLink(clasificaciones.id)">
+      <td>{{ clasificaciones.nombre }} {{ clasificaciones.apellido }}<small> ({{ clasificaciones.moto }})</small></td>
+      <td class="text-center">{{ clasificaciones.posicion }}</td>
+    </tr>
+  </tbody>
+</table>
