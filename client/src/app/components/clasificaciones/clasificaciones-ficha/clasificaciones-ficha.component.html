@@ -1,3 +1,4 @@
+<!--
 <table class="table table-hover">
   <thead>
     <tr>
@@ -6,9 +7,23 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let clasificaciones of clasificaciones" (click)="modifiedLink(clasificaciones.id)">
-      <td>{{ clasificaciones.nombre }} {{ clasificaciones.apellido }}<small> ({{ clasificaciones.moto }})</small></td>
-      <td class="text-center">{{ clasificaciones.posicion }}</td>
+    <tr *ngFor="let clasificacion of clasificaciones" (click)="modifiedLink(clasificacion.id)">
+      <td>{{ clasificacion.nombre }} {{ clasificacion.apellido }}<small> ({{ clasificacion.moto }})</small></td>
+      <td class="text-center">{{ clasificacion.posicion }}</td>
     </tr>
   </tbody>
 </table>
+-->
+
+<div class="col-lg-4" *ngFor="let clasificacion of clasificaciones">
+  <div class="thumbnail">
+    <img class="principal" [src]="clasificacion.imagen" class="img-responsive" [alt]="clasificacion.nombre" [title]="clasificacion.nombre">
+    <span class="dorsal-encima text-info"><strong>{{ clasificacion.dorsal }}</strong></span>
+    <div class="caption">
+      <h5 class="titulo">
+        {{ clasificacion.posicion }}. {{ clasificacion.nombre }} {{ clasificacion.apellido }}
+        <small> ({{ clasificacion.moto }})</small>
+      </h5>
+    </div>
+  </div>
+</div>

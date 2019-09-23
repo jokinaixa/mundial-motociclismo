@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { Clasificacion } from '../../../models/Clasificacion';
 
@@ -10,10 +11,18 @@ import { Clasificacion } from '../../../models/Clasificacion';
 export class ClasificacionesFichaComponent implements OnInit {
 
   @Input() clasificaciones: Clasificacion[];
+  @Input() categoria: string;
+  @Input() circuito: number;
 
-  constructor() { }
+  constructor(
+    private router: Router
+  ) { }
 
   ngOnInit() {
+  }
+
+  modifiedLink(id: number) {
+    this.router.navigate(['/clasificaciones/edit/', this.categoria, this.circuito, id]);
   }
 
 }

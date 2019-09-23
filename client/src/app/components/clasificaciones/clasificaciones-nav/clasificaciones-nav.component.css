@@ -1,4 +1,4 @@
-.list-group a, .table-hover tbody tr {
+a.list-group-item {
     cursor: pointer
 }
 

@@ -4,6 +4,6 @@
     *ngFor="let circuito of circuitos" 
     [ngClass]="{'active': selectedCircuito  == circuito.id}"
     (click)="gestionaSeleccion(circuito.id)">
-      <img class="flag" src="assets/images/flags/{{ circuito.pais }}.png" [alt]="circuito.pais"> {{ circuito.id }} {{ circuito.nombre }}
+      <img class="flag" src="assets/images/flags/{{ circuito.pais }}.png" [alt]="circuito.pais">{{ circuito.nombre }}
   </a>
 </div>

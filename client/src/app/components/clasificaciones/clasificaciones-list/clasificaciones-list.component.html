@@ -28,17 +28,17 @@
     <div class="tab-content">
       <div id="MotoGP" class="tab-pane fade" [ngClass]="{ 'in active': categoria === 'MotoGP' }">
         <br/><br/>
-        <app-clasificaciones-ficha [clasificaciones]="clasificacionesByMotoGP"></app-clasificaciones-ficha>
+        <app-clasificaciones-ficha [clasificaciones]="clasificacionesByMotoGP" [categoria]="'MotoGP'" [circuito]="seleccionCircuito"></app-clasificaciones-ficha>
       </div>
 
       <div id="Moto2" class="tab-pane fade" [ngClass]="{ 'in active': categoria === 'Moto2' }">
         <br/><br/>
-        <app-clasificaciones-ficha [clasificaciones]="clasificacionesByMoto2"></app-clasificaciones-ficha>
+        <app-clasificaciones-ficha [clasificaciones]="clasificacionesByMoto2" [categoria]="'Moto2'" [circuito]="seleccionCircuito"></app-clasificaciones-ficha>
       </div>
 
       <div id="Moto3" class="tab-pane fade" [ngClass]="{ 'in active': categoria === 'Moto3' }">
         <br/><br/>
-        <app-clasificaciones-ficha [clasificaciones]="clasificacionesByMoto3"></app-clasificaciones-ficha>
+        <app-clasificaciones-ficha [clasificaciones]="clasificacionesByMoto3" [categoria]="'Moto3'" [circuito]="seleccionCircuito"></app-clasificaciones-ficha>
       </div>
     </div>
   </div>

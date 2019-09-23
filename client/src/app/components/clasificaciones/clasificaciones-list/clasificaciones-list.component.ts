@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 
 import { ClasificacionesService } from '../clasificaciones.service';
 
@@ -20,8 +20,7 @@ export class ClasificacionesListComponent implements OnInit {
 
   constructor(
     private clasificacionesService: ClasificacionesService,
-    private activatedRoute: ActivatedRoute,
-    private router: Router) { }
+    private activatedRoute: ActivatedRoute) { }
 
 
   ngOnInit() {
@@ -39,10 +38,6 @@ export class ClasificacionesListComponent implements OnInit {
 
   muestraCategoria(categoria: string) {
     this.categoria = categoria;
-  }
-
-  modifiedLink(id: number) {
-    this.router.navigate(['/clasificaciones/edit/', this.categoria, this.seleccionCircuito, id]);
   }
 
   obtenerClasificaciones()

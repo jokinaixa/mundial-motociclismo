@@ -30,7 +30,7 @@
             <div class="col-lg-9">
               <select class="form-control" [(ngModel)]="clasificacion.piloto" [ngModelOptions]="{standalone: true}">
                 <option value="0">Seleccione un piloto</option>
-                <option *ngFor="let piloto of pilotosByCategoria" [value]="piloto.id">{{ piloto.nombre }} {{ piloto.apellido }}</option>
+                <option *ngFor="let piloto of pilotosByCategoria | orderBy: 'nombre'" [value]="piloto.id">{{ piloto.nombre }} {{ piloto.apellido }}</option>
               </select>
             </div>
             <div class="col-lg-3 text-right">
