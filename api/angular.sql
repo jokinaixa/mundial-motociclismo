@@ -2,8 +2,8 @@
 -- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
--- Servidor: localhost
--- Tiempo de generación: 22-09-2019 a las 23:22:10
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 23-09-2019 a las 18:22:21
 -- Versión del servidor: 10.1.38-MariaDB
 -- Versión de PHP: 7.3.2
 
@@ -120,7 +120,8 @@ INSERT INTO `clasificaciones` (`id`, `circuito`, `categoria`, `posicion`, `pilot
 (36, 12, 'MotoGP', 3, 4),
 (37, 13, 'MotoGP', 1, 23),
 (38, 13, 'MotoGP', 2, 6),
-(39, 13, 'MotoGP', 3, 4);
+(39, 13, 'MotoGP', 3, 4),
+(40, 14, 'MotoGP', 1, 23);
 
 -- --------------------------------------------------------
 
@@ -153,7 +154,42 @@ INSERT INTO `equipos` (`id`, `nombre`, `moto`, `imagen`, `categoria`) VALUES
 (10, 'Pramac Racing', 'Ducati', 'https://www.motogp.com/en/api/rider/photo/bike/old/8049', 'MotoGP'),
 (11, 'Red Bull KTM Tech 3', 'KTM', 'https://www.motogp.com/en/api/rider/photo/bike/old/8132', 'MotoGP'),
 (12, 'Repsol Honda Team', 'Honda', 'https://www.motogp.com/en/api/rider/photo/bike/old/7444', 'MotoGP'),
-(13, 'Kiefer Racing', 'KTM', 'https://www.motogp.com/en/api/rider/photo/bike/old/8355', 'Moto2');
+(13, 'Kiefer Racing', 'KTM', 'https://photos.motogp.com/2019/riders/moto2/bike/263x200/rider_8355_1551780731.jpg', 'Moto2'),
+(14, 'Dynavolt Intact GP', 'KTM', 'https://photos.motogp.com/2019/riders/moto2/bike/263x200/rider_6121_1551780709.jpg', 'Moto2'),
+(15, 'NTS RW Racing GP', 'NTS', 'https://photos.motogp.com/2019/riders/moto2/bike/263x200/rider_8028_1551966355.jpg', 'Moto2'),
+(16, 'Italtrans Racing Team', 'Kalex', 'https://photos.motogp.com/2019/riders/moto2/bike/263x200/rider_8349_1551966341.jpg', 'Moto2'),
+(17, 'FLEXBOX HP 40', 'kalex', 'https://photos.motogp.com/2019/riders/moto2/bike/263x200/rider_8030_1551780645.jpg', 'Moto2'),
+(18, 'HDR Heidrun Speed Up', 'Speed Up', 'https://photos.motogp.com/2019/riders/moto2/bike/263x200/rider_7742_1551966333.jpg', 'Moto2'),
+(19, 'SKY Racing Team VR46', 'Kalex', 'https://photos.motogp.com/2019/riders/moto2/bike/263x200/rider_8431_1551780674.jpg', 'Moto2'),
+(20, 'American Racing KTM', 'KTM', 'https://photos.motogp.com/2019/riders/moto2/bike/263x200/rider_7946_1551780660.jpg', 'Moto2'),
+(21, 'Gaviota Angel Nieto Team', 'KTM', 'https://photos.motogp.com/2019/riders/moto2/bike/263x200/rider_8518_1551780626.jpg', 'Moto2'),
+(22, 'IDEMITSU Honda Team Asia', 'Kalex', 'https://photos.motogp.com/2019/riders/moto2/bike/263x200/rider_8165_1551780690.jpg', 'Moto2'),
+(23, 'Federal Oil Gresini Moto2', 'Kalex', 'https://photos.motogp.com/2019/riders/moto2/bike/263x200/rider_8469_1551967334.jpg', 'Moto2'),
+(24, 'Red Bull KTM Ajo', 'KTM', 'https://photos.motogp.com/2019/riders/moto2/bike/263x200/rider_7646_1551780692.jpg', 'Moto2'),
+(25, 'ONEXOX TKKR SAG Team', 'Kalex', 'https://photos.motogp.com/2019/riders/moto2/bike/263x200/rider_8443_1551780636.jpg', 'Moto2'),
+(26, 'MV Agusta Temporary Forward', 'MV Agusta', 'https://photos.motogp.com/2019/riders/moto2/bike/263x200/rider_8177_1551966374.jpg', 'Moto2'),
+(27, 'Red Bull KTM Tech 3', 'KTM', 'https://photos.motogp.com/2019/riders/moto2/bike/263x200/rider_8029_1551966330.jpg', 'Moto2'),
+(28, 'EG 0,0 Marc VDS', 'Kalex', 'https://photos.motogp.com/2019/riders/moto2/bike/263x200/rider_8173_1551780726.jpg', 'Moto2'),
+(29, 'Petronas Sprinta Racing', 'Kalex', 'https://photos.motogp.com/2019/riders/moto2/bike/263x200/rider_8758_1551780705.jpg', 'Moto2'),
+(30, 'WWR', 'KTM', 'https://photos.motogp.com/2019/riders/moto3/bike/263x200/rider_8540_1552151975.jpg', 'Moto3'),
+(31, 'SKY Racing Team VR46', 'KTM', 'https://photos.motogp.com/2019/riders/moto3/bike/263x200/rider_8873_1551780664.jpg', 'Moto3'),
+(32, 'Estrella Galicia 0,0', 'Honda', 'https://photos.motogp.com/2019/riders/moto3/bike/263x200/rider_9958_1551966394.jpg', 'Moto3'),
+(33, 'Redox PruestelGP', 'KTM', 'https://photos.motogp.com/2019/riders/moto3/bike/263x200/rider_8856_1551780641.jpg', 'Moto3'),
+(34, 'VNE Snipers', 'Honda', 'https://photos.motogp.com/2019/riders/moto3/bike/263x200/rider_8752_1552151958.jpg', 'Moto3'),
+(35, 'Petronas Sprinta Racing', 'Honda', 'https://photos.motogp.com/2019/riders/moto3/bike/263x200/rider_8000_1552151970.jpg', 'Moto3'),
+(36, 'Kömmerling Gresini Moto3', 'Honda', 'https://photos.motogp.com/2019/riders/moto3/bike/263x200/rider_8519_1551966363.jpg', 'Moto3'),
+(37, 'BOE Skull Rider Mugen Race', 'KTM', 'https://photos.motogp.com/2019/riders/moto3/bike/263x200/rider_8675_1551780683.jpg', 'Moto3'),
+(38, 'SIC58 Squadra Corse', 'Honda', 'https://photos.motogp.com/2019/riders/moto3/bike/263x200/rider_7811_1551966398.jpg', 'Moto3'),
+(39, 'Gaviota Angel Nieto Team', 'KTM', 'https://photos.motogp.com/2019/riders/moto3/bike/263x200/rider_8269_1551780715.jpg', 'Moto3'),
+(40, 'Honda Team Asia', 'Honda', 'https://photos.motogp.com/2019/riders/moto3/bike/263x200/rider_8492_1551780648.jpg', 'Moto3'),
+(41, 'CIP Green Power', 'KTM', 'https://photos.motogp.com/2019/riders/moto3/bike/263x200/rider_8296_1551780718.jpg', 'Moto3'),
+(42, 'Leopard Racing', 'Honda', 'https://photos.motogp.com/2019/riders/moto3/bike/263x200/rider_7744_1551780657.jpg', 'Moto3'),
+(43, 'Sterilgarda Max Racing Team', 'KTM', 'https://photos.motogp.com/2019/riders/moto3/bike/263x200/rider_8525_1551780632.jpg', 'Moto3'),
+(44, 'Red Bull KTM Ajo', 'KTM', 'https://photos.motogp.com/2019/riders/moto3/bike/263x200/rider_8826_1551966383.jpg', 'Moto3'),
+(45, 'Baiko Racing Team', 'KTM', 'assets/images/sin_imagen.jpg', 'Moto3'),
+(46, 'Reale Avintia Arizona', 'KTM', 'assets/images/sin_imagen.jpg', 'Moto3'),
+(47, 'Fundacion Andreas Perez', 'KTM', 'assets/images/sin_imagen.jpg', 'Moto3'),
+(48, 'Redox PruestelGP', 'KTM', 'https://photos.motogp.com/2019/riders/moto3/bike/263x200/rider_7459_1551966319.jpg', 'Moto3');
 
 -- --------------------------------------------------------
 
@@ -177,10 +213,10 @@ CREATE TABLE `pilotos` (
 --
 
 INSERT INTO `pilotos` (`id`, `equipo`, `nombre`, `apellido`, `dorsal`, `imagen`, `fecha`, `pais`) VALUES
-(1, 1, 'Andrea', 'Dovizioso', 4, 'https://photos.motogp.com/2019/riders/motogp/grid/206x181/rider_5885_1561562125.jpg', '2019-09-19', 'it'),
-(2, 2, 'Johann', 'Zarco', 5, 'https://photos.motogp.com/2019/riders/motogp/grid/206x181/rider_7236_1554806205.jpg', '2019-09-19', 'fr'),
-(3, 1, 'Danilo', 'Petrucci', 9, 'https://photos.motogp.com/2019/riders/motogp/grid/206x181/rider_8148_1561562115.jpg', '2019-09-19', 'it'),
-(4, 3, 'Maverick', 'Viñales', 12, 'https://photos.motogp.com/2019/riders/motogp/grid/206x181/rider_7409_1554806128.jpg', '2019-09-19', 'es'),
+(1, 1, 'Andrea', 'DOVIZIOSO', 4, 'https://photos.motogp.com/2019/riders/motogp/grid/206x181/rider_5885_1561562125.jpg', '1986-03-23', 'it'),
+(2, 2, 'Johann', 'ZARCO', 5, 'https://photos.motogp.com/2019/riders/motogp/grid/206x181/rider_7236_1554806205.jpg', '1990-07-16', 'fr'),
+(3, 1, 'Danilo', 'PETRUCCI', 9, 'https://photos.motogp.com/2019/riders/motogp/grid/206x181/rider_8148_1561562115.jpg', '1990-10-24', 'it'),
+(4, 3, 'Maverick', 'VIÑALES', 12, 'https://photos.motogp.com/2019/riders/motogp/grid/206x181/rider_7409_1554806128.jpg', '1995-01-12', 'es'),
 (5, 4, 'Karel', 'Abraham', 17, 'https://photos.motogp.com/2019/riders/motogp/grid/206x181/rider_6867_1554806143.jpg', '2019-09-19', 'cz'),
 (6, 5, 'Fabio', 'Quartararo', 20, 'https://photos.motogp.com/2019/riders/motogp/grid/206x181/rider_8520_1554806150.jpg', '2019-09-19', 'fr'),
 (7, 5, 'Franco', 'Morbidelli', 21, 'https://photos.motogp.com/2019/riders/motogp/grid/206x181/rider_7741_1554806124.jpg', '2019-09-19', 'it'),
@@ -201,41 +237,38 @@ INSERT INTO `pilotos` (`id`, `equipo`, `nombre`, `apellido`, `dorsal`, `imagen`,
 (22, 11, 'Miguel', 'Oliveira', 88, 'https://photos.motogp.com/2019/riders/motogp/grid/206x181/rider_7199_1554806227.jpg', '2019-09-19', 'pt'),
 (23, 12, 'Marc', 'Marquez', 93, 'https://photos.motogp.com/2019/riders/motogp/grid/206x181/rider_7444_1554806167.jpg', '2019-09-19', 'es'),
 (24, 12, 'Jorge', 'Lorenzo', 99, 'https://photos.motogp.com/2019/riders/motogp/grid/206x181/rider_6060_1554806219.jpg', '2019-09-19', 'es'),
-(25, 13, 'Lukas', 'TULOVIC', 3, 'https://www.motogp.com/en/api/rider/photo/grid/old/8355', '2019-09-19', 'de'),
-(26, 13, 'Steven', 'ODENDAAL', 4, 'https://www.motogp.com/en/api/rider/photo/grid/old/8028', '2019-09-19', 'za'),
-(27, 13, 'Andrea', 'LOCATELLI', 5, 'https://www.motogp.com/en/api/rider/photo/grid/old/8349', '2019-09-19', 'it'),
-(28, 13, 'Lorenzo', 'BALDASSARRI', 7, 'https://www.motogp.com/en/api/rider/photo/grid/old/8030', '2019-09-19', 'it'),
-(29, 13, 'Jorge', 'NAVARRO', 9, 'https://www.motogp.com/en/api/rider/photo/grid/old/7742', '2019-09-19', 'es'),
-(30, 13, 'Luca', 'MARINI', 10, 'https://www.motogp.com/en/api/rider/photo/grid/old/8431', '2019-09-19', 'it'),
-(31, 13, 'Nicolo', 'BULEGA', 11, 'https://www.motogp.com/en/api/rider/photo/grid/old/8756', '2019-09-19', 'it'),
-(32, 13, 'Thomas', 'LUTHI', 12, 'https://www.motogp.com/en/api/rider/photo/grid/old/6121', '2019-09-19', 'ch'),
-(33, 13, 'Joe', 'ROBERTS', 16, 'https://www.motogp.com/en/api/rider/photo/grid/old/7946', '2019-09-19', 'us'),
-(34, 13, 'Xavi', 'CARDELUS', 18, 'https://www.motogp.com/en/api/rider/photo/grid/old/8518', '2019-09-19', 'md'),
-(35, 13, 'Dimas', 'EKKY PRATAMA', 20, 'https://www.motogp.com/en/api/rider/photo/grid/old/8165', '2019-09-19', 'id'),
-(36, 13, 'Fabio', 'DI GIANNANTONIO', 21, 'https://www.motogp.com/en/api/rider/photo/grid/old/8539', '2019-09-19', 'it'),
-(37, 13, 'Sam', 'LOWES', 22, 'https://www.motogp.com/en/api/rider/photo/grid/old/8469', '2019-09-19', 'gb'),
-(38, 13, 'Marcel', 'SCHROTTER', 23, 'https://www.motogp.com/en/api/rider/photo/grid/old/7538', '2019-09-19', 'de'),
-(39, 13, 'Simone', 'CORSI', 24, 'https://www.motogp.com/en/api/rider/photo/grid/old/6077', '2019-09-19', 'it'),
-(40, 13, 'Iker', 'LECUONA', 27, 'https://www.motogp.com/en/api/rider/photo/grid/old/8947', '2019-09-19', 'es'),
-(41, 13, 'Enea', 'BASTIANINI', 33, 'https://www.motogp.com/en/api/rider/photo/grid/old/8295', '2019-09-19', 'it'),
-(42, 13, 'Somkiat', 'CHANTRA', 35, 'https://www.motogp.com/en/api/rider/photo/grid/old/8476', '2019-09-19', 'th'),
-(43, 13, 'Andi', 'FARID IZDIHAR', 36, 'https://www.motogp.com/en/api/rider/photo/grid/old/8582', '0000-00-00', 'id'),
-(44, 13, 'Augusto', 'FERNANDEZ', 40, 'https://www.motogp.com/en/api/rider/photo/grid/old/9973', '2019-09-19', 'es'),
-(45, 13, 'Brad', 'Binder', 41, 'assets/images/sin_imagen.jpg', '2019-09-19', 'za'),
-(46, 13, 'Tetsuta', 'Nagashima', 45, 'assets/images/sin_imagen.jpg', '2019-09-19', 'jp'),
-(47, 13, 'Adam', 'Norrodin', 47, 'assets/images/sin_imagen.jpg', '2019-09-19', 'my'),
-(48, 13, 'Mattia', 'Pasini', 54, 'assets/images/sin_imagen.jpg', '2019-09-19', 'it'),
-(49, 13, 'Stefano', 'Manzi', 62, 'assets/images/sin_imagen.jpg', '2019-09-19', 'it'),
-(50, 13, 'Bo', 'Bendsneyder', 64, 'assets/images/sin_imagen.jpg', '2019-09-19', 'nl'),
-(51, 13, 'Philipp', 'Oettl', 65, 'assets/images/sin_imagen.jpg', '2019-09-19', 'de'),
-(52, 13, 'Marco', 'Bezzecchi', 72, 'assets/images/sin_imagen.jpg', '2019-09-19', 'it'),
-(53, 13, 'Alex', 'Marquez', 73, 'assets/images/sin_imagen.jpg', '2019-09-19', 'es'),
-(54, 13, 'Dominique', 'Aegerter', 77, 'assets/images/sin_imagen.jpg', '2019-09-19', 'ch'),
-(55, 13, 'Remy', 'Gardner', 87, 'assets/images/sin_imagen.jpg', '2019-09-19', 'au'),
-(56, 13, 'Jorge', 'Martin', 88, 'assets/images/sin_imagen.jpg', '2019-09-19', 'es'),
-(57, 13, 'Khairul', 'Idham Pawi', 89, 'assets/images/sin_imagen.jpg', '2019-09-19', 'my'),
-(58, 13, 'Jake', 'Dixon', 96, 'assets/images/sin_imagen.jpg', '2019-09-19', 'gb'),
-(59, 13, 'Xavi', 'Vierge', 97, 'assets/images/sin_imagen.jpg', '2019-09-19', 'es');
+(25, 13, 'Lukas', 'TULOVIC', 3, 'https://photos.motogp.com/2019/riders/moto2/grid/206x181/rider_8355_1551890376.jpg', '2000-06-15', 'de'),
+(26, 15, 'Steven', 'ODENDAAL', 4, 'https://photos.motogp.com/2019/riders/moto2/grid/206x181/rider_8028_1551953134.jpg', '1993-03-02', 'za'),
+(27, 16, 'Andrea', 'LOCATELLI', 5, 'https://photos.motogp.com/2019/riders/moto2/grid/206x181/rider_8349_1551888098.jpg', '1996-10-16', 'it'),
+(28, 17, 'Lorenzo', 'BALDASSARRI', 7, 'https://photos.motogp.com/2019/riders/moto2/grid/206x181/rider_8030_1551890355.jpg', '1996-11-06', 'it'),
+(29, 18, 'Jorge', 'NAVARRO', 9, 'https://www.motogp.com/en/api/rider/photo/grid/old/7742', '1996-02-03', 'es'),
+(30, 19, 'Luca', 'MARINI', 10, 'https://www.motogp.com/en/api/rider/photo/grid/old/8431', '1997-08-10', 'it'),
+(31, 19, 'Nicolo', 'BULEGA', 11, 'https://www.motogp.com/en/api/rider/photo/grid/old/8756', '1999-10-16', 'it'),
+(32, 14, 'Thomas', 'LUTHI', 12, 'https://www.motogp.com/en/api/rider/photo/grid/old/6121', '2019-09-19', 'ch'),
+(33, 20, 'Joe', 'ROBERTS', 16, 'https://www.motogp.com/en/api/rider/photo/grid/old/7946', '1997-06-16', 'us'),
+(34, 21, 'Xavi', 'CARDELUS', 18, 'https://www.motogp.com/en/api/rider/photo/grid/old/8518', '1998-05-15', 'md'),
+(35, 22, 'Dimas', 'EKKY PRATAMA', 20, 'https://www.motogp.com/en/api/rider/photo/grid/old/8165', '1992-10-26', 'id'),
+(36, 18, 'Fabio', 'DI GIANNANTONIO', 21, 'https://www.motogp.com/en/api/rider/photo/grid/old/8539', '1998-10-10', 'it'),
+(37, 23, 'Sam', 'LOWES', 22, 'https://www.motogp.com/en/api/rider/photo/grid/old/8469', '1990-09-14', 'gb'),
+(38, 14, 'Marcel', 'SCHROTTER', 23, 'https://www.motogp.com/en/api/rider/photo/grid/old/7538', '1993-01-02', 'de'),
+(39, 15, 'Simone', 'CORSI', 24, 'https://www.motogp.com/en/api/rider/photo/grid/old/6077', '2019-09-19', 'it'),
+(40, 20, 'Iker', 'LECUONA', 27, 'https://www.motogp.com/en/api/rider/photo/grid/old/8947', '2019-09-19', 'es'),
+(41, 16, 'Enea', 'BASTIANINI', 33, 'https://www.motogp.com/en/api/rider/photo/grid/old/8295', '2019-09-19', 'it'),
+(42, 22, 'Somkiat', 'CHANTRA', 35, 'https://www.motogp.com/en/api/rider/photo/grid/old/8476', '2019-09-19', 'th'),
+(44, 17, 'Augusto', 'FERNANDEZ', 40, 'https://www.motogp.com/en/api/rider/photo/grid/old/9973', '2019-09-19', 'es'),
+(45, 24, 'Brad', 'BINDER', 41, 'https://photos.motogp.com/2019/riders/moto2/grid/206x181/rider_7646_1551890077.jpg', '2019-09-19', 'za'),
+(46, 25, 'Tetsuta', 'NAGASHIMA', 45, 'https://photos.motogp.com/2019/riders/moto2/grid/206x181/rider_8443_1552151654.jpg', '2019-09-19', 'jp'),
+(47, 29, 'Adam', 'NORRODIN', 47, 'https://photos.motogp.com/2019/riders/moto2/grid/206x181/rider_8486_1568365944.jpg', '2019-09-19', 'my'),
+(49, 26, 'Stefano', 'MANZI', 62, 'https://photos.motogp.com/2019/riders/moto2/grid/206x181/rider_8177_1551953138.jpg', '2019-09-19', 'it'),
+(51, 27, 'Philipp', 'OETTL', 65, 'https://photos.motogp.com/2019/riders/moto2/grid/206x181/rider_8029_1551953293.jpg', '2019-09-19', 'de'),
+(52, 27, 'Marco', 'BEZZECCHI', 72, 'https://photos.motogp.com/2019/riders/moto2/grid/206x181/rider_8688_1551890371.jpg', '2019-09-19', 'it'),
+(53, 28, 'Alex', 'MARQUEZ', 73, 'https://photos.motogp.com/2019/riders/moto2/grid/206x181/rider_8173_1551888085.jpg', '2019-09-19', 'es'),
+(54, 26, 'Dominique', 'AEGERTER', 77, 'https://photos.motogp.com/2019/riders/moto2/grid/206x181/rider_7190_1551890055.jpg', '2019-09-19', 'ch'),
+(55, 25, 'Remy', 'GARDNER', 87, 'https://photos.motogp.com/2019/riders/moto2/grid/206x181/rider_8513_1551953147.jpg', '2019-09-19', 'au'),
+(56, 24, 'Jorge', 'MARTIN', 88, 'https://photos.motogp.com/2019/riders/moto2/grid/206x181/rider_8146_1551890080.jpg', '2019-09-19', 'es'),
+(57, 29, 'Khairul', 'IDHAM PAWI', 89, 'https://photos.motogp.com/2019/riders/moto2/grid/206x181/rider_8758_1551890084.jpg', '2019-09-19', 'my'),
+(58, 21, 'Jake', 'DIXON', 96, 'https://photos.motogp.com/2019/riders/moto2/grid/206x181/rider_10012_1551884950.jpg', '2019-09-19', 'gb'),
+(59, 28, 'Xavi', 'VIERGE', 97, 'https://photos.motogp.com/2019/riders/moto2/grid/206x181/rider_8793_1551953120.jpg', '2019-09-19', 'es');
 
 --
 -- Índices para tablas volcadas
@@ -283,13 +316,13 @@ ALTER TABLE `circuitos`
 -- AUTO_INCREMENT de la tabla `clasificaciones`
 --
 ALTER TABLE `clasificaciones`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 
 --
 -- AUTO_INCREMENT de la tabla `equipos`
 --
 ALTER TABLE `equipos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 
 --
 -- AUTO_INCREMENT de la tabla `pilotos`
