@@ -11,15 +11,11 @@ import { PilotosService } from '../pilotos.service';
 
 export class PilotosListComponent implements OnInit {
 
-  categoria: string = "MotoGP";
+  categorias: any = ['MotoGP', 'Moto2', 'Moto3'];
+  categoria: string = this.categorias[0];
   
-  pilotosMotoGP: any = [];
-  pilotosMoto2: any = [];
-  pilotosMoto3: any = [];
-
-  seleccionMotoGP: any = [];
-  seleccionMoto2: any = [];
-  seleccionMoto3: any = [];
+  pilotos: any = [];
+  seleccion: any = [];
 
   filterPiloto = '';
 
@@ -30,22 +26,21 @@ export class PilotosListComponent implements OnInit {
 
 
   ngOnInit() {
+    this.seleccion['MotoGP'] = [];
+    this.seleccion['Moto2'] = [];
+    this.seleccion['Moto3'] = [];
+
     const params = this.activatedRoute.snapshot.params;
     this.categoria = params.categoria;
 
-    this.pilotosService.obtenerPilotos().subscribe(
+    this.pilotosService.obtenerPilotos()
+    .subscribe(
       data => {
-        this.pilotosMotoGP = data.filter(
-          piloto => piloto.equipo.categoria === 'MotoGP'
-        );
-
-        this.pilotosMoto2 = data.filter(
-          piloto => piloto.equipo.categoria === 'Moto2'
-        );
-
-        this.pilotosMoto3 = data.filter(
-          piloto => piloto.equipo.categoria === 'Moto3'
-        );
+        this.categorias.forEach((element: string) => {
+          this.pilotos[element] = data.filter(
+            piloto => piloto.equipo.categoria === element
+          )
+        })
       }
     );
   }
@@ -57,19 +52,7 @@ export class PilotosListComponent implements OnInit {
 
   obtenerSeleccion(e: any)
   {
-    switch (this.categoria) {
-      case 'MotoGP':
-        this.seleccionMotoGP = e;
-        break;
- 
-      case 'Moto2':
-        this.seleccionMoto2 = e;
-        break;
-          
-      case 'Moto3':
-        this.seleccionMoto3 = e;
-        break;
-    }
+    this.seleccion[this.categoria] = e;
   }
 
 }

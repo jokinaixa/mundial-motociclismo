@@ -11,15 +11,11 @@ import { EquiposService } from '../equipos.service';
 
 export class EquiposListComponent implements OnInit {
 
-  categoria: string = "MotoGP";
+  categorias: any = ['MotoGP', 'Moto2', 'Moto3'];
+  categoria: string = this.categorias[0];
   
-  equiposMotoGP: any = [];
-  equiposMoto2: any = [];
-  equiposMoto3: any = [];
-
-  seleccionMotoGP: any = [];
-  seleccionMoto2: any = [];
-  seleccionMoto3: any = [];
+  equipos: any = [];
+  seleccion: any = [];
 
 
   constructor(
@@ -28,22 +24,21 @@ export class EquiposListComponent implements OnInit {
   
 
   ngOnInit() {
+    this.seleccion['MotoGP'] = [];
+    this.seleccion['Moto2'] = [];
+    this.seleccion['Moto3'] = [];
+
     const params = this.activatedRoute.snapshot.params;
     this.categoria = params.categoria;
 
-    this.equiposService.obtenerEquipos().subscribe(
+    this.equiposService.obtenerEquipos()
+    .subscribe(
       data => {
-        this.equiposMotoGP = data.filter(
-          equipo => equipo.categoria === "MotoGP"
-        );
-
-        this.equiposMoto2 = data.filter(
-          equipo => equipo.categoria === "Moto2"
-        );
-
-        this.equiposMoto3 = data.filter(
-          equipo => equipo.categoria === "Moto3"
-        );
+        this.categorias.forEach((element: string) => {
+          this.equipos[element] = data.filter(
+            equipo => equipo.categoria === element
+          )
+        })
       }
     );
   }
@@ -55,19 +50,7 @@ export class EquiposListComponent implements OnInit {
 
   obtenerSeleccion(e: any)
   {
-    switch (this.categoria) {
-      case 'MotoGP':
-        this.seleccionMotoGP = e;
-        break;
- 
-      case 'Moto2':
-        this.seleccionMoto2 = e;
-        break;
-          
-      case 'Moto3':
-        this.seleccionMoto3 = e;
-        break;
-    }
+    this.seleccion[this.categoria] = e;
   }
 
 }

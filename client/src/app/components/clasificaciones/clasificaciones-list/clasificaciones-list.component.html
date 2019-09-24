@@ -5,14 +5,11 @@
 
 <div class="row">
   <div class="col-lg-4">
-      <app-clasificaciones-nav [circuito]="seleccionCircuito" (seleccion)="muestraCircuito($event)"></app-clasificaciones-nav>
+      <app-clasificaciones-nav [circuito]="seleccion" (seleccion)="muestraCircuito($event)"></app-clasificaciones-nav>
   </div>
 
   <div class="col-lg-7 col-lg-offset-1">
-    <p class="text-right">
-      <a [routerLink]="['/clasificaciones/add', categoria, seleccionCircuito]" class="btn btn-success">Nueva Clasificación {{ categoria }}</a>
-    </p>
-
+    <br/><br/>
     <ul class="nav nav-tabs">
       <li [ngClass]="{ 'active': categoria === 'MotoGP' }">
         <a data-toggle="tab" href="#MotoGP" (click)="muestraCategoria('MotoGP')">MotoGP</a>
@@ -26,19 +23,21 @@
     </ul>
     
     <div class="tab-content">
+      <br/>
+      <h4>Podium</h4>
       <div id="MotoGP" class="tab-pane fade" [ngClass]="{ 'in active': categoria === 'MotoGP' }">
         <br/><br/>
-        <app-clasificaciones-ficha [clasificaciones]="clasificacionesByMotoGP" [categoria]="'MotoGP'" [circuito]="seleccionCircuito"></app-clasificaciones-ficha>
+        <app-clasificaciones-ficha [clasificaciones]="clasificaciones['MotoGP']" [categoria]="'MotoGP'" [circuito]="seleccion"></app-clasificaciones-ficha>
       </div>
 
       <div id="Moto2" class="tab-pane fade" [ngClass]="{ 'in active': categoria === 'Moto2' }">
         <br/><br/>
-        <app-clasificaciones-ficha [clasificaciones]="clasificacionesByMoto2" [categoria]="'Moto2'" [circuito]="seleccionCircuito"></app-clasificaciones-ficha>
+        <app-clasificaciones-ficha [clasificaciones]="clasificaciones['Moto2']" [categoria]="'Moto2'" [circuito]="seleccion"></app-clasificaciones-ficha>
       </div>
 
       <div id="Moto3" class="tab-pane fade" [ngClass]="{ 'in active': categoria === 'Moto3' }">
         <br/><br/>
-        <app-clasificaciones-ficha [clasificaciones]="clasificacionesByMoto3" [categoria]="'Moto3'" [circuito]="seleccionCircuito"></app-clasificaciones-ficha>
+        <app-clasificaciones-ficha [clasificaciones]="clasificaciones['Moto3']" [categoria]="'Moto3'" [circuito]="seleccion"></app-clasificaciones-ficha>
       </div>
     </div>
   </div>

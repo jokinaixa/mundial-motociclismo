@@ -8,14 +8,14 @@ import { ClasificacionesService } from '../clasificaciones.service';
   templateUrl: './clasificaciones-list.component.html',
   styleUrls: ['./clasificaciones-list.component.css']
 })
+
 export class ClasificacionesListComponent implements OnInit {
 
-  categoria: string;
-  seleccionCircuito: number;
-  
-  clasificacionesByMotoGP: any = [];
-  clasificacionesByMoto2: any = [];
-  clasificacionesByMoto3: any = [];
+  categorias: any = ['MotoGP', 'Moto2', 'Moto3'];
+  categoria: string = this.categorias[0];
+
+  clasificaciones: any = [];
+  seleccion: number;
   
 
   constructor(
@@ -26,12 +26,12 @@ export class ClasificacionesListComponent implements OnInit {
   ngOnInit() {
     const params = this.activatedRoute.snapshot.params;
     this.categoria = params.categoria;
-    this.seleccionCircuito = params.circuito;
+    this.seleccion = params.circuito;
   }
 
 
   muestraCircuito(circuito: number) {
-    this.seleccionCircuito = circuito;
+    this.seleccion = circuito;
 
     this.obtenerClasificaciones();
   }
@@ -42,23 +42,18 @@ export class ClasificacionesListComponent implements OnInit {
 
   obtenerClasificaciones()
   {
-    this.clasificacionesByMotoGP = [];
-    this.clasificacionesByMoto2 = [];
-    this.clasificacionesByMoto3 = [];
+    this.clasificaciones['MotoGP'] = [];
+    this.clasificaciones['Moto2'] = [];
+    this.clasificaciones['Moto3'] = [];
     
-    this.clasificacionesService.obtenerClasifsPorCircuito(this.seleccionCircuito).subscribe(
+    this.clasificacionesService.obtenerClasifsPorCircuito(this.seleccion)
+    .subscribe(
       data => {
-        this.clasificacionesByMotoGP = data.filter(
-          clasificacion => clasificacion.categoria === 'MotoGP'
-        );
-
-        this.clasificacionesByMoto2 = data.filter(
-          clasificacion => clasificacion.categoria === 'Moto2'
-        );
-
-        this.clasificacionesByMoto3 = data.filter(
-          clasificacion => clasificacion.categoria === 'Moto3'
-        );
+        this.categorias.forEach((element: string) => {
+          this.clasificaciones[element] = data.filter(
+            clasificacion => clasificacion.categoria === element
+          )
+        })
       }
     );
   }

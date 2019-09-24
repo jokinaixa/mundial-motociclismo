@@ -21,7 +21,7 @@ export class ClasificacionFormComponent implements OnInit {
     circuito: 0,
     piloto: 0,
     categoria: '0',
-    posicion: 0,
+    posicion: 1,
   };
 
   circuitos: Circuito[];
@@ -43,13 +43,15 @@ export class ClasificacionFormComponent implements OnInit {
 
     this.clasificacion.categoria = params.categoria;
     this.clasificacion.circuito = params.circuito;
+    this.clasificacion.posicion = params.posicion;
 
     this.obtenerPilotos();
     this.obtenerCircuitos();
 
     if (params.id)
     {
-      this.clasificacionesService.mostrarClasificacion(params.id).subscribe(
+      this.clasificacionesService.mostrarClasificacion(params.id)
+      .subscribe(
         res => {
           //console.log(res);
           this.clasificacion = res;
@@ -62,7 +64,8 @@ export class ClasificacionFormComponent implements OnInit {
 
   obtenerCircuitos()
   {
-    this.circuitosService.obtenerCircuitos().subscribe(
+    this.circuitosService.obtenerCircuitos()
+    .subscribe(
       res => {
         //console.log(res);
         this.circuitos = res;
@@ -72,8 +75,9 @@ export class ClasificacionFormComponent implements OnInit {
   }
 
   obtenerPilotos()
-  {
-    this.pilotosService.obtenerPilotos().subscribe(
+  {    
+    this.pilotosService.obtenerPilotos()
+    .subscribe(
       data => {
         this.pilotosByCategoria = data.filter(
           piloto => piloto.equipo.categoria === this.clasificacion.categoria
@@ -87,7 +91,8 @@ export class ClasificacionFormComponent implements OnInit {
   {
     delete this.clasificacion.id;
 
-    this.clasificacionesService.crearClasificacion(this.clasificacion).subscribe(
+    this.clasificacionesService.crearClasificacion(this.clasificacion)
+    .subscribe(
       res => {
         //console.log(res);
         this.router.navigate(['/clasificaciones', this.clasificacion.categoria, this.clasificacion.circuito]);
@@ -98,7 +103,8 @@ export class ClasificacionFormComponent implements OnInit {
 
   cambiarClasificacion()
   {
-    this.clasificacionesService.cambiarClasificacion(this.clasificacion.id, this.clasificacion).subscribe(
+    this.clasificacionesService.cambiarClasificacion(this.clasificacion.id, this.clasificacion)
+    .subscribe(
       res => { 
         //console.log(res);
         this.router.navigate(['/clasificaciones', this.clasificacion.categoria, this.clasificacion.circuito]);
