@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 
 import { CircuitosService } from '../circuitos.service';
 
+import { Circuito } from '../../../models/Circuito';
+
 @Component({
   selector: 'app-circuitos-list',
   templateUrl: './circuitos-list.component.html',
@@ -9,7 +11,7 @@ import { CircuitosService } from '../circuitos.service';
 })
 export class CircuitosListComponent implements OnInit {
 
-  circuitos: any = [];
+  circuitos: Circuito[];
 
   constructor(private circuitosService: CircuitosService) { }
 

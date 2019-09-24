@@ -1,11 +1,13 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+import { map } from 'rxjs/operators';
 
 import { CircuitosService } from '../circuitos.service';
 import { ClasificacionesService } from '../../clasificaciones/clasificaciones.service';
 import { GamesService } from '../../../services/games.service';
 
 import { Circuito } from '../../../models/Circuito';
+import { Clasificacion } from '../../../models/Clasificacion';
 
 @Component({
   selector: 'app-circuito-form',
@@ -19,15 +21,16 @@ export class CircuitoFormComponent implements OnInit {
   clasificacionesByMoto3: any = [];
   paises: any = [];
   
-  circuito: Circuito = {
+  public circuito: any = {
     id: null,
     nombre: '',
-    pais: '0',
+    pais: '',
     localidad: '',
-    longitud: 0,
+    longitud: '',
     imagen: '',
-    fecha: new Date()
+    fecha: new Date
   };
+  public circuitos: any[];
 
   edit: boolean = false;  
 
@@ -43,24 +46,24 @@ export class CircuitoFormComponent implements OnInit {
 
     const params = this.activatedRoute.snapshot.params;
 
-    this.obtenerPaises();
+    //this.obtenerPaises();
 
     if (params.id)
     {
-      this.circuitosService.mostrarCircuito(params.id)
+      this.circuitosService.obtenerCircuitos()
       .subscribe(
-        res => {
-          //console.log(res);
-          this.circuito = res;
-          this.edit = true;
+        data => {
+          const prueba = data.filter(
+            circuito => circuito.id === params.id
+          );
+          console.log(prueba[0]);
+          this.circuito = prueba[0];
+        }
+      );
 
-          this.obtenerClasificaciones();
-        },
-        err => console.log(err)
-      )
     }
   }
-
+/*
   obtenerPaises()
   {
     this.gamesService.obtenerPaises()
@@ -132,4 +135,5 @@ export class CircuitoFormComponent implements OnInit {
         err => console.error(err)
       );
   }
+*/
 }

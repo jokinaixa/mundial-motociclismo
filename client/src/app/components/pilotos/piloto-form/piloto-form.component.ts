@@ -86,7 +86,8 @@ export class PilotoFormComponent implements OnInit {
 
   obtenerPaises()
   {
-    this.gamesService.obtenerPaises().subscribe(
+    this.gamesService.obtenerPaises()
+    .subscribe(
       res => {
         //console.log(res);
         this.paises = res;
