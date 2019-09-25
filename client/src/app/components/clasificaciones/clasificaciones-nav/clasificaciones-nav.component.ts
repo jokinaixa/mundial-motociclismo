@@ -24,7 +24,8 @@ export class ClasificacionesNavComponent implements OnInit {
 
 
   ngOnInit() {
-    this.circuitosService.obtenerCircuitos().subscribe(
+    this.circuitosService.obtenerCircuitos()
+    .subscribe(
       data => {
         this.circuitos = data;
 
@@ -32,6 +33,8 @@ export class ClasificacionesNavComponent implements OnInit {
         this.gestionaSeleccion(this.circuito);
       }
     );
+
+
   }
 
 

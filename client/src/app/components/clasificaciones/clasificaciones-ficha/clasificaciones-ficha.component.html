@@ -1,60 +1,54 @@
-<div class="row">
-  <div class="col-lg-4">
+<div class="row bg-info" style="padding-top:15px">
+  <div class="col-lg-4 text-center">
     <br/>
-    <div style="height:300px" class="text-center">
-      <img [src]="(clasificaciones && clasificaciones[1]) ? clasificaciones[1].imagen : 'assets/images/sin_imagen.jpg'" class="img-circle" />
-      <h5 class="titulo text-center">
-        <div *ngIf="clasificaciones && clasificaciones[1]">
-          <strong>{{ clasificaciones[1].posicion }}</strong>. 
-          <a [routerLink]="['/clasificaciones/edit/', categoria, circuito, 2, clasificaciones[1].id]">
-            {{ clasificaciones[1].nombre }} {{ clasificaciones[1].apellido }}
-          </a><br/>
-          <small>({{ clasificaciones[1].moto }})</small>
-        </div>
+    <img [src]="(clasificaciones && clasificaciones[1]) ? clasificaciones[1].imagen : 'assets/images/sin_imagen.jpg'" class="img-responsive img-circle" />
+    <h5 class="titulo text-center">
+      <div *ngIf="clasificaciones && clasificaciones[1]">
+        <strong>{{ clasificaciones[1].posicion }}</strong>. 
+        <a [routerLink]="['/clasificaciones/edit/', categoria, circuito, 2, clasificaciones[1].id]">
+          {{ clasificaciones[1].nombre }} {{ clasificaciones[1].apellido }}
+        </a><br/>
+        <small>({{ clasificaciones[1].moto }})</small>
+      </div>
 
-        <div *ngIf="!clasificaciones || !clasificaciones[1]">
-          <a [routerLink]="['/clasificaciones/add', categoria, circuito, 2]" class="btn btn-success">2ª posición<br/>{{ categoria }}</a>
-        </div>
-      </h5>
-    </div>
+      <div *ngIf="!clasificaciones || !clasificaciones[1]">
+        <a [routerLink]="['/clasificaciones/add', categoria, circuito, 2]" class="btn btn-success">2ª posición<br/>{{ categoria }}</a>
+      </div>
+    </h5>
   </div>
 
-  <div class="col-lg-4">
-    <div style="height:300px" class="text-center">
-      <img [src]="(clasificaciones && clasificaciones[0]) ? clasificaciones[0].imagen : 'assets/images/sin_imagen.jpg'" class="img-circle" />
-      <h5 class="titulo text-center">
-        <div *ngIf="clasificaciones && clasificaciones[0]">
-          <strong>{{ clasificaciones[0].posicion }}</strong>. 
-          <a [routerLink]="['/clasificaciones/edit/', categoria, circuito, 2, clasificaciones[0].id]">
-            {{ clasificaciones[0].nombre }} {{ clasificaciones[0].apellido }}
-          </a><br/>
-          <small>({{ clasificaciones[0].moto }})</small>
-        </div>
+  <div class="col-lg-4 text-center">
+    <img [src]="(clasificaciones && clasificaciones[0]) ? clasificaciones[0].imagen : 'assets/images/sin_imagen.jpg'" class="img-responsive img-circle" />
+    <h5 class="titulo text-center">
+      <div *ngIf="clasificaciones && clasificaciones[0]">
+        <strong>{{ clasificaciones[0].posicion }}</strong>. 
+        <a [routerLink]="['/clasificaciones/edit/', categoria, circuito, 2, clasificaciones[0].id]">
+          {{ clasificaciones[0].nombre }} {{ clasificaciones[0].apellido }}
+        </a><br/>
+        <small>({{ clasificaciones[0].moto }})</small>
+      </div>
 
-        <div *ngIf="!clasificaciones || !clasificaciones[0]">
-          <a [routerLink]="['/clasificaciones/add', categoria, circuito, 1]" class="btn btn-success">1ª posición<br/>{{ categoria }}</a>
-        </div>
-      </h5>
-    </div>
+      <div *ngIf="!clasificaciones || !clasificaciones[0]">
+        <a [routerLink]="['/clasificaciones/add', categoria, circuito, 1]" class="btn btn-success">1ª posición<br/>{{ categoria }}</a>
+      </div>
+    </h5>
   </div>
 
-  <div class="col-lg-4">
+  <div class="col-lg-4 text-center">
     <br/>
-    <div style="height:300px" class="text-center">
-      <img [src]="(clasificaciones && clasificaciones[2]) ? clasificaciones[2].imagen : 'assets/images/sin_imagen.jpg'" class="img-circle" />
-      <h5 class="titulo text-center">
-        <div *ngIf="clasificaciones && clasificaciones[2]">
-          <strong>{{ clasificaciones[2].posicion }}</strong>. 
-          <a [routerLink]="['/clasificaciones/edit/', categoria, circuito, 3, clasificaciones[2].id]">
-            {{ clasificaciones[2].nombre }} {{ clasificaciones[2].apellido }}
-          </a><br/>
-          <small>({{ clasificaciones[2].moto }})</small>
-        </div>
+    <img [src]="(clasificaciones && clasificaciones[2]) ? clasificaciones[2].imagen : 'assets/images/sin_imagen.jpg'" class="img-responsive img-circle" />
+    <h5 class="titulo text-center">
+      <div *ngIf="clasificaciones && clasificaciones[2]">
+        <strong>{{ clasificaciones[2].posicion }}</strong>. 
+        <a [routerLink]="['/clasificaciones/edit/', categoria, circuito, 3, clasificaciones[2].id]">
+          {{ clasificaciones[2].nombre }} {{ clasificaciones[2].apellido }}
+        </a><br/>
+        <small>({{ clasificaciones[2].moto }})</small>
+      </div>
 
-        <div *ngIf="!clasificaciones || !clasificaciones[2]">
-          <a [routerLink]="['/clasificaciones/add', categoria, circuito, 3]" class="btn btn-success">3ª posición<br/>{{ categoria }}</a>
-        </div>
-      </h5>
-    </div>
+      <div *ngIf="!clasificaciones || !clasificaciones[2]">
+        <a [routerLink]="['/clasificaciones/add', categoria, circuito, 3]" class="btn btn-success">3ª posición<br/>{{ categoria }}</a>
+      </div>
+    </h5>
   </div>
 </div>

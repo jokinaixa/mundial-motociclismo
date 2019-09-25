@@ -38,7 +38,7 @@ export class EquiposListComponent implements OnInit {
           this.equipos[element] = data.filter(
             equipo => equipo.categoria === element
           )
-        })
+        });
       }
     );
   }

@@ -25,7 +25,8 @@ export class EquiposNavComponent implements OnInit {
 
 
   ngOnInit() {
-    this.equiposService.obtenerEquipos().subscribe(
+   this.equiposService.obtenerEquipos()
+    .subscribe(
       data => {
         this.equipos = data.filter(
           equipo => equipo.categoria === this.categoria

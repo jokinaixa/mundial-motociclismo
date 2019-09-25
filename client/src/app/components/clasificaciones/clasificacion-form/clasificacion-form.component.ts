@@ -2,7 +2,6 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
 import { ClasificacionesService } from '../clasificaciones.service';
-import { CircuitosService } from '../../circuitos/circuitos.service';
 import { PilotosService } from '../../pilotos/pilotos.service';
 
 import { Circuito } from '../../../models/Circuito';
@@ -31,7 +30,6 @@ export class ClasificacionFormComponent implements OnInit {
 
   constructor(
     private clasificacionesService: ClasificacionesService,
-    private circuitosService: CircuitosService,
     private pilotosService: PilotosService, 
     private router: Router, 
     private activatedRoute: ActivatedRoute) { }
@@ -64,6 +62,7 @@ export class ClasificacionFormComponent implements OnInit {
 
   obtenerCircuitos()
   {
+/*
     this.circuitosService.obtenerCircuitos()
     .subscribe(
       res => {
@@ -72,6 +71,7 @@ export class ClasificacionFormComponent implements OnInit {
       },
       err => console.log(err)
     );
+*/
   }
 
   obtenerPilotos()

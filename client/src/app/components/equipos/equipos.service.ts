@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
 @Injectable()
 export class EquiposService {
 
-  equipos: any = [];
+  equipos: Equipo[];
   
   API_URI = 'http://localhost:8080/api';
 

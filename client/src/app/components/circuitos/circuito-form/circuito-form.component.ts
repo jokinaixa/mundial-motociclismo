@@ -16,23 +16,23 @@ import { Clasificacion } from '../../../models/Clasificacion';
 })
 export class CircuitoFormComponent implements OnInit {
 
-  clasificacionesByMotoGP: any = [];
-  clasificacionesByMoto2: any = [];
-  clasificacionesByMoto3: any = [];
+  categorias: any = ['MotoGP', 'Moto2', 'Moto3'];
+  clasificaciones: any = [];
   paises: any = [];
   
-  public circuito: any = {
+  public circuitos: Circuito[];
+  public circuito: Circuito = {
     id: null,
     nombre: '',
-    pais: '',
+    pais: '0',
     localidad: '',
-    longitud: '',
+    longitud: 0,
     imagen: '',
     fecha: new Date
   };
-  public circuitos: any[];
 
   edit: boolean = false;  
+
 
   constructor(
     private circuitosService: CircuitosService, 
@@ -46,25 +46,27 @@ export class CircuitoFormComponent implements OnInit {
 
     const params = this.activatedRoute.snapshot.params;
 
-    //this.obtenerPaises();
+    this.obtenerPaises();
 
     if (params.id)
     {
-      this.circuitosService.obtenerCircuitos()
-      .subscribe(
-        data => {
-          const prueba = data.filter(
-            circuito => circuito.id === params.id
-          );
-          console.log(prueba[0]);
-          this.circuito = prueba[0];
-        }
-      );
+      this.circuito.id = params.id;
 
+      this.circuitosService.mostrarCircuito(params.id)
+      .subscribe(
+        res => {
+          //console.log(res);
+          this.circuito = res;
+          this.edit = true;
+
+          this.obtenerClasificaciones();
+        },
+        err => console.log(err)
+      )
     }
   }
-/*
-  obtenerPaises()
+
+  public obtenerPaises()
   {
     this.gamesService.obtenerPaises()
     .subscribe(
@@ -76,64 +78,61 @@ export class CircuitoFormComponent implements OnInit {
     );
   }
 
-  obtenerClasificaciones()
+  public obtenerClasificaciones()
   {
-    this.clasificacionesService.obtenerClasificaciones()
+    this.clasificaciones['MotoGP'] = [];
+    this.clasificaciones['Moto2'] = [];
+    this.clasificaciones['Moto3'] = [];
+    
+    this.clasificacionesService.obtenerClasifsPorCircuito(this.circuito.id)
     .subscribe(
       data => {
-        this.clasificacionesByMotoGP = data.filter(
-          clasificacion => clasificacion.circuito.id === this.circuito.id && clasificacion.categoria === 'MotoGP' && clasificacion.posicion <= 3
-        );
-
-        this.clasificacionesByMoto2 = data.filter(
-          clasificacion => clasificacion.circuito.id === this.circuito.id && clasificacion.categoria === 'Moto2' && clasificacion.posicion <= 3
-        );
- 
-        this.clasificacionesByMoto3 = data.filter(
-          clasificacion => clasificacion.circuito.id === this.circuito.id && clasificacion.categoria === 'Moto3' && clasificacion.posicion <= 3
-        );
+        this.categorias.forEach((element: string) => {
+          this.clasificaciones[element] = data.filter(
+            clasificacion => clasificacion.categoria === element
+          )
+        })
       }
     );
   }
 
-  crearCircuito()
+  public crearCircuito()
   {
     delete this.circuito.id;
 
     this.circuito.imagen = (this.circuito.imagen == '') ? 'assets/images/sin_imagen.jpg' : this.circuito.imagen;
 
     this.circuitosService.crearCircuito(this.circuito)
-      .subscribe(
-        res => {
-          //console.log(res);
-          this.router.navigate(['/circuitos']);
-        },
-        err => console.error(err)
-      );
+    .subscribe(
+      res => {
+        //console.log(res);
+        this.router.navigate(['/circuitos']);
+      },
+      err => console.error(err)
+    );
   }
 
-  cambiarCircuito()
+  public cambiarCircuito()
   {
     this.circuitosService.cambiarCircuito(this.circuito.id, this.circuito)
-      .subscribe(
-        res => { 
-          //console.log(res);
-          this.router.navigate(['/circuitos']);
-        },
-        err => console.error(err)
-      );
+    .subscribe(
+      res => { 
+        //console.log(res);
+        this.router.navigate(['/circuitos']);
+      },
+      err => console.error(err)
+    );
   }
 
-  borrarCircuito(id: string)
+  public borrarCircuito(id: number)
   {
     this.circuitosService.borrarCircuito(id, this.circuito)
-      .subscribe(
-        res => {
-          //console.log(res);
-          this.router.navigate(['/circuitos']);
-        },
-        err => console.error(err)
-      );
+    .subscribe(
+      res => {
+        //console.log(res);
+        this.router.navigate(['/circuitos']);
+      },
+      err => console.error(err)
+    );
   }
-*/
 }

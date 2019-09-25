@@ -22,53 +22,18 @@
         </ul>
         
         <div class="tab-content">
-<!--
             <div id="MotoGP" class="tab-pane fade in active">
                 <br/><br/>
-                <table class="table">
-                    <tbody>
-                        <tr>
-                            <th>Piloto</th>
-                            <th class="text-center">Posición</th>
-                        </tr>
-                        <tr *ngFor="let clasificacionByMotoGP of clasificacionesByMotoGP">
-                            <td><a [routerLink]="['/pilotos/edit/', clasificacionByMotoGP.piloto.id]">{{ clasificacionByMotoGP.piloto.nombre }} {{ clasificacionByMotoGP.piloto.apellido }} </a><small>({{ clasificacionByMotoGP.piloto.equipo.moto }})</small></td>
-                            <td class="text-center">{{ clasificacionByMotoGP.posicion }}</td>
-                        </tr>
-                    </tbody>
-                </table>
+                <app-clasificaciones-ficha [clasificaciones]="clasificaciones['MotoGP']" [categoria]="'MotoGP'" [circuito]="circuito.id"></app-clasificaciones-ficha>
             </div>
             <div id="Moto2" class="tab-pane fade">
                 <br/><br/>
-                <table class="table">
-                    <tbody>
-                        <tr>
-                        <th>Piloto</th>
-                        <th class="text-center">Posición</th>
-                        </tr>
-                        <tr *ngFor="let clasificacionByMoto2 of clasificacionesByMoto2">
-                        <td><a [routerLink]="['/pilotos/edit/', clasificacionByMoto2.piloto.id]">{{ clasificacionByMoto2.piloto.nombre }} {{ clasificacionByMoto2.piloto.apellido }} </a><small>({{ clasificacionByMoto2.piloto.equipo.moto }})</small></td>
-                        <td class="text-center">{{ clasificacionByMoto2.posicion }}</td>
-                        </tr>
-                    </tbody>
-                </table>
+                <app-clasificaciones-ficha [clasificaciones]="clasificaciones['Moto2']" [categoria]="'Moto2'" [circuito]="circuito.id"></app-clasificaciones-ficha>
             </div>
             <div id="Moto3" class="tab-pane fade">
                 <br/><br/>
-                <table class="table">
-                    <tbody>
-                        <tr>
-                        <th>Piloto</th>
-                        <th class="text-center">Posición</th>
-                        </tr>
-                        <tr *ngFor="let clasificacionByMoto3 of clasificacionesByMoto3">
-                        <td><a [routerLink]="['/pilotos/edit/', clasificacionByMoto3.piloto.id]">{{ clasificacionByMoto3.piloto.nombre }} {{ clasificacionByMoto3.piloto.apellido }} </a><small>({{ clasificacionByMoto3.piloto.equipo.moto }})</small></td>
-                        <td class="text-center">{{ clasificacionByMoto3.posicion }}</td>
-                        </tr>
-                    </tbody>
-                </table>
+                <app-clasificaciones-ficha [clasificaciones]="clasificaciones['Moto3']" [categoria]="'Moto3'" [circuito]="circuito.id"></app-clasificaciones-ficha>
             </div>
--->
         </div>
     </div>
 
