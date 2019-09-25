@@ -26,17 +26,14 @@
       <br/>
       <h4>Podium</h4>
       <div id="MotoGP" class="tab-pane fade" [ngClass]="{ 'in active': categoria === 'MotoGP' }">
-        <br/><br/>
         <app-clasificaciones-ficha [clasificaciones]="clasificaciones['MotoGP']" [categoria]="'MotoGP'" [circuito]="seleccion"></app-clasificaciones-ficha>
       </div>
 
       <div id="Moto2" class="tab-pane fade" [ngClass]="{ 'in active': categoria === 'Moto2' }">
-        <br/><br/>
         <app-clasificaciones-ficha [clasificaciones]="clasificaciones['Moto2']" [categoria]="'Moto2'" [circuito]="seleccion"></app-clasificaciones-ficha>
       </div>
 
       <div id="Moto3" class="tab-pane fade" [ngClass]="{ 'in active': categoria === 'Moto3' }">
-        <br/><br/>
         <app-clasificaciones-ficha [clasificaciones]="clasificaciones['Moto3']" [categoria]="'Moto3'" [circuito]="seleccion"></app-clasificaciones-ficha>
       </div>
     </div>

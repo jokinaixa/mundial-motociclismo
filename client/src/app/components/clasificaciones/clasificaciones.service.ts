@@ -12,10 +12,6 @@ export class ClasificacionesService {
 
   constructor(private http: HttpClient) { }
 
-  obtenerClasificaciones(): Observable<Clasificacion[]> {
-    return this.http.get<Clasificacion[]>(`${this.API_URI}/obtenerClasificaciones.php`);
-  }
-
   obtenerClasifsPorPiloto(piloto: number): Observable<Clasificacion[]> {
     return this.http.get<Clasificacion[]>(`${this.API_URI}/obtenerClasifsPorPiloto.php?piloto=${piloto}`);
   }

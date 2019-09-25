@@ -1,14 +1,14 @@
 <div class="row bg-info" style="padding-top:15px">
   <div class="col-lg-4 text-center">
     <br/>
-    <img [src]="(clasificaciones && clasificaciones[1]) ? clasificaciones[1].imagen : 'assets/images/sin_imagen.jpg'" class="img-responsive img-circle" />
+    <img [src]="(clasificaciones && clasificaciones[1]) ? clasificaciones[1].piloto.imagen : 'assets/images/sin_imagen.jpg'" class="img-responsive img-circle" />
     <h5 class="titulo text-center">
       <div *ngIf="clasificaciones && clasificaciones[1]">
         <strong>{{ clasificaciones[1].posicion }}</strong>. 
         <a [routerLink]="['/clasificaciones/edit/', categoria, circuito, 2, clasificaciones[1].id]">
-          {{ clasificaciones[1].nombre }} {{ clasificaciones[1].apellido }}
+          {{ clasificaciones[1].piloto.nombre }} {{ clasificaciones[1].piloto.apellido }}
         </a><br/>
-        <small>({{ clasificaciones[1].moto }})</small>
+        <small>({{ clasificaciones[1].piloto.equipo.moto }})</small>
       </div>
 
       <div *ngIf="!clasificaciones || !clasificaciones[1]">
@@ -18,14 +18,14 @@
   </div>
 
   <div class="col-lg-4 text-center">
-    <img [src]="(clasificaciones && clasificaciones[0]) ? clasificaciones[0].imagen : 'assets/images/sin_imagen.jpg'" class="img-responsive img-circle" />
+    <img [src]="(clasificaciones && clasificaciones[0]) ? clasificaciones[0].piloto.imagen : 'assets/images/sin_imagen.jpg'" class="img-responsive img-circle" />
     <h5 class="titulo text-center">
       <div *ngIf="clasificaciones && clasificaciones[0]">
         <strong>{{ clasificaciones[0].posicion }}</strong>. 
         <a [routerLink]="['/clasificaciones/edit/', categoria, circuito, 2, clasificaciones[0].id]">
-          {{ clasificaciones[0].nombre }} {{ clasificaciones[0].apellido }}
+          {{ clasificaciones[0].piloto.nombre }} {{ clasificaciones[0].piloto.apellido }}
         </a><br/>
-        <small>({{ clasificaciones[0].moto }})</small>
+        <small>({{ clasificaciones[0].piloto.equipo.moto }})</small>
       </div>
 
       <div *ngIf="!clasificaciones || !clasificaciones[0]">
@@ -36,14 +36,14 @@
 
   <div class="col-lg-4 text-center">
     <br/>
-    <img [src]="(clasificaciones && clasificaciones[2]) ? clasificaciones[2].imagen : 'assets/images/sin_imagen.jpg'" class="img-responsive img-circle" />
+    <img [src]="(clasificaciones && clasificaciones[2]) ? clasificaciones[2].piloto.imagen : 'assets/images/sin_imagen.jpg'" class="img-responsive img-circle" />
     <h5 class="titulo text-center">
       <div *ngIf="clasificaciones && clasificaciones[2]">
         <strong>{{ clasificaciones[2].posicion }}</strong>. 
         <a [routerLink]="['/clasificaciones/edit/', categoria, circuito, 3, clasificaciones[2].id]">
-          {{ clasificaciones[2].nombre }} {{ clasificaciones[2].apellido }}
+          {{ clasificaciones[2].piloto.nombre }} {{ clasificaciones[2].piloto.apellido }}
         </a><br/>
-        <small>({{ clasificaciones[2].moto }})</small>
+        <small>({{ clasificaciones[2].piloto.equipo.moto }})</small>
       </div>
 
       <div *ngIf="!clasificaciones || !clasificaciones[2]">

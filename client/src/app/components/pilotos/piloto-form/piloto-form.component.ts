@@ -3,7 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 
 import { PilotosService } from '../pilotos.service';
 import { EquiposService } from '../../equipos/equipos.service';
-import { GamesService } from '../../../services/games.service';
+import { GeneralService } from '../../../services/general.service';
 
 import { Piloto } from '../../../models/Piloto';
 import { Equipo } from '../../../models/Equipo';
@@ -40,7 +40,7 @@ export class PilotoFormComponent implements OnInit {
   constructor(
     private pilotosService: PilotosService, 
     private equiposService: EquiposService,
-    private gamesService: GamesService, 
+    private generalService: GeneralService, 
     private activatedRoute: ActivatedRoute,
     private router: Router) { }
 
@@ -86,7 +86,7 @@ export class PilotoFormComponent implements OnInit {
 
   obtenerPaises()
   {
-    this.gamesService.obtenerPaises()
+    this.generalService.obtenerPaises()
     .subscribe(
       res => {
         //console.log(res);

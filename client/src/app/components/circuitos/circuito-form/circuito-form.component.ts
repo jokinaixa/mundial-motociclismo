@@ -4,7 +4,7 @@ import { map } from 'rxjs/operators';
 
 import { CircuitosService } from '../circuitos.service';
 import { ClasificacionesService } from '../../clasificaciones/clasificaciones.service';
-import { GamesService } from '../../../services/games.service';
+import { GeneralService } from '../../../services/general.service';
 
 import { Circuito } from '../../../models/Circuito';
 import { Clasificacion } from '../../../models/Clasificacion';
@@ -37,7 +37,7 @@ export class CircuitoFormComponent implements OnInit {
   constructor(
     private circuitosService: CircuitosService, 
     private clasificacionesService: ClasificacionesService, 
-    private gamesService: GamesService,
+    private generalService: GeneralService,
     private activatedRoute: ActivatedRoute,
     private router: Router) { }
 
@@ -68,7 +68,7 @@ export class CircuitoFormComponent implements OnInit {
 
   public obtenerPaises()
   {
-    this.gamesService.obtenerPaises()
+    this.generalService.obtenerPaises()
     .subscribe(
       res => {
         //console.log(res);
@@ -92,6 +92,8 @@ export class CircuitoFormComponent implements OnInit {
             clasificacion => clasificacion.categoria === element
           )
         })
+
+        console.log(this.clasificaciones['MotoGP']);
       }
     );
   }

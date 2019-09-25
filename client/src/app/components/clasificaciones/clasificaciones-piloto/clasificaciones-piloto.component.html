@@ -6,8 +6,8 @@
         </tr>
         <tr *ngFor="let clasificacion of clasificaciones">
             <td>
-                <img class="flag" src="assets/images/flags/{{ clasificacion.pais }}.png" [alt]="clasificacion.pais" [title]="clasificacion.pais">
-                <a [routerLink]="['/circuitos/edit/', clasificacion.id]">{{ clasificacion.nombre }}</a>
+                <img class="flag" src="assets/images/flags/{{ clasificacion.circuito.pais }}.png" >
+                <a [routerLink]="['/circuitos/edit/', clasificacion.id]">{{ clasificacion.circuito.nombre }} </a>
             </td>
             <td class="text-center">{{ clasificacion.posicion }}</td>
         </tr>

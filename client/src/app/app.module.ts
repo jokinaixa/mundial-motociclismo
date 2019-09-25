@@ -6,7 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 // Services
-import { GamesService } from './services/games.service';
+import { GeneralService } from './services/general.service';
 import { EquiposService } from './components/equipos/equipos.service';
 import { PilotosService } from './components/pilotos/pilotos.service';
 import { CircuitosService } from './components/circuitos/circuitos.service';
@@ -83,7 +83,7 @@ import { ClasificacionesFichaComponent } from './components/clasificaciones/clas
     FormsModule
   ],
   providers: [
-    GamesService,
+    GeneralService,
     EquiposService,
     PilotosService,
     CircuitosService,

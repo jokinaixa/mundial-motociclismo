@@ -52,7 +52,7 @@
 
       <div class="col-lg-10">
         <br/>
-        <div class="col-lg-4" *ngFor="let moto2 of pilotosMoto2 | filterNombre: filterPiloto | filterPiloto: seleccion['Moto2']">
+        <div class="col-lg-4" *ngFor="let moto2 of pilotos['Moto2'] | filterNombre: filterPiloto | filterPiloto: seleccion['Moto2']">
           <app-piloto-ficha [piloto]="moto2"></app-piloto-ficha>
         </div>
       </div>
@@ -68,7 +68,7 @@
 
       <div class="col-lg-10">
         <br/>
-        <div class="col-lg-4" *ngFor="let moto3 of pilotosByMoto3 | filterNombre: filterPiloto | filterPiloto: seleccion['Moto3']">
+        <div class="col-lg-4" *ngFor="let moto3 of pilotos['Moto3'] | filterNombre: filterPiloto | filterPiloto: seleccion['Moto3']">
           <app-piloto-ficha [piloto]="moto3"></app-piloto-ficha>
         </div>
       </div>
