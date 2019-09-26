@@ -4,7 +4,7 @@ import { Observable } from "rxjs/internal/Observable";
 import { map } from "rxjs/operators";
 import { isNullOrUndefined } from "util";
 
-import { Usuario } from "../models/usuario";
+import { Usuario } from "../models/Usuario";
 
 
 @Injectable({
@@ -26,7 +26,7 @@ export class AuthService {
   loginUser(usuario: Usuario): Observable<any>
   {
     return this.http
-      .post<Usuario>(`${this.API_URI}/login.php?usuario=${usuario.nombre}`, usuario, { headers: this.headers })
+      .post<Usuario>(`${this.API_URI}/login.php?email=${usuario.email}`, usuario, { headers: this.headers })
       .pipe(map(data => data));
   }
 
@@ -37,20 +37,29 @@ export class AuthService {
       .pipe(map(data => data));
   }
 
-  setUser(usuario: Usuario): void {
+  setUser(usuario: Usuario): void
+  {
+    console.log('kk11');
     let user_string = JSON.stringify(usuario);
+    console.log('kk12');
     localStorage.setItem("currentUser", user_string);
+    console.log('kk13');
   }
 
-  setToken(token): void {
+  setToken(token): void 
+  {
+    console.log('kk31');
     localStorage.setItem("accessToken", token);
+    console.log('kk32');
   }
 
-  getToken() {
+  getToken() 
+  {
     return localStorage.getItem("accessToken");
   }
 
-  getCurrentUser(): Usuario {
+  getCurrentUser(): Usuario 
+  {
     let user_string = localStorage.getItem("currentUser");
 
     if (!isNullOrUndefined(user_string)) {
@@ -61,7 +70,8 @@ export class AuthService {
     }
   }
 
-  logoutUser() {
+  logoutUser() 
+  {
     let accessToken = localStorage.getItem("accessToken");
 
     localStorage.removeItem("accessToken");

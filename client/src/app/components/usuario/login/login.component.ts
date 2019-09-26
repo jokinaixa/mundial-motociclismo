@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { NgForm } from '@angular/forms';
 
-import { NgForm } from '@angular/forms/src/directives/ng_form';
+import { AuthService } from '../../../services/auth.service';
 
-import { AuthService } from 'src/app/services/auth.service';
-
-import { Usuario } from 'src/app/models/Usuario';
+import { Usuario } from '../../../models/Usuario';
 
 @Component({
   selector: 'app-login',
@@ -15,7 +14,7 @@ import { Usuario } from 'src/app/models/Usuario';
 
 export class LoginComponent implements OnInit {
 
-  private user: Usuario = {
+  private usuario: Usuario = {
     email: '',
     clave: ''
   };
@@ -34,15 +33,21 @@ export class LoginComponent implements OnInit {
   onLogin(form: NgForm) {
     if (form.valid) {
       return this.authService
-        .loginUser(this.user)
+        .loginUser(this.usuario)
         .subscribe(
           data => {
-            this.authService.setUser(data.usuario);
-            const token = data.id;
-            this.authService.setToken(token);
-            this.router.navigate(['/usuario/profile']);
-            location.reload();
-            this.isError = false;
+            console.log(data);
+            console.log('kk1');
+            //this.authService.setUser(data.usuario);
+            console.log('kk2');
+            //const token = data.id;
+            console.log('kk3');
+            //this.authService.setToken(token);
+            console.log('kk4');
+            //this.router.navigate(['/usuario/profile']);
+            console.log('kk5');
+            //location.reload();
+            //this.isError = false;
           },
           error => this.onIsError()
         );
