@@ -20,8 +20,22 @@
             <li><a [routerLink]="['/clasificaciones/MotoGP/0']">Clasificaciones</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-            <li><a href="#">Conectarse</a></li>
-        </ul>
+            <li class="nav-item" *ngIf="!isLogged">
+              <a class="nav-link" routerLink="/usuario/register">Registro
+              </a>
+            </li>
+            <li class="nav-item" *ngIf="isLogged">
+              <a class="nav-link" routerLink="/usuario/profile">Perfil</a>
+            </li>
+            <li class="nav-item" *ngIf="!isLogged">
+              <a class="nav-link" routerLink="/usuario/login">Login
+              </a>
+            </li>
+            <li class="nav-item" *ngIf="isLogged">
+              <a href="#" class="nav-link" (click)="onLogout()">Logout
+              </a>
+            </li>
+          </ul>
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
 </nav>

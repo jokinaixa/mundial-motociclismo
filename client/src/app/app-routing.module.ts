@@ -13,6 +13,12 @@ import { CircuitoFormComponent } from './components/circuitos/circuito-form/circ
 import { ClasificacionesListComponent } from './components/clasificaciones/clasificaciones-list/clasificaciones-list.component';
 import { ClasificacionFormComponent } from './components/clasificaciones/clasificacion-form/clasificacion-form.component';
 
+import { LoginComponent } from './components/usuario/login/login.component';
+import { ProfileComponent } from './components/usuario/profile/profile.component';
+import { RegisterComponent } from './components/usuario/register/register.component';
+
+import { AuthGuard } from './guards/auth.guard';
+
 import { InicioComponent } from './components/inicio/inicio.component';
 
 const routes: Routes = [
@@ -34,7 +40,11 @@ const routes: Routes = [
 
   { path: 'clasificaciones/:categoria/:circuito', component: ClasificacionesListComponent },
   { path: 'clasificaciones/add/:categoria/:circuito/:posicion', component: ClasificacionFormComponent },
-  { path: 'clasificaciones/edit/:categoria/:circuito/:posicion/:id', component: ClasificacionFormComponent }
+  { path: 'clasificaciones/edit/:categoria/:circuito/:posicion/:id', component: ClasificacionFormComponent },
+
+  { path: 'usuario/login', component: LoginComponent },
+  { path: 'usuario/register', component: RegisterComponent },
+  { path: 'usuario/profile', component: ProfileComponent, canActivate: [AuthGuard] }
 ];
 
 @NgModule({

@@ -45,6 +45,9 @@ import { ClasificacionesPilotoComponent } from './components/clasificaciones/cla
 import { ClasificacionesCircuitoComponent } from './components/clasificaciones/clasificaciones-circuito/clasificaciones-circuito.component';
 import { PilotosEquipoComponent } from './components/pilotos/pilotos-equipo/pilotos-equipo.component';
 import { ClasificacionesFichaComponent } from './components/clasificaciones/clasificaciones-ficha/clasificaciones-ficha.component';
+import { LoginComponent } from './components/usuario/login/login.component';
+import { ProfileComponent } from './components/usuario/profile/profile.component';
+import { RegisterComponent } from './components/usuario/register/register.component';
 
 @NgModule({
   declarations: [
@@ -74,7 +77,10 @@ import { ClasificacionesFichaComponent } from './components/clasificaciones/clas
     ClasificacionesPilotoComponent,
     ClasificacionesCircuitoComponent,
     PilotosEquipoComponent,
-    ClasificacionesFichaComponent
+    ClasificacionesFichaComponent,
+    LoginComponent,
+    ProfileComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,

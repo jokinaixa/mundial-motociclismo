@@ -10,7 +10,8 @@ export class PilotosService {
   
   API_URI = 'http://localhost:8080/api';
 
-  constructor(private http: HttpClient) { }
+  constructor(
+    private http: HttpClient) { }
 
   obtenerPilotos(): Observable<Piloto[]> {
     return this.http.get<Piloto[]>(`${this.API_URI}/obtenerPilotos.php`);
