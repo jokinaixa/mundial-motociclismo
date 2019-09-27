@@ -27,20 +27,20 @@ const routes: Routes = [
   { path: 'inicio', component: InicioComponent },
 
   { path: 'pilotos/:categoria', component: PilotosListComponent },
-  { path: 'pilotos/add/:categoria', component: PilotoFormComponent },
-  { path: 'pilotos/edit/:categoria/:id', component: PilotoFormComponent },
+  { path: 'pilotos/add/:categoria', component: PilotoFormComponent, canActivate: [AuthGuard] },
+  { path: 'pilotos/edit/:categoria/:id', component: PilotoFormComponent, canActivate: [AuthGuard] },
 
   { path: 'equipos/:categoria', component: EquiposListComponent },
-  { path: 'equipos/add/:categoria', component: EquipoFormComponent },
-  { path: 'equipos/edit/:categoria/:id', component: EquipoFormComponent },
+  { path: 'equipos/add/:categoria', component: EquipoFormComponent, canActivate: [AuthGuard] },
+  { path: 'equipos/edit/:categoria/:id', component: EquipoFormComponent, canActivate: [AuthGuard] },
 
   { path: 'circuitos', component: CircuitosListComponent },
-  { path: 'circuitos/add', component: CircuitoFormComponent },
-  { path: 'circuitos/edit/:id', component: CircuitoFormComponent },
+  { path: 'circuitos/add', component: CircuitoFormComponent, canActivate: [AuthGuard] },
+  { path: 'circuitos/edit/:id', component: CircuitoFormComponent, canActivate: [AuthGuard] },
 
   { path: 'clasificaciones/:categoria/:circuito', component: ClasificacionesListComponent },
-  { path: 'clasificaciones/add/:categoria/:circuito/:posicion', component: ClasificacionFormComponent },
-  { path: 'clasificaciones/edit/:categoria/:circuito/:posicion/:id', component: ClasificacionFormComponent },
+  { path: 'clasificaciones/add/:categoria/:circuito/:posicion', component: ClasificacionFormComponent, canActivate: [AuthGuard] },
+  { path: 'clasificaciones/edit/:categoria/:circuito/:posicion/:id', component: ClasificacionFormComponent, canActivate: [AuthGuard] },
 
   { path: 'usuario/login', component: LoginComponent },
   { path: 'usuario/register', component: RegisterComponent },

@@ -1,51 +1,49 @@
-<div class="container">
-  <div class="row">
-    <div class="col-lg-4 col-lg-offset-4">
-      <div class="card_register">
-        <div class="card">
-          <div class="card-body text-center">
-            <form #formRegister="ngForm" (ngSubmit)="onRegister(formRegister)">
-              <h1 class="h3 mb-3 font-weight-normal">Registro</h1>
-              <div class="alert alert-danger" role="alert" *ngIf="isError">
-                {{ msgError }}
-              </div>
-              <div class="form-group">
-                <input type="text" #name="ngModel" name="nombre" class="form-control" placeholder="Nombre" [(ngModel)]="usuario.nombre" required minlength="4"
-                  maxlength="15">
-              </div>
+<div class="row">
+  <div class="col-lg-4 col-lg-offset-4">
+    <div class="well well-lg text-center">
 
-              <div class="alert alert-danger" role="alert" *ngIf="name.touched && !name.valid">
-                <div *ngIf="name.errors.required">El nombre es obligatorio</div>
-                <div *ngIf="name.errors.minlength">El nombre debe de contener al menos 4 caracteres</div>
-              </div>
-              <div class="form-group">
-                <input type="email" #email="ngModel" name="email" class="form-control" placeholder="Email" [(ngModel)]="usuario.email" required
-                  minlength="8">
-              </div>
-              <div class="alert alert-danger" role="alert" *ngIf="email.touched && !email.valid">
-                <div *ngIf="email.errors.required">La email es obligatorio</div>
-                <div *ngIf="email.errors.minlength">El email debe de contener al menos 8 caracteres</div>
-              </div>
-              <div class="form-group">
-                <input type="password" #password="ngModel" name="clave" class="form-control" placeholder="Contraseña" [(ngModel)]="usuario.clave"
-                  required minlength="5" maxlength="10">
-              </div>
-              <div class="alert alert-danger" role="alert" *ngIf="password.touched && !password.valid">
-                <div *ngIf="password.errors.required">La clave es obligatoria</div>
-                <div *ngIf="password.errors.minlength">La clave debe de contener al menos 5 caracteres</div>
-              </div>
-
-              <button type="submit" class="btn btn-lg btn-primary btn-block">Registro</button>
-
-              <br/>
-
-              <div class="form-group">
-                <a routerLink="/usuario/login" class="form-control btn btn-link">Ya tienes cuenta?</a>
-              </div>
-            </form>
-          </div>
+      <form #formRegister="ngForm" (ngSubmit)="onRegister(formRegister)">
+        <h1>Registro</h1>
+        <br/>
+        <div class="alert alert-danger" role="alert" *ngIf="isError">{{ msgError }}</div>
+        <div class="form-group">
+          <input type="text" #nombre="ngModel" name="nombre" class="form-control" placeholder="Nombre" [(ngModel)]="usuario.nombre" required minlength="4"
+            maxlength="15">
         </div>
-      </div>
+        <div class="alert alert-danger" role="alert" *ngIf="nombre.touched && !nombre.valid">
+          <div *ngIf="nombre.errors.required">El nombre es obligatorio</div>
+          <div *ngIf="nombre.errors.minlength">El nombre debe de contener al menos 4 caracteres</div>
+        </div>
+
+        <div class="form-group">
+          <input type="email" #email="ngModel" name="email" class="form-control" placeholder="Email" [(ngModel)]="usuario.email" required
+            minlength="8">
+        </div>
+        <div class="alert alert-danger" role="alert" *ngIf="email.touched && !email.valid">
+          <div *ngIf="email.errors.required">La email es obligatorio</div>
+          <div *ngIf="email.errors.minlength">El email debe de contener al menos 8 caracteres</div>
+        </div>
+
+        <div class="form-group">
+          <input type="password" #clave="ngModel" name="clave" class="form-control" placeholder="Contraseña" [(ngModel)]="usuario.clave"
+            required minlength="5" maxlength="10">
+        </div>
+        <div class="alert alert-danger" role="alert" *ngIf="clave.touched && !clave.valid">
+          <div *ngIf="clave.errors.required">La clave es obligatoria</div>
+          <div *ngIf="clave.errors.minlength">La clave debe de contener al menos 5 caracteres</div>
+        </div>
+
+        <br/>
+        
+        <button type="submit" class="btn btn-lg btn-primary btn-block">Registro</button>
+
+        <br/>
+
+        <div class="form-group">
+          <a [routerLink]="['/usuario/login']" class="form-control btn btn-link">Ya tienes cuenta?</a>
+        </div>
+      </form>
+
     </div>
   </div>
 </div>

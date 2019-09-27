@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Location } from '@angular/common';
 import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 
@@ -23,35 +24,34 @@ export class LoginComponent implements OnInit {
 
 
   constructor(
-    private authService: AuthService, 
+    private authService: AuthService,
+    private location: Location,
     private router: Router) { }
 
 
   ngOnInit() { }
 
 
-  onLogin(form: NgForm) {
-    if (form.valid) {
+  onLogin(form: NgForm)
+  {
+    if (form.valid)
+    {
       return this.authService
         .loginUser(this.usuario)
         .subscribe(
-          data => {
-            console.log(data);
-            console.log('kk1');
-            //this.authService.setUser(data.usuario);
-            console.log('kk2');
-            //const token = data.id;
-            console.log('kk3');
-            //this.authService.setToken(token);
-            console.log('kk4');
-            //this.router.navigate(['/usuario/profile']);
-            console.log('kk5');
-            //location.reload();
-            //this.isError = false;
+          usuario => {
+            this.authService.setUser(usuario);
+            const token = usuario.id;
+            this.authService.setToken(token);
+            this.router.navigate(['/usuario/profile']);
+            location.reload();
+            this.isError = false;
           },
           error => this.onIsError()
         );
-    } else {
+    }
+    else
+    {
       this.onIsError();
     }
   }

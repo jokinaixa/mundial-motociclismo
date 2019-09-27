@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Location } from '@angular/common';
-
 import { NgForm } from '@angular/forms';
 
 import { AuthService } from '../../../services/auth.service';
@@ -34,21 +33,26 @@ export class RegisterComponent implements OnInit {
   ngOnInit() { }
 
   onRegister(form: NgForm): void {
-    if (form.valid) {
+    if (form.valid)
+    {
       this.authService
         .registerUser(this.usuario)
-        .subscribe(usuario => {
-          this.authService.setUser(usuario);
-          const token = usuario.id;
-          this.authService.setToken(token);
-          this.router.navigate(['/usuario/profile']);
-          location.reload();
-        },
-        res => {
-          this.msgError = res.error.error.details.messages.email;
-          this.onIsError();
-        });
-    } else {
+        .subscribe(
+          usuario => {
+            this.authService.setUser(usuario);
+            const token = usuario.id;
+            this.authService.setToken(token);
+            this.router.navigate(['/usuario/profile']);
+            location.reload();
+          },
+          res => {
+            this.msgError = res.error.error.details.messages.email;
+            this.onIsError();
+          }
+        );
+    }
+    else
+    {
       this.onIsError();
     }
 

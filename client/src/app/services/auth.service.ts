@@ -12,10 +12,6 @@ import { Usuario } from "../models/Usuario";
 })
 export class AuthService {
 
-  headers: HttpHeaders = new HttpHeaders({
-    "Content-Type": "application/json"
-  });
-
   API_URI = 'http://localhost:8080/api';
 
 
@@ -26,31 +22,26 @@ export class AuthService {
   loginUser(usuario: Usuario): Observable<any>
   {
     return this.http
-      .post<Usuario>(`${this.API_URI}/login.php?email=${usuario.email}`, usuario, { headers: this.headers })
+      .post<Usuario>(`${this.API_URI}/login.php`, usuario)
       .pipe(map(data => data));
   }
 
   registerUser(usuario: Usuario)
   {
     return this.http
-      .post<Usuario>(`${this.API_URI}/register.php`, usuario, { headers: this.headers })
+      .post<Usuario>(`${this.API_URI}/register.php`, usuario)
       .pipe(map(data => data));
   }
 
   setUser(usuario: Usuario): void
   {
-    console.log('kk11');
     let user_string = JSON.stringify(usuario);
-    console.log('kk12');
     localStorage.setItem("currentUser", user_string);
-    console.log('kk13');
   }
 
   setToken(token): void 
   {
-    console.log('kk31');
     localStorage.setItem("accessToken", token);
-    console.log('kk32');
   }
 
   getToken() 
@@ -62,10 +53,13 @@ export class AuthService {
   {
     let user_string = localStorage.getItem("currentUser");
 
-    if (!isNullOrUndefined(user_string)) {
+    if (!isNullOrUndefined(user_string))
+    {
       let user: Usuario = JSON.parse(user_string);
       return user;
-    } else {
+    }
+    else
+    {
       return null;
     }
   }
@@ -77,7 +71,7 @@ export class AuthService {
     localStorage.removeItem("accessToken");
     localStorage.removeItem("currentUser");
 
-    return this.http
-      .post<Usuario>(`${this.API_URI}/logout.php?access_token=${accessToken}`, { headers: this.headers });
+    //return this.http
+    //  .post<Usuario>(`${this.API_URI}/logout.php?access_token=${accessToken}`);
   }
 }

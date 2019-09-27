@@ -13,8 +13,9 @@
   if(isset($postdata) && !empty($postdata))
   {
     $usuario = json_decode($postdata);
+    $clave = password_hash($usuario->clave, PASSWORD_DEFAULT);
    
-    $query = "INSERT INTO usuarios (nombre, email, clave) VALUES ('$usuario->nombre', '$usuario->email', '$usuario->clave')";
+    $query = "INSERT INTO usuarios (nombre, email, clave) VALUES ('$usuario->nombre', '$usuario->email', '$clave')";
     $connect->query($query) or trigger_error($connect->error);
 
     $salida = json_encode($usuario);

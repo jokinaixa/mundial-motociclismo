@@ -8,12 +8,22 @@
   $connect = retornarConexion();
   mysqli_set_charset($connect, "utf8");
 
-  $query = "SELECT * FROM usuarios WHERE name = $_GET[name]";
-  $resultado = $connect->query($query) or trigger_error($connect->error);
+  $postdata = file_get_contents("php://input");
 
-  if ($circuito = $resultado->fetch_assoc())  
-  {  
-    $salida = json_encode($circuito);
-    echo $salida;
-  }  
+  if(isset($postdata) && !empty($postdata))
+  {
+    $data = json_decode($postdata);
+
+    $query = "SELECT * FROM usuarios WHERE email = '$data->email';";
+    $resultado = $connect->query($query) or trigger_error($connect->error);
+
+    if ($usuario = $resultado->fetch_assoc())  
+    {
+      if (password_verify($data->clave, $usuario["clave"]))
+      {
+        $salida = json_encode($usuario);
+        echo $salida;
+      }
+    }
+  }
 ?>
